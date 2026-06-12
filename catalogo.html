@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo – Semillas DGR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&family=Barlow+Condensed:wght@800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .catalog-tabs { display: flex; gap: 0.4rem; margin-bottom: 2.5rem; background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; padding: 0.4rem; width: fit-content; flex-wrap: wrap; }
+    .tab-btn { padding: 0.55rem 1.4rem; border-radius: 7px; border: none; background: transparent; color: var(--gray-2); font-family: 'Poppins', sans-serif; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .tab-btn.active { background: var(--red); color: var(--white); }
+    .tab-btn:not(.active):hover { color: var(--white); background: var(--surface-3); }
+
+    .catalog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.4rem; }
+
+    .cat-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: transform 0.2s, border-color 0.2s; display: flex; flex-direction: column; }
+    .cat-card:hover { transform: translateY(-4px); border-color: var(--border-red); }
+
+    .cat-img { height: 170px; background: var(--surface-3); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 3rem; position: relative; overflow: hidden; }
+    .cat-img img { width: 100%; height: 100%; object-fit: cover; }
+    .cat-img .cat-icon { font-size: 3rem; }
+
+    .cat-body { padding: 1.2rem; flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
+    .cat-body h4 { font-size: 1rem; font-weight: 700; color: var(--white); margin: 0; }
+    .cat-body .cat-desc { font-size: 0.82rem; color: var(--gray-2); line-height: 1.6; flex: 1; }
+    .cat-meta { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.4rem; }
+    .cat-spec { font-size: 0.72rem; background: var(--surface-3); border: 1px solid var(--border); border-radius: 4px; padding: 0.2rem 0.55rem; color: var(--gray-2); font-family: 'Inter', sans-serif; }
+    .cat-spec strong { color: var(--white); font-weight: 600; }
+
+    .resistencias { margin-top: 0.6rem; }
+    .resistencias .res-label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gray-2); margin-bottom: 0.35rem; }
+    .res-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+    .res-tag { font-size: 0.65rem; background: rgba(45,106,31,0.12); border: 1px solid rgba(45,106,31,0.3); color: #5eba45; border-radius: 3px; padding: 0.15rem 0.5rem; font-weight: 600; letter-spacing: 0.5px; }
+
+    .bhn-banner { display: flex; align-items: center; gap: 1.5rem; background: var(--surface-2); border: 1px solid var(--border); border-radius: 14px; padding: 1.4rem 2rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+    .bhn-banner img { height: 60px; width: auto; object-fit: contain; flex-shrink: 0; }
+    .bhn-banner .label { font-size: 0.7rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--red); margin-bottom: 0.2rem; }
+    .bhn-banner p { font-size: 0.95rem; font-weight: 600; color: var(--white); }
+
+    .catalog-download { margin-top: 3rem; background: var(--surface-2); border: 1px solid var(--border); border-radius: 14px; padding: 2rem 2.5rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+    .catalog-download h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .catalog-download p { font-size: 0.88rem; color: var(--gray-2); }
+
+    .contact-bar { margin-top: 3rem; background: var(--surface-2); border: 1px solid var(--border-red); border-radius: 14px; padding: 1.6rem 2rem; display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+    .contact-bar .cb-text { flex: 1; }
+    .contact-bar .cb-text h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .contact-bar .cb-text p { font-size: 0.85rem; color: var(--gray-2); }
+    .contact-bar .cb-info { display: flex; flex-direction: column; gap: 0.3rem; }
+    .contact-bar .cb-info a { font-size: 0.85rem; color: var(--gray-2); text-decoration: none; transition: color 0.2s; }
+    .contact-bar .cb-info a:hover { color: var(--white); }
+
+    @media (max-width: 768px) {
+      .catalog-grid { grid-template-columns: 1fr 1fr; }
+      .catalog-download { flex-direction: column; }
+      .contact-bar { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 480px) {
+      .catalog-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="scroll-progress"><div class="scroll-bar" id="scrollBar"></div></div>
+
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">
+      <img src="logo-dark.jpeg" alt="Semillas DGR" style="height:46px;width:auto;border-radius:6px;">
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="index.html#productos">Productos</a></li>
+      <li><a href="catalogo.html" class="active">Catálogo</a></li>
+      <li><a href="galeria.html">Galería</a></li>
+      <li><a href="index.html#nosotros">Nosotros</a></li>
+      <li><a href="index.html#contacto" class="nav-cta">Contacto</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="container">
+      <span class="eyebrow">Catálogo de Variedades</span>
+      <h1>Nuestras Variedades</h1>
+      <p>Explore las variedades disponibles de Tomate y Chile Dulce. Información detallada en actualización continua.</p>
+    </div>
+  </div>
+
+  <!-- CATALOG CONTENT -->
+  <section class="section">
+    <div class="container">
+
+      <div class="bhn-banner">
+        <img src="bhn-seed.png" alt="BHN Seed">
+        <div>
+          <div class="label">Distribuidor Oficial</div>
+          <p>Distribuimos semillas <strong>BHN Seed Hybrid Tomato</strong> — marca líder en semillas híbridas de tomate a nivel mundial.</p>
+        </div>
+      </div>
+
+      <div class="catalog-tabs">
+        <button class="tab-btn active" onclick="filtrar(this,'todos')">Todos</button>
+        <button class="tab-btn" onclick="filtrar(this,'tomate')">🍅 Tomate</button>
+        <button class="tab-btn" onclick="filtrar(this,'portainjerto')">🌱 Portainjerto</button>
+      </div>
+
+      <div class="catalog-grid" id="catalogGrid">
+
+        <!-- IL-1907 -->
+        <div class="cat-card" data-cat="tomate">
+          <div class="cat-img"><img src="variedad-il1907.jpeg" alt="IL-1907"></div>
+          <div class="cat-body">
+            <span class="tag tag-red">Tomate BHN</span>
+            <h4>IL-1907</h4>
+            <p class="cat-desc">Tomate indeterminado de follaje vigoroso, fruto grande y multilocular con excelente firmeza. Adaptado a las condiciones de Costa Rica.</p>
+            <div class="cat-meta">
+              <span class="cat-spec"><strong>Porte:</strong> Indeterminado</span>
+              <span class="cat-spec"><strong>LSL</strong> — Larga vida</span>
+            </div>
+            <div class="resistencias">
+              <div class="res-label">Resistencias</div>
+              <div class="res-tags">
+                <span class="res-tag">V</span>
+                <span class="res-tag">F1/F2/F3</span>
+                <span class="res-tag">N</span>
+                <span class="res-tag">TMV</span>
+                <span class="res-tag">TYLCV</span>
+                <span class="res-tag">LSL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- IL-1908 -->
+        <div class="cat-card" data-cat="tomate">
+          <div class="cat-img"><img src="variedad-il1908.jpeg" alt="IL-1908"></div>
+          <div class="cat-body">
+            <span class="tag tag-red">Tomate BHN</span>
+            <h4>IL-1908</h4>
+            <p class="cat-desc">Planta indeterminada de porte alto, con frutos de excelente calibre y larga vida poscosecha. Ideal para producción de verano e invierno.</p>
+            <div class="cat-meta">
+              <span class="cat-spec"><strong>Altura:</strong> ~1.8 m</span>
+              <span class="cat-spec"><strong>Racimos:</strong> 8–10</span>
+              <span class="cat-spec"><strong>Peso:</strong> 240–280 g</span>
+            </div>
+            <div class="resistencias">
+              <div class="res-label">Resistencias</div>
+              <div class="res-tags">
+                <span class="res-tag">V</span>
+                <span class="res-tag">F1/F2/F3</span>
+                <span class="res-tag">N</span>
+                <span class="res-tag">TMV</span>
+                <span class="res-tag">TSWV</span>
+                <span class="res-tag">TYLCV</span>
+                <span class="res-tag">LSL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- IL-1909 -->
+        <div class="cat-card" data-cat="tomate">
+          <div class="cat-img"><img src="variedad-il1909.jpeg" alt="IL-1909"></div>
+          <div class="cat-body">
+            <span class="tag tag-red">Tomate BHN</span>
+            <h4>IL-1909</h4>
+            <p class="cat-desc">Planta indeterminada con frutos de calibre extragrande y excelente poscosecha. Alta productividad con 3–5 frutos por racimo.</p>
+            <div class="cat-meta">
+              <span class="cat-spec"><strong>Altura:</strong> ~1.8 m</span>
+              <span class="cat-spec"><strong>Racimos:</strong> 8–10</span>
+              <span class="cat-spec"><strong>Peso:</strong> 230–310 g</span>
+            </div>
+            <div class="resistencias">
+              <div class="res-label">Resistencias</div>
+              <div class="res-tags">
+                <span class="res-tag">V</span>
+                <span class="res-tag">F1/F2/F3</span>
+                <span class="res-tag">N</span>
+                <span class="res-tag">TMV</span>
+                <span class="res-tag">TSWV</span>
+                <span class="res-tag">TYLCV</span>
+                <span class="res-tag">LSL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- JM PLUS -->
+        <div class="cat-card" data-cat="tomate">
+          <div class="cat-img"><span class="cat-icon">🍅</span></div>
+          <div class="cat-body">
+            <span class="tag tag-red">Tomate BHN</span>
+            <h4>JM PLUS</h4>
+            <p class="cat-desc">Fruto extragrande y redondeado con mesocarpio grueso y consistencia muy firme. Follaje moderado y excelente comportamiento en poscosecha.</p>
+            <div class="cat-meta">
+              <span class="cat-spec"><strong>Altura:</strong> ~1.8 m</span>
+              <span class="cat-spec"><strong>Racimos:</strong> 8–10</span>
+              <span class="cat-spec"><strong>Peso:</strong> 250–350 g</span>
+            </div>
+            <div class="resistencias">
+              <div class="res-label">Resistencias</div>
+              <div class="res-tags">
+                <span class="res-tag">V</span>
+                <span class="res-tag">F1/F2/F3</span>
+                <span class="res-tag">N</span>
+                <span class="res-tag">TMV</span>
+                <span class="res-tag">TSWV</span>
+                <span class="res-tag">TYLCV</span>
+                <span class="res-tag">LSL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- JR SPECIAL -->
+        <div class="cat-card" data-cat="tomate">
+          <div class="cat-img"><span class="cat-icon">🍅</span></div>
+          <div class="cat-body">
+            <span class="tag tag-red">Tomate BHN</span>
+            <h4>JR SPECIAL</h4>
+            <p class="cat-desc">Excelente vida poscosecha y alto valor comercial. Planta robusta con buen amarre de frutos y producción consistente por racimo.</p>
+            <div class="cat-meta">
+              <span class="cat-spec"><strong>Altura:</strong> ~1.8 m</span>
+              <span class="cat-spec"><strong>Racimos:</strong> 8–10</span>
+              <span class="cat-spec"><strong>Peso:</strong> 250–300 g</span>
+            </div>
+            <div class="resistencias">
+              <div class="res-label">Resistencias</div>
+              <div class="res-tags">
+                <span class="res-tag">V</span>
+                <span class="res-tag">F1/F2/F3</span>
+                <span class="res-tag">TMV</span>
+                <span class="res-tag">LSL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MILAN -->
+        <div class="cat-card" data-cat="tomate">
+          <div class="cat-img"><span class="cat-icon">🍅</span></div>
+          <div class="cat-body">
+            <span class="tag tag-red">Tomate BHN</span>
+            <h4>MILAN</h4>
+            <p class="cat-desc">Planta indeterminada con alta carga de frutos por planta (3–7 por racimo). Excelente larga vida de anaquel y resistencia amplia a enfermedades.</p>
+            <div class="cat-meta">
+              <span class="cat-spec"><strong>Altura:</strong> ~1.8 m</span>
+              <span class="cat-spec"><strong>Racimos:</strong> 8–10</span>
+              <span class="cat-spec"><strong>Peso:</strong> 250–300 g</span>
+            </div>
+            <div class="resistencias">
+              <div class="res-label">Resistencias</div>
+              <div class="res-tags">
+                <span class="res-tag">V</span>
+                <span class="res-tag">F1/F2/F3</span>
+                <span class="res-tag">TMV</span>
+                <span class="res-tag">LSL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SDGR 21 -->
+        <div class="cat-card" data-cat="tomate">
+          <div class="cat-img"><span class="cat-icon">🍅</span></div>
+          <div class="cat-body">
+            <span class="tag tag-red">Tomate DGR</span>
+            <h4>SDGR 21</h4>
+            <p class="cat-desc">Tomate tipo Beef indeterminado con planta robusta. Frutos globosos, firmes y de excelente calidad. Variedad insignia de Semillas DGR.</p>
+            <div class="cat-meta">
+              <span class="cat-spec"><strong>Tipo:</strong> Beef</span>
+              <span class="cat-spec"><strong>Peso:</strong> ~300 g</span>
+              <span class="cat-spec"><strong>Forma:</strong> Globosa</span>
+            </div>
+            <div class="resistencias">
+              <div class="res-label">Resistencias</div>
+              <div class="res-tags">
+                <span class="res-tag">V</span>
+                <span class="res-tag">F1/F2/F3</span>
+                <span class="res-tag">TMV</span>
+                <span class="res-tag">TYLCV</span>
+                <span class="res-tag">LSL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TITAN -->
+        <div class="cat-card" data-cat="tomate">
+          <div class="cat-img"><span class="cat-icon">🍅</span></div>
+          <div class="cat-body">
+            <span class="tag tag-red">Tomate BHN</span>
+            <h4>TITAN</h4>
+            <p class="cat-desc">Planta indeterminada de porte alto con excelentes características para invierno y verano. Fruto tipo bola con hombros medios y cierre perfecto.</p>
+            <div class="cat-meta">
+              <span class="cat-spec"><strong>Altura:</strong> ~1.8 m</span>
+              <span class="cat-spec"><strong>Racimos:</strong> 8–10</span>
+              <span class="cat-spec"><strong>Peso:</strong> 250–350 g</span>
+            </div>
+            <div class="resistencias">
+              <div class="res-label">Resistencias</div>
+              <div class="res-tags">
+                <span class="res-tag">V</span>
+                <span class="res-tag">F1/F2/F3</span>
+                <span class="res-tag">N</span>
+                <span class="res-tag">TMV</span>
+                <span class="res-tag">LSL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- VULCANO -->
+        <div class="cat-card" data-cat="tomate">
+          <div class="cat-img"><span class="cat-icon">🍅</span></div>
+          <div class="cat-body">
+            <span class="tag tag-red">Tomate BHN</span>
+            <h4>VULCANO</h4>
+            <p class="cat-desc">Planta indeterminada de porte alto adaptada a invierno y verano. Fruto tipo bola con hombros medios, cierre excelente y larga vida de anaquel.</p>
+            <div class="cat-meta">
+              <span class="cat-spec"><strong>Altura:</strong> ~1.8 m</span>
+              <span class="cat-spec"><strong>Racimos:</strong> 8–10</span>
+              <span class="cat-spec"><strong>Peso:</strong> 250–300 g</span>
+            </div>
+            <div class="resistencias">
+              <div class="res-label">Resistencias</div>
+              <div class="res-tags">
+                <span class="res-tag">V</span>
+                <span class="res-tag">F1/F2/F3</span>
+                <span class="res-tag">N</span>
+                <span class="res-tag">TMV</span>
+                <span class="res-tag">TYLCV</span>
+                <span class="res-tag">LSL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PORTAINJERTO PATRON -->
+        <div class="cat-card" data-cat="portainjerto">
+          <div class="cat-img"><span class="cat-icon">🌱</span></div>
+          <div class="cat-body">
+            <span class="tag tag-green">Portainjerto</span>
+            <h4>PATRÓN</h4>
+            <p class="cat-desc">Excelente alternativa para suelos con hongos patógenos y nemátodos. Brinda sistema radicular eficiente con alta capacidad de consumo de nutrientes y tolerancia a estreses abióticos (pH, salinidad, bajas temperaturas).</p>
+            <div class="cat-meta">
+              <span class="cat-spec"><strong>Uso:</strong> Suelos problemáticos</span>
+            </div>
+            <div class="resistencias">
+              <div class="res-label">Resistencias</div>
+              <div class="res-tags">
+                <span class="res-tag">V</span>
+                <span class="res-tag">F1/F2/F3</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PORTAINJERTO R1912 -->
+        <div class="cat-card" data-cat="portainjerto">
+          <div class="cat-img"><span class="cat-icon">🌱</span></div>
+          <div class="cat-body">
+            <span class="tag tag-green">Portainjerto</span>
+            <h4>R1912</h4>
+            <p class="cat-desc">Portainjerto intraespecífico de innovación genética con excelente compatibilidad entre portainjerto y copa. Brinda sinergismo óptimo para maximizar resistencia y alta producción.</p>
+            <div class="cat-meta">
+              <span class="cat-spec"><strong>Tipo:</strong> Intraespecífico</span>
+            </div>
+            <div class="resistencias">
+              <div class="res-label">Resistencias</div>
+              <div class="res-tags">
+                <span class="res-tag">V</span>
+                <span class="res-tag">F1/F2/F3</span>
+                <span class="res-tag">N</span>
+                <span class="res-tag">TMV</span>
+                <span class="res-tag">TSWV</span>
+                <span class="res-tag">FORL</span>
+                <span class="res-tag">Bacteria</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="catalog-download">
+        <div>
+          <h4>📄 Fichas Técnicas en PDF</h4>
+          <p>Descargue las fichas técnicas detalladas de cada variedad con información completa de resistencias y manejo.</p>
+        </div>
+        <a href="Catalogo_Semillas_DGR.pdf" class="btn btn-red" download>⬇ Descargar PDF</a>
+      </div>
+
+      <div class="contact-bar">
+        <div class="cb-text">
+          <h4>¿Necesita asesoría técnica?</h4>
+          <p>Nuestro representante técnico lo puede orientar sobre la variedad más adecuada para su cultivo y condiciones.</p>
+        </div>
+        <div class="cb-info">
+          <a href="mailto:semillasdgrsa@gmail.com">✉ semillasdgrsa@gmail.com</a>
+          <a href="tel:+50670536966">📱 +506 7053-6966</a>
+          <a href="tel:+50621020910">☎ +506 2102-0910</a>
+        </div>
+        <a href="https://wa.me/50670536966" target="_blank" class="btn btn-red">💬 WhatsApp</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="logo-dark.jpeg" alt="Semillas DGR" style="height:44px;width:auto;border-radius:6px;">
+        </div>
+        <p>Empresa Costarricense dedicada a la venta de Semillas de Tomate y Chile Dulce de alta calidad.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navegación</h5>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="index.html#productos">Productos</a></li>
+          <li><a href="catalogo.html">Catálogo</a></li>
+          <li><a href="galeria.html">Galería</a></li>
+          <li><a href="index.html#nosotros">Nosotros</a></li>
+          <li><a href="index.html#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contacto</h5>
+        <ul>
+          <li><a href="mailto:semillasdgrsa@gmail.com">semillasdgrsa@gmail.com</a></li>
+          <li><a href="tel:+50670536966">+506 7053 6966</a></li>
+          <li><a href="https://www.instagram.com/semillasdgr/" target="_blank">@semillasdgr</a></li>
+          <li><a href="https://www.facebook.com/profile.php?id=61586373789656" target="_blank">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Semillas DGR S.A. — Todos los derechos reservados 🇨🇷</p>
+      <div class="social-links">
+        <a class="social-link" href="https://www.instagram.com/semillasdgr/" target="_blank">📸</a>
+        <a class="social-link" href="https://www.facebook.com/profile.php?id=61586373789656" target="_blank">📘</a>
+        <a class="social-link" href="https://wa.me/50670536966" target="_blank">💬</a>
+      </div>
+    </div>
+  </footer>
+
+  <a class="float-wa" href="https://wa.me/50670536966" target="_blank">💬</a>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+    });
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+      document.getElementById('hamburger').classList.toggle('open');
+    }
+    function filtrar(btn, cat) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.cat-card').forEach(c => {
+        c.style.display = (cat === 'todos' || c.dataset.cat === cat) ? 'flex' : 'none';
+      });
+    }
+
+    const sb = document.getElementById('scrollBar');
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+      const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+      if (sb) sb.style.width = pct + '%';
+    });
+  </script>
+</body>
+</html>
