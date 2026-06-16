@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productos – Semillas DGR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&family=Barlow+Condensed:wght@800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .prod-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s; }
+    .prod-card:hover { transform: translateY(-6px); border-color: var(--border-red); box-shadow: 0 12px 40px rgba(204,34,34,0.12); }
+    .prod-img-wrap { overflow: hidden; }
+    .prod-img { width: 100%; height: 220px; object-fit: cover; border-bottom: 2px solid var(--surface-3); transition: transform 0.4s; }
+    .prod-card:hover .prod-img { transform: scale(1.04); }
+    .prod-body { padding: 1.6rem; }
+    .prod-body h3 { font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
+    .prod-body p { font-size: 0.88rem; color: var(--gray-2); margin-bottom: 1rem; }
+    .prod-features { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+    .prod-features li { font-size: 0.85rem; color: var(--gray-2); display: flex; align-items: center; gap: 0.5rem; }
+    .prod-features li::before { content: ""; width: 6px; height: 6px; background: var(--red); border-radius: 50%; flex-shrink: 0; }
+    @media (max-width: 1024px) { .products-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 768px) { .products-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <div class="scroll-progress"><div class="scroll-bar" id="scrollBar"></div></div>
+
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo-dark.jpeg" alt="Semillas DGR" style="height:46px;width:auto;border-radius:6px;">
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="index.html#nosotros">Nosotros</a></li>
+      <li><a href="productos.html" class="active">Productos</a></li>
+      <li><a href="catalogo.html">Catálogo</a></li>
+      <li><a href="galeria.html">Galería</a></li>
+      <li><a href="index.html#contacto" class="nav-cta">Contacto</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="container">
+      <span class="eyebrow">Nuestros Productos</span>
+      <h1>Semillas de Alta Calidad</h1>
+      <p>Variedades adaptadas al clima costarricense, con alta tasa de germinación y rendimiento comprobado.</p>
+    </div>
+  </div>
+
+  <!-- PRODUCTS -->
+  <section class="section">
+    <div class="container">
+      <div class="products-grid">
+        <div class="prod-card">
+          <div class="prod-img-wrap"><img class="prod-img" src="assets/dgr-tomates-closeup.jpeg" alt="Tomate"></div>
+          <div class="prod-body">
+            <span class="tag tag-red">Tomate</span>
+            <h3>Semillas de Tomate Premium</h3>
+            <p>Variedades de alto rendimiento, resistentes a enfermedades comunes en el trópico costarricense.</p>
+            <ul class="prod-features">
+              <li>Alta tasa de germinación</li>
+              <li>Resistencia a plagas locales</li>
+              <li>Fruto uniforme y de buen tamaño</li>
+              <li>Adaptado al clima costarricense</li>
+            </ul>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-img-wrap"><img class="prod-img" src="https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?w=600&q=80" alt="Chile Dulce"></div>
+          <div class="prod-body">
+            <span class="tag tag-amber">Chile Dulce</span>
+            <h3>Semillas de Chile Dulce Premium</h3>
+            <p>Variedades para producción continua con fruto carnoso y excelente calidad.</p>
+            <ul class="prod-features">
+              <li>Producción prolongada</li>
+              <li>Fruto grueso y de buen color</li>
+              <li>Tolerancia al calor</li>
+              <li>Ideal para invernadero y campo abierto</li>
+            </ul>
+          </div>
+        </div>
+        <a href="index.html#contacto" class="prod-card" style="text-decoration:none;cursor:pointer;">
+          <div class="prod-img-wrap"><img class="prod-img" src="assets/variedad-il1907.jpeg" alt="Campo de cultivo"></div>
+          <div class="prod-body">
+            <span class="tag tag-green">Servicio</span>
+            <h3>Asesoría para el Productor</h3>
+            <p>Acompañamiento desde la selección de la semilla hasta las mejores prácticas de cultivo.</p>
+            <ul class="prod-features">
+              <li>Recomendación de variedad según zona</li>
+              <li>Guías de siembra y manejo</li>
+              <li>Atención personalizada</li>
+              <li>Seguimiento post-venta</li>
+            </ul>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="assets/logo-dark.jpeg" alt="Semillas DGR" style="height:44px;width:auto;border-radius:6px;">
+        </div>
+        <p>Empresa Costarricense dedicada a la venta de Semillas de Tomate y Chile Dulce de alta calidad.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navegación</h5>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="index.html#nosotros">Nosotros</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="catalogo.html">Catálogo</a></li>
+          <li><a href="galeria.html">Galería</a></li>
+          <li><a href="index.html#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contacto</h5>
+        <ul>
+          <li><a href="mailto:semillasdgrsa@gmail.com">semillasdgrsa@gmail.com</a></li>
+          <li><a href="tel:+50670536966">+506 7053 6966</a></li>
+          <li><a href="https://www.instagram.com/semillasdgr/" target="_blank">@semillasdgr</a></li>
+          <li><a href="https://www.facebook.com/profile.php?id=61586373789656" target="_blank">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Semillas DGR S.A. — Todos los derechos reservados</p>
+      <div class="social-links">
+        <a class="social-link" href="https://www.instagram.com/semillasdgr/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        <a class="social-link" href="https://www.facebook.com/profile.php?id=61586373789656" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+        <a class="social-link" href="https://wa.me/50670536966" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <a class="float-wa" href="https://wa.me/50670536966" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+    });
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+      document.getElementById('hamburger').classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
