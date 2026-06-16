@@ -10,39 +10,75 @@
   <link rel="stylesheet" href="assets/styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
+    /* ── Filter tabs ── */
+    .gallery-filters {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .gf-btn {
+      padding: 0.45rem 1.1rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--surface-2);
+      color: var(--gray-2);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+      letter-spacing: 0.03em;
+    }
+    .gf-btn:hover { border-color: var(--red); color: var(--white); }
+    .gf-btn.active { background: var(--red); border-color: var(--red); color: #fff; }
+
+    /* ── Variety sections ── */
+    .variety-section { margin-bottom: 3rem; }
+    .variety-section.hidden { display: none; }
+    .variety-header {
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .variety-header h3 {
+      font-size: 1.1rem; font-weight: 800;
+      color: var(--white); text-transform: uppercase;
+      letter-spacing: 0.06em; margin: 0;
+    }
+    .variety-divider {
+      flex: 1; height: 1px; background: var(--border);
+    }
+    .variety-count {
+      font-size: 0.72rem; color: var(--gray-3);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600; letter-spacing: 0.08em;
+    }
+
+    /* ── Photo grid per section ── */
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      grid-auto-rows: 280px;
+      grid-template-columns: repeat(3, 1fr);
       gap: 0.8rem;
     }
-    .g-item { position: relative; overflow: hidden; border-radius: 10px; cursor: pointer; background: var(--surface-3); }
-    .g-item:nth-child(1)  { grid-column: span 5; grid-row: span 2; }
-    .g-item:nth-child(2)  { grid-column: span 4; }
-    .g-item:nth-child(3)  { grid-column: span 3; }
-    .g-item:nth-child(4)  { grid-column: span 3; }
-    .g-item:nth-child(5)  { grid-column: span 4; }
-    .g-item:nth-child(6)  { grid-column: span 4; }
-    .g-item:nth-child(7)  { grid-column: span 4; }
-    .g-item:nth-child(8)  { grid-column: span 4; }
-    .g-item:nth-child(9)  { grid-column: span 5; }
-    .g-item:nth-child(10) { grid-column: span 4; }
-    .g-item:nth-child(11) { grid-column: span 3; }
-    .g-item:nth-child(12) { grid-column: span 3; }
-    .g-item:nth-child(13) { grid-column: span 3; }
-    .g-item:nth-child(14) { grid-column: span 6; }
-    .g-item:nth-child(15) { grid-column: span 6; }
-    .g-item:nth-child(16) { grid-column: span 6; }
-    .g-video { width: 100%; height: 100%; object-fit: cover; display: block; }
-
+    .gallery-grid.two-col { grid-template-columns: repeat(2, 1fr); }
+    .g-item {
+      position: relative; overflow: hidden;
+      border-radius: 10px; cursor: pointer;
+      background: var(--surface-3);
+      height: 260px;
+    }
+    .g-item.tall { height: 380px; }
     .g-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; display: block; }
-    .g-item:hover img { transform: scale(1.07); }
-    .g-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0); transition: background 0.3s; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
-    .g-item:hover .g-overlay { background: rgba(204,34,34,0.25); }
-    .g-placeholder { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--gray-3); gap: 0.5rem; font-size: 2rem; }
-    .g-placeholder span { font-size: 0.65rem; font-family: 'Poppins', sans-serif; letter-spacing: 2px; text-transform: uppercase; }
+    .g-item:hover img { transform: scale(1.06); }
+    .g-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0); transition: background 0.3s;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; color: #fff;
+    }
+    .g-overlay i { opacity: 0; transition: opacity 0.3s; }
+    .g-item:hover .g-overlay { background: rgba(204,34,34,0.22); }
+    .g-item:hover .g-overlay i { opacity: 1; }
 
-    .gallery-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+    .gallery-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 1rem; flex-wrap: wrap; gap: 1rem; }
     .gallery-footer p { font-size: 0.85rem; color: var(--gray-2); }
     .gallery-footer a { color: var(--red); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
     .gallery-footer a:hover { text-decoration: underline; }
@@ -55,18 +91,18 @@
       padding: 2.5rem;
       text-align: center;
     }
-    .upload-cta .icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
     .upload-cta h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
     .upload-cta p { font-size: 0.88rem; color: var(--gray-2); }
 
-    @media (max-width: 900px) {
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 200px; }
-      .g-item:nth-child(n) { grid-column: span 1; grid-row: span 1; }
-      .g-item:nth-child(1) { grid-column: span 2; height: auto; }
+    @media (max-width: 768px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid.two-col { grid-template-columns: repeat(2, 1fr); }
+      .g-item { height: 200px; }
+      .g-item.tall { height: 280px; }
     }
     @media (max-width: 480px) {
-      .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 220px; }
-      .g-item:nth-child(n) { grid-column: span 1; grid-row: span 1; }
+      .gallery-grid, .gallery-grid.two-col { grid-template-columns: 1fr; }
+      .g-item, .g-item.tall { height: 220px; }
     }
   </style>
 </head>
@@ -102,70 +138,156 @@
   <section class="section">
     <div class="container">
 
-      <div class="gallery-grid">
-        <div class="g-item" onclick="abrirLightbox(this)">
-          <img src="assets/galeria-sdgr21-frutos.jpeg" alt="SDGR 21 — Carga de frutos">
-          <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+      <!-- Filter tabs -->
+      <div class="gallery-filters">
+        <button class="gf-btn active" onclick="filtrarVariedad('todas', this)">Todas</button>
+        <button class="gf-btn" onclick="filtrarVariedad('sdgr21', this)">SDGR 21</button>
+        <button class="gf-btn" onclick="filtrarVariedad('titan', this)">TITAN</button>
+        <button class="gf-btn" onclick="filtrarVariedad('jrspecial', this)">JR Special</button>
+        <button class="gf-btn" onclick="filtrarVariedad('il1907', this)">IL 1907</button>
+        <button class="gf-btn" onclick="filtrarVariedad('il1908', this)">IL 1908</button>
+        <button class="gf-btn" onclick="filtrarVariedad('il1909', this)">IL 1909</button>
+        <button class="gf-btn" onclick="filtrarVariedad('cacique', this)">CACIQUE</button>
+      </div>
+
+      <!-- SDGR 21 -->
+      <div class="variety-section" data-variety="sdgr21">
+        <div class="variety-header">
+          <h3>SDGR 21</h3>
+          <div class="variety-divider"></div>
+          <span class="variety-count">4 fotos</span>
         </div>
-        <div class="g-item" onclick="abrirLightbox(this)">
-          <img src="assets/galeria-titan-carga.jpeg" alt="TITAN — Alta producción">
-          <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <div class="gallery-grid">
+          <div class="g-item tall" onclick="abrirLightbox(this)">
+            <img src="assets/galeria-sdgr21-frutos.jpeg" alt="SDGR 21 — Carga de frutos">
+            <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+          </div>
+          <div class="g-item" onclick="abrirLightbox(this)">
+            <img src="assets/galeria-sdgr21-racimos.jpeg" alt="SDGR 21 — Racimos abundantes">
+            <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+          </div>
+          <div class="g-item" onclick="abrirLightbox(this)">
+            <img src="assets/galeria-sdgr21-invernadero.jpeg" alt="SDGR 21 — Invernadero">
+            <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+          </div>
+          <div class="g-item" onclick="abrirLightbox(this)" style="grid-column: span 2;">
+            <img src="assets/galeria-sdgr21-plantas.jpeg" alt="SDGR 21 — Plantas en invernadero">
+            <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+          </div>
         </div>
-        <div class="g-item" onclick="abrirLightbox(this)">
-          <img src="assets/galeria-jrspecial-productor.jpeg" alt="JR Special — Productor Bernal Martínez">
-          <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+      </div>
+
+      <!-- TITAN -->
+      <div class="variety-section" data-variety="titan">
+        <div class="variety-header">
+          <h3>TITAN</h3>
+          <div class="variety-divider"></div>
+          <span class="variety-count">3 fotos</span>
         </div>
-        <div class="g-item" onclick="abrirLightbox(this)">
-          <img src="assets/galeria-il1907-variedad.jpeg" alt="IL 1907 — Variedad">
-          <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <div class="gallery-grid">
+          <div class="g-item" onclick="abrirLightbox(this)">
+            <img src="assets/galeria-titan-carga.jpeg" alt="TITAN — Alta producción">
+            <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+          </div>
+          <div class="g-item" onclick="abrirLightbox(this)">
+            <img src="assets/galeria-titan-colage.jpeg" alt="TITAN — Variedad">
+            <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+          </div>
+          <div class="g-item" onclick="abrirLightbox(this)">
+            <img src="assets/galeria-titan-invernadero.jpeg" alt="TITAN — Cultivo en invernadero">
+            <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+          </div>
         </div>
-        <div class="g-item" onclick="abrirLightbox(this)">
-          <img src="assets/galeria-sdgr21-racimos.jpeg" alt="SDGR 21 — Racimos abundantes">
-          <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+      </div>
+
+      <!-- JR Special -->
+      <div class="variety-section" data-variety="jrspecial">
+        <div class="variety-header">
+          <h3>JR Special</h3>
+          <div class="variety-divider"></div>
+          <span class="variety-count">2 fotos</span>
         </div>
-        <div class="g-item" onclick="abrirLightbox(this)">
-          <img src="assets/galeria-sdgr21-invernadero.jpeg" alt="SDGR 21 — Invernadero">
-          <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <div class="gallery-grid two-col">
+          <div class="g-item tall" onclick="abrirLightbox(this)">
+            <img src="assets/galeria-jrspecial-productor.jpeg" alt="JR Special — Productor Bernal Martínez">
+            <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+          </div>
+          <div class="g-item tall" onclick="abrirLightbox(this)">
+            <img src="assets/galeria-jrspecial-cosecha.jpeg" alt="JR Special — Cosecha">
+            <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+          </div>
         </div>
-        <div class="g-item" onclick="abrirLightbox(this)">
-          <img src="assets/galeria-titan-colage.jpeg" alt="TITAN — Variedad">
-          <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+      </div>
+
+      <!-- IL 1907 -->
+      <div class="variety-section" data-variety="il1907">
+        <div class="variety-header">
+          <h3>IL 1907</h3>
+          <div class="variety-divider"></div>
+          <span class="variety-count">2 fotos</span>
         </div>
-        <div class="g-item" onclick="abrirLightbox(this)">
-          <img src="assets/galeria-jrspecial-cosecha.jpeg" alt="JR Special — Cosecha">
-          <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <div class="gallery-grid two-col">
+          <div class="g-item" onclick="abrirLightbox(this)">
+            <img src="assets/galeria-il1907-variedad.jpeg" alt="IL 1907 — Variedad">
+            <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+          </div>
+          <div class="g-item tall" onclick="abrirLightbox(this)">
+            <img src="assets/galeria-il1907-calidad.jpeg" alt="IL 1907 — Control de calidad">
+            <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+          </div>
         </div>
-        <div class="g-item" onclick="abrirLightbox(this)">
-          <img src="assets/galeria-il1907-calidad.jpeg" alt="IL 1907 — Control de calidad">
-          <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+      </div>
+
+      <!-- IL 1908 -->
+      <div class="variety-section" data-variety="il1908">
+        <div class="variety-header">
+          <h3>IL 1908</h3>
+          <div class="variety-divider"></div>
+          <span class="variety-count">1 foto</span>
         </div>
-        <div class="g-item" onclick="abrirLightbox(this)">
-          <img src="assets/galeria-titan-invernadero.jpeg" alt="TITAN — Cultivo en invernadero">
-          <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <div class="gallery-grid two-col">
+          <div class="g-item tall" onclick="abrirLightbox(this)">
+            <img src="assets/galeria-il1908-colage.jpeg" alt="IL 1908 — Frutos">
+            <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+          </div>
         </div>
-        <div class="g-item" onclick="abrirLightbox(this)">
-          <img src="assets/galeria-cacique-productor.jpeg" alt="CACIQUE — Productor Mario Pitty">
-          <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+      </div>
+
+      <!-- IL 1909 -->
+      <div class="variety-section" data-variety="il1909">
+        <div class="variety-header">
+          <h3>IL 1909</h3>
+          <div class="variety-divider"></div>
+          <span class="variety-count">2 fotos</span>
         </div>
-        <div class="g-item" onclick="abrirLightbox(this)">
-          <img src="assets/galeria-il1908-colage.jpeg" alt="IL 1908 — Frutos">
-          <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <div class="gallery-grid two-col">
+          <div class="g-item" onclick="abrirLightbox(this)">
+            <img src="assets/galeria-il1909-floracion.jpeg" alt="IL 1909 — Floración">
+            <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+          </div>
+          <div class="g-item" onclick="abrirLightbox(this)">
+            <img src="assets/galeria-il1909-campo.jpeg" alt="IL 1909 — Campo">
+            <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+          </div>
         </div>
-        <div class="g-item" onclick="abrirLightbox(this)">
-          <img src="assets/galeria-il1909-floracion.jpeg" alt="IL 1909 — Floración">
-          <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+      </div>
+
+      <!-- CACIQUE -->
+      <div class="variety-section" data-variety="cacique">
+        <div class="variety-header">
+          <h3>CACIQUE</h3>
+          <div class="variety-divider"></div>
+          <span class="variety-count">2 fotos</span>
         </div>
-        <div class="g-item" onclick="abrirLightbox(this)">
-          <img src="assets/galeria-il1909-campo.jpeg" alt="IL 1909 — Campo">
-          <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
-        </div>
-        <div class="g-item" onclick="abrirLightbox(this)">
-          <img src="assets/galeria-cacique-colage.jpeg" alt="CACIQUE — Producción">
-          <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
-        </div>
-        <div class="g-item" onclick="abrirLightbox(this)">
-          <img src="assets/galeria-sdgr21-plantas.jpeg" alt="SDGR 21 — Plantas en invernadero">
-          <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <div class="gallery-grid two-col">
+          <div class="g-item tall" onclick="abrirLightbox(this)">
+            <img src="assets/galeria-cacique-productor.jpeg" alt="CACIQUE — Productor Mario Pitty">
+            <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+          </div>
+          <div class="g-item" onclick="abrirLightbox(this)">
+            <img src="assets/galeria-cacique-colage.jpeg" alt="CACIQUE — Producción">
+            <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+          </div>
         </div>
       </div>
 
@@ -240,6 +362,17 @@
     function toggleMenu() {
       document.getElementById('navLinks').classList.toggle('open');
       document.getElementById('hamburger').classList.toggle('open');
+    }
+    function filtrarVariedad(variedad, btn) {
+      document.querySelectorAll('.gf-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.variety-section').forEach(sec => {
+        if (variedad === 'todas' || sec.dataset.variety === variedad) {
+          sec.classList.remove('hidden');
+        } else {
+          sec.classList.add('hidden');
+        }
+      });
     }
     function abrirLightbox(el) {
       const img = el.querySelector('img');
