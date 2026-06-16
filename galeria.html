@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&family=Barlow+Condensed:wght@800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     .gallery-grid {
       display: grid;
@@ -97,53 +98,53 @@
       <div class="gallery-grid">
         <div class="g-item" onclick="abrirLightbox(this)">
           <img src="assets/dgr-tomates-1.jpeg" alt="Semillas DGR — Tomates">
-          <div class="g-overlay">🔍</div>
+          <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
         </div>
         <div class="g-item" onclick="abrirLightbox(this)">
           <img src="assets/dgr-tomates-closeup.jpeg" alt="Tomates de alta calidad">
-          <div class="g-overlay">🔍</div>
+          <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
         </div>
         <div class="g-item" onclick="abrirLightbox(this)">
           <img src="assets/dgr-tomates-3.jpeg" alt="Semillas DGR — Variedades">
-          <div class="g-overlay">🔍</div>
+          <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
         </div>
         <div class="g-item" onclick="abrirLightbox(this)">
           <img src="assets/dgr-tomates-2.jpeg" alt="Semillas DGR — Oficina">
-          <div class="g-overlay">🔍</div>
+          <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
         </div>
         <div class="g-item" onclick="abrirLightbox(this)">
           <img src="assets/variedad-il1907.jpeg" alt="Variedad IL-1907">
-          <div class="g-overlay">🔍</div>
+          <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
         </div>
         <div class="g-item" onclick="abrirLightbox(this)">
           <img src="assets/variedad-il1908b.jpeg" alt="IL-1908 — Floración">
-          <div class="g-overlay">🔍</div>
+          <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
         </div>
         <div class="g-item" onclick="abrirLightbox(this)">
           <img src="assets/variedad-sdgr21.jpeg" alt="Variedad SDGR 21">
-          <div class="g-overlay">🔍</div>
+          <div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
         </div>
         <div class="g-item">
           <video class="g-video" autoplay muted loop playsinline>
             <source src="assets/campo-1.mp4" type="video/mp4">
           </video>
-          <div class="g-overlay" style="pointer-events:none;">▶</div>
+          <div class="g-overlay" style="pointer-events:none;"><i class="fa-solid fa-play"></i></div>
         </div>
         <div class="g-item">
           <video class="g-video" autoplay muted loop playsinline>
             <source src="assets/campo-2.mp4" type="video/mp4">
           </video>
-          <div class="g-overlay" style="pointer-events:none;">▶</div>
+          <div class="g-overlay" style="pointer-events:none;"><i class="fa-solid fa-play"></i></div>
         </div>
       </div>
 
       <div class="gallery-footer">
         <p>Fotos reales de nuestras variedades y cultivos.</p>
-        <a href="https://www.instagram.com/semillasdgr/" target="_blank">📸 Ver más en Instagram @semillasdgr →</a>
+        <a href="https://www.instagram.com/semillasdgr/" target="_blank"><i class="fa-brands fa-instagram"></i> Ver más en Instagram @semillasdgr →</a>
       </div>
 
       <div class="upload-cta">
-        <div class="icon">📂</div>
+        <div class="icon"><i class="fa-solid fa-images" style="font-size:2.5rem;color:var(--gray-3);"></i></div>
         <h4>¿Tiene fotos de sus cultivos con Semillas DGR?</h4>
         <p>Envíenoslas por WhatsApp y las agregaremos a la galería.<br>
           <a href="https://wa.me/50670536966" target="_blank" style="color:var(--red);font-weight:600;">+506 7053 6966</a>
@@ -184,16 +185,16 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 Semillas DGR S.A. — Todos los derechos reservados 🇨🇷</p>
+      <p>© 2026 Semillas DGR S.A. — Todos los derechos reservados</p>
       <div class="social-links">
-        <a class="social-link" href="https://www.instagram.com/semillasdgr/" target="_blank">📸</a>
-        <a class="social-link" href="https://www.facebook.com/profile.php?id=61586373789656" target="_blank">📘</a>
-        <a class="social-link" href="https://wa.me/50670536966" target="_blank">💬</a>
+        <a class="social-link" href="https://www.instagram.com/semillasdgr/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        <a class="social-link" href="https://www.facebook.com/profile.php?id=61586373789656" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+        <a class="social-link" href="https://wa.me/50670536966" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
       </div>
     </div>
   </footer>
 
-  <a class="float-wa" href="https://wa.me/50670536966" target="_blank">💬</a>
+  <a class="float-wa" href="https://wa.me/50670536966" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
 
   <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox" onclick="cerrarLightbox()">
