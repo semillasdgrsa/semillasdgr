@@ -453,7 +453,7 @@ def draw_page(c, variedad, page_num, total):
     c.drawRightString(W - MARGIN, H - 12*mm, f"Pág. {page_num} / {total}")
 
     # ── CATEGORY TAG ──
-    y = H - bar_h - 12*mm
+    y = H - bar_h - 16*mm
     cat = variedad["categoria"]
     tag_color = ROJO if variedad["tipo_tag"] == "tomate" else VERDE
     tag_bg = colors.HexColor("#2a0a0a") if variedad["tipo_tag"] == "tomate" else colors.HexColor("#0a1f08")
@@ -464,26 +464,25 @@ def draw_page(c, variedad, page_num, total):
     c.drawString(MARGIN + 2.5*mm, y + 1*mm, cat.upper())
 
     # ── VARIETY NAME ──
-    y -= 10*mm
+    y -= 14*mm
     c.setFillColor(BLANCO)
     c.setFont("Helvetica-Bold", 30)
     c.drawString(MARGIN, y, variedad["nombre"])
 
     # Red underline
-    y -= 5*mm
+    y -= 8*mm
     c.setStrokeColor(ROJO)
     c.setLineWidth(2)
     c.line(MARGIN, y, 90*mm, y)
 
     # ── TWO-COLUMN BLOCK: Description+Specs (left) | Hero image (right) ──
-    # This block spans from y down to y - 95mm
-    block_top = y - 3*mm      # ~H-41mm
+    block_top = y - 8*mm
     block_h   = 95 * mm
-    block_bot = block_top - block_h  # ~H-136mm
+    block_bot = block_top - block_h
 
-    left_w  = HALF - MARGIN - 3*mm   # ~95mm
+    left_w  = HALF - MARGIN - 3*mm
     right_x = HALF + 3*mm
-    right_w = W - right_x - MARGIN   # ~92mm
+    right_w = W - right_x - MARGIN
 
     # Hero image (right column)
     draw_image_box(c, fotos[0] if fotos else None,
@@ -492,36 +491,36 @@ def draw_page(c, variedad, page_num, total):
     # Description (left column)
     y_left = block_top
     c.setFillColor(GRIS)
-    c.setFont("Helvetica", 8)
-    desc_lines = wrap_text(c, variedad["descripcion"], "Helvetica", 8, left_w)
+    c.setFont("Helvetica", 8.5)
+    desc_lines = wrap_text(c, variedad["descripcion"], "Helvetica", 8.5, left_w)
     for ln in desc_lines:
         c.drawString(MARGIN, y_left, ln)
-        y_left -= 5*mm
+        y_left -= 5.5*mm
 
-    y_left -= 3*mm
+    y_left -= 6*mm
 
     # Specs (left column, below description)
     c.setFillColor(BLANCO)
-    c.setFont("Helvetica-Bold", 7.5)
+    c.setFont("Helvetica-Bold", 8)
     c.drawString(MARGIN, y_left, "CARACTERÍSTICAS")
     c.setStrokeColor(ROJO)
     c.setLineWidth(1)
     c.line(MARGIN, y_left - 1.5*mm, MARGIN + 38*mm, y_left - 1.5*mm)
-    y_left -= 7*mm
+    y_left -= 9*mm
 
     for label, valor in variedad["specs"]:
         c.setFillColor(SURFACE2)
-        c.roundRect(MARGIN, y_left - 1.5*mm, left_w, 7*mm, 1.5*mm, fill=1, stroke=0)
+        c.roundRect(MARGIN, y_left - 1.5*mm, left_w, 7.5*mm, 1.5*mm, fill=1, stroke=0)
         c.setFillColor(GRIS)
         c.setFont("Helvetica", 7.5)
-        c.drawString(MARGIN + 3*mm, y_left + 1.5*mm, label + ":")
+        c.drawString(MARGIN + 3*mm, y_left + 2*mm, label + ":")
         c.setFillColor(BLANCO)
         c.setFont("Helvetica-Bold", 7.5)
-        c.drawRightString(MARGIN + left_w - 3*mm, y_left + 1.5*mm, valor)
-        y_left -= 9*mm
+        c.drawRightString(MARGIN + left_w - 3*mm, y_left + 2*mm, valor)
+        y_left -= 10*mm
 
     # ── SEPARATOR ──
-    sep_y = block_bot - 8*mm
+    sep_y = block_bot - 10*mm
     c.setStrokeColor(GRIS3)
     c.setLineWidth(0.5)
     c.line(MARGIN, sep_y, W - MARGIN, sep_y)
@@ -529,12 +528,12 @@ def draw_page(c, variedad, page_num, total):
     # ── RESISTANCES (two columns) ──
     y_res = sep_y - 14*mm
     c.setFillColor(BLANCO)
-    c.setFont("Helvetica-Bold", 7.5)
+    c.setFont("Helvetica-Bold", 8)
     c.drawString(MARGIN, y_res, "RESISTENCIAS")
     c.setStrokeColor(ROJO)
     c.setLineWidth(1)
     c.line(MARGIN, y_res - 1.5*mm, MARGIN + 38*mm, y_res - 1.5*mm)
-    y_res -= 7*mm
+    y_res -= 9*mm
 
     res_list  = variedad["resistencias"]
     col_w_res = (W - 2*MARGIN - 5*mm) / 2
@@ -543,16 +542,16 @@ def draw_page(c, variedad, page_num, total):
         col = 0 if i < half else 1
         row  = i if col == 0 else i - half
         col_x = MARGIN if col == 0 else MARGIN + col_w_res + 5*mm
-        row_y = y_res - row * 9*mm
+        row_y = y_res - row * 9.5*mm
         nombre_res = RES_NOMBRES.get(code, code)
         c.setFillColor(VERDE_BG)
-        c.roundRect(col_x, row_y - 1.5*mm, col_w_res, 7*mm, 1.5*mm, fill=1, stroke=0)
+        c.roundRect(col_x, row_y - 1.5*mm, col_w_res, 7.5*mm, 1.5*mm, fill=1, stroke=0)
         c.setFillColor(VERDE)
         c.setFont("Helvetica-Bold", 7.5)
-        c.drawString(col_x + 3*mm, row_y + 1.5*mm, code)
+        c.drawString(col_x + 3*mm, row_y + 2*mm, code)
         c.setFillColor(GRIS)
         c.setFont("Helvetica", 7)
-        c.drawString(col_x + 14*mm, row_y + 1.5*mm, nombre_res)
+        c.drawString(col_x + 14*mm, row_y + 2*mm, nombre_res)
 
     # ── 4 SMALL IMAGES (bottom strip) ──
     strip_h   = 45 * mm
@@ -562,7 +561,7 @@ def draw_page(c, variedad, page_num, total):
         img_w = (W - 2*MARGIN - (img_count - 1) * gap) / img_count
         for i in range(img_count):
             ix = MARGIN + i * (img_w + gap)
-            iy = 28 * mm
+            iy = 32 * mm
             draw_image_box(c, fotos[i + 1], ix, iy, img_w, strip_h)
 
     # ── FOOTER ──
