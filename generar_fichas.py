@@ -424,18 +424,27 @@ def draw_page(c, variedad, page_num, total):
     c.setFillColor(ROJO)
     c.rect(0, H - 14*mm, W, 14*mm, fill=1, stroke=0)
 
-    # Logo esquina superior izquierda (logo-dark con fondo negro integrado)
+    # Logos esquina superior izquierda: DGR + BHN
     logo_path = LOGO_DARK if os.path.exists(LOGO_DARK) else LOGO
+    lw, lh = 28*mm, 10*mm
+    lx, ly = MARGIN, H - 13*mm
     if os.path.exists(logo_path):
         try:
-            lw, lh = 28*mm, 10*mm
-            lx, ly = MARGIN, H - 13*mm
             c.drawImage(logo_path, lx, ly, width=lw, height=lh,
                         preserveAspectRatio=True, mask='auto')
         except Exception:
             c.setFillColor(BLANCO)
             c.setFont("Helvetica-Bold", 9)
-            c.drawString(MARGIN, H - 8*mm, "SEMILLAS DGR")
+            c.drawString(lx, H - 8*mm, "SEMILLAS DGR")
+    if os.path.exists(BHN):
+        try:
+            bw, bh = 18*mm, 12*mm
+            bx = lx + lw + 3*mm
+            by = H - 13.5*mm
+            c.drawImage(BHN, bx, by, width=bw, height=bh,
+                        preserveAspectRatio=True, mask='auto')
+        except Exception:
+            pass
 
     c.setFillColor(BLANCO)
     c.setFont("Helvetica-Bold", 7)
@@ -601,11 +610,20 @@ def draw_glossary_page(c, page_num, total):
     c.rect(0, H - 14*mm, W, 14*mm, fill=1, stroke=0)
 
     logo_path = LOGO_DARK if os.path.exists(LOGO_DARK) else LOGO
+    lw, lh = 28*mm, 10*mm
+    lx, ly = MARGIN, H - 13*mm
     if os.path.exists(logo_path):
         try:
-            lw, lh = 28*mm, 10*mm
-            lx, ly = MARGIN, H - 13*mm
             c.drawImage(logo_path, lx, ly, width=lw, height=lh,
+                        preserveAspectRatio=True, mask='auto')
+        except Exception:
+            pass
+    if os.path.exists(BHN):
+        try:
+            bw, bh = 18*mm, 12*mm
+            bx = lx + lw + 3*mm
+            by = H - 13.5*mm
+            c.drawImage(BHN, bx, by, width=bw, height=bh,
                         preserveAspectRatio=True, mask='auto')
         except Exception:
             pass
