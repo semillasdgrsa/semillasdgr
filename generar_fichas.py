@@ -575,7 +575,7 @@ def draw_page(c, variedad, page_num, total):
     c.drawString(MARGIN, foot_h - 13.5*mm, "+506 8820-4170  |  +506 2102-0910  |  +506 7053-6966")
 
     c.drawRightString(W - MARGIN, foot_h - 5*mm,  "semillasdgrsa@gmail.com")
-    c.drawRightString(W - MARGIN, foot_h - 9.5*mm, "semillasdgrsa.github.io/semillasdgr")
+    c.drawRightString(W - MARGIN, foot_h - 9.5*mm, "semillasdgr-cr.com")
     c.drawRightString(W - MARGIN, foot_h - 13.5*mm, "@semillasdgr")
 
     c.restoreState()
@@ -729,7 +729,7 @@ def draw_glossary_page(c, page_num, total):
     c.drawString(MARGIN, foot_h - 9.5*mm, "Milton Castillo H.  |  semillasdgrsa@gmail.com")
     c.drawString(MARGIN, foot_h - 13.5*mm, "+506 8820-4170  |  +506 2102-0910  |  +506 7053-6966")
     c.drawRightString(W - MARGIN, foot_h - 5*mm, "semillasdgrsa@gmail.com")
-    c.drawRightString(W - MARGIN, foot_h - 9.5*mm, "semillasdgrsa.github.io/semillasdgr")
+    c.drawRightString(W - MARGIN, foot_h - 9.5*mm, "semillasdgr-cr.com")
     c.drawRightString(W - MARGIN, foot_h - 13.5*mm, "@semillasdgr")
 
     c.restoreState()
