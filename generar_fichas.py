@@ -33,6 +33,7 @@ def original(filename):
     return os.path.join(ORIG, filename)
 OUTPUT = "/Users/lucianacastillo/Desktop/Claude Code/Catalogo_Semillas_DGR.pdf"
 LOGO   = "/Users/lucianacastillo/Desktop/Claude Code/assets/galeria/logo-light.jpeg"
+LOGO_DARK = "/Users/lucianacastillo/Desktop/Claude Code/assets/galeria/logo-dark.jpeg"
 BHN    = "/Users/lucianacastillo/Desktop/Claude Code/assets/bhn-seed.png"
 
 def foto(variedad_dir, filename):
@@ -423,14 +424,13 @@ def draw_page(c, variedad, page_num, total):
     c.setFillColor(ROJO)
     c.rect(0, H - 14*mm, W, 14*mm, fill=1, stroke=0)
 
-    # Logo esquina superior izquierda con fondo negro
-    if os.path.exists(LOGO):
+    # Logo esquina superior izquierda (logo-dark con fondo negro integrado)
+    logo_path = LOGO_DARK if os.path.exists(LOGO_DARK) else LOGO
+    if os.path.exists(logo_path):
         try:
             lw, lh = 28*mm, 10*mm
             lx, ly = MARGIN, H - 13*mm
-            c.setFillColor(NEGRO)
-            c.roundRect(lx - 1*mm, ly - 1*mm, lw + 2*mm, lh + 2*mm, 1.5*mm, fill=1, stroke=0)
-            c.drawImage(LOGO, lx, ly, width=lw, height=lh,
+            c.drawImage(logo_path, lx, ly, width=lw, height=lh,
                         preserveAspectRatio=True, mask='auto')
         except Exception:
             c.setFillColor(BLANCO)
@@ -600,13 +600,12 @@ def draw_glossary_page(c, page_num, total):
     c.setFillColor(ROJO)
     c.rect(0, H - 14*mm, W, 14*mm, fill=1, stroke=0)
 
-    if os.path.exists(LOGO):
+    logo_path = LOGO_DARK if os.path.exists(LOGO_DARK) else LOGO
+    if os.path.exists(logo_path):
         try:
             lw, lh = 28*mm, 10*mm
             lx, ly = MARGIN, H - 13*mm
-            c.setFillColor(NEGRO)
-            c.roundRect(lx - 1*mm, ly - 1*mm, lw + 2*mm, lh + 2*mm, 1.5*mm, fill=1, stroke=0)
-            c.drawImage(LOGO, lx, ly, width=lw, height=lh,
+            c.drawImage(logo_path, lx, ly, width=lw, height=lh,
                         preserveAspectRatio=True, mask='auto')
         except Exception:
             pass
@@ -745,14 +744,12 @@ def draw_cover_page(c):
     c.setFillColor(ROJO)
     c.rect(0, H - 60*mm, W, 60*mm, fill=1, stroke=0)
 
-    # Logo centrado en franja roja (fondo negro redondeado)
+    # Logo centrado en franja roja (sin rectángulo negro)
     if os.path.exists(LOGO):
         try:
             logo_w, logo_h = 62*mm, 22*mm
             lx = (W - logo_w) / 2
             ly = H - 44*mm
-            c.setFillColor(NEGRO)
-            c.roundRect(lx - 4*mm, ly - 3*mm, logo_w + 8*mm, logo_h + 6*mm, 3*mm, fill=1, stroke=0)
             c.drawImage(LOGO, lx, ly, width=logo_w, height=logo_h,
                         preserveAspectRatio=True, anchor='c', mask='auto')
         except Exception:
