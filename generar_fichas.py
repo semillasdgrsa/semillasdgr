@@ -22,19 +22,19 @@ VERDE_BG   = colors.HexColor("#0e2009")
 
 W, H = A4  # 595 x 842 pt  (210 x 297 mm)
 
-BASE  = "/Users/lucianacastillo/Desktop/Claude Code/assets/catalogo"
-HEROES = "/Users/lucianacastillo/Desktop/Claude Code/assets"
-ORIG   = "/Users/lucianacastillo/Desktop/Claude Code/assets/variedades foto principal"
+BASE  = "/Users/lucianacastillo/semillas webpage/assets/catalogo"
+HEROES = "/Users/lucianacastillo/semillas webpage/assets"
+ORIG   = "/Users/lucianacastillo/semillas webpage/assets/variedades foto principal"
 
 def hero(filename):
     return os.path.join(HEROES, filename)
 
 def original(filename):
     return os.path.join(ORIG, filename)
-OUTPUT = "/Users/lucianacastillo/Desktop/Claude Code/Catalogo_Semillas_DGR.pdf"
-LOGO   = "/Users/lucianacastillo/Desktop/Claude Code/assets/galeria/logo-light.jpeg"
-LOGO_DARK = "/Users/lucianacastillo/Desktop/Claude Code/assets/galeria/logo-dark.jpeg"
-BHN    = "/Users/lucianacastillo/Desktop/Claude Code/assets/bhn-seed.png"
+OUTPUT = "/Users/lucianacastillo/semillas webpage/Catalogo_Semillas_DGR.pdf"
+LOGO   = "/Users/lucianacastillo/semillas webpage/assets/galeria/logo-light.jpeg"
+LOGO_DARK = "/Users/lucianacastillo/semillas webpage/assets/galeria/logo-dark.jpeg"
+BHN    = "/Users/lucianacastillo/semillas webpage/assets/bhn-seed.png"
 
 def foto(variedad_dir, filename):
     return os.path.join(BASE, variedad_dir, filename)
