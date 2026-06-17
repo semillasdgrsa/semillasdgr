@@ -464,13 +464,13 @@ def draw_page(c, variedad, page_num, total):
     c.drawString(MARGIN + 2.5*mm, y + 1*mm, cat.upper())
 
     # ── VARIETY NAME ──
-    y -= 12*mm
+    y -= 10*mm
     c.setFillColor(BLANCO)
     c.setFont("Helvetica-Bold", 30)
     c.drawString(MARGIN, y, variedad["nombre"])
 
     # Red underline
-    y -= 7*mm
+    y -= 5*mm
     c.setStrokeColor(ROJO)
     c.setLineWidth(2)
     c.line(MARGIN, y, 90*mm, y)
@@ -521,13 +521,13 @@ def draw_page(c, variedad, page_num, total):
         y_left -= 9*mm
 
     # ── SEPARATOR ──
-    sep_y = block_bot - 5*mm
+    sep_y = block_bot - 8*mm
     c.setStrokeColor(GRIS3)
     c.setLineWidth(0.5)
     c.line(MARGIN, sep_y, W - MARGIN, sep_y)
 
     # ── RESISTANCES (two columns) ──
-    y_res = sep_y - 7*mm
+    y_res = sep_y - 10*mm
     c.setFillColor(BLANCO)
     c.setFont("Helvetica-Bold", 7.5)
     c.drawString(MARGIN, y_res, "RESISTENCIAS")
