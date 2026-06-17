@@ -425,22 +425,22 @@ def draw_page(c, variedad, page_num, total):
     c.setFillColor(ROJO)
     c.rect(0, H - bar_h, W, bar_h, fill=1, stroke=0)
 
-    # Logos centrados verticalmente en la franja roja: BHN izq, DGR (fondo negro) al lado
+    # Logos centrados verticalmente en la franja roja: DGR izq, BHN al lado
     logo_h = 12*mm
     logo_y = H - bar_h + (bar_h - logo_h) / 2
-    bw = 22*mm
-    bx = MARGIN
-    if os.path.exists(BHN):
-        try:
-            c.drawImage(BHN, bx, logo_y, width=bw, height=logo_h,
-                        preserveAspectRatio=True, mask='auto')
-        except Exception:
-            pass
-    dgr_x = bx + bw + 4*mm
     dgr_w = 30*mm
+    dgr_x = MARGIN
     if os.path.exists(LOGO):
         try:
             c.drawImage(LOGO, dgr_x, logo_y, width=dgr_w, height=logo_h,
+                        preserveAspectRatio=True, mask='auto')
+        except Exception:
+            pass
+    bw = 22*mm
+    bx = dgr_x + dgr_w + 4*mm
+    if os.path.exists(BHN):
+        try:
+            c.drawImage(BHN, bx, logo_y, width=bw, height=logo_h,
                         preserveAspectRatio=True, mask='auto')
         except Exception:
             pass
