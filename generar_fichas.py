@@ -438,11 +438,9 @@ def draw_page(c, variedad, page_num, total):
             pass
     dgr_x = bx + bw + 4*mm
     dgr_w = 30*mm
-    if os.path.exists(LOGO_DARK):
+    if os.path.exists(LOGO):
         try:
-            c.setFillColor(NEGRO)
-            c.roundRect(dgr_x - 1.5*mm, logo_y - 1.5*mm, dgr_w + 3*mm, logo_h + 3*mm, 2*mm, fill=1, stroke=0)
-            c.drawImage(LOGO_DARK, dgr_x, logo_y, width=dgr_w, height=logo_h,
+            c.drawImage(LOGO, dgr_x, logo_y, width=dgr_w, height=logo_h,
                         preserveAspectRatio=True, mask='auto')
         except Exception:
             pass
@@ -616,11 +614,9 @@ def draw_glossary_page(c, page_num, total):
             pass
     dgr_x = bx + bw + 4*mm
     dgr_w = 30*mm
-    if os.path.exists(LOGO_DARK):
+    if os.path.exists(LOGO):
         try:
-            c.setFillColor(NEGRO)
-            c.roundRect(dgr_x - 1.5*mm, logo_y - 1.5*mm, dgr_w + 3*mm, logo_h + 3*mm, 2*mm, fill=1, stroke=0)
-            c.drawImage(LOGO_DARK, dgr_x, logo_y, width=dgr_w, height=logo_h,
+            c.drawImage(LOGO, dgr_x, logo_y, width=dgr_w, height=logo_h,
                         preserveAspectRatio=True, mask='auto')
         except Exception:
             pass
