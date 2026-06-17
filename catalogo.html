@@ -81,6 +81,41 @@
     .gl-level p { font-size: 0.75rem; color: var(--gray-2); line-height: 1.4; }
     .gl-level strong { color: var(--white); }
 
+    /* ── MODAL ── */
+    .cat-card { cursor: pointer; }
+    .cat-card .card-hint { font-size: 0.7rem; color: var(--red); font-weight: 600; margin-top: 0.5rem; letter-spacing: 0.3px; display: flex; align-items: center; gap: 0.3rem; }
+
+    #varietyModal { display: none; position: fixed; inset: 0; z-index: 9000; align-items: center; justify-content: center; padding: 1rem; }
+    #varietyModal.open { display: flex; }
+    .modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.82); backdrop-filter: blur(4px); }
+    .modal-box { position: relative; background: #141414; border: 1px solid var(--border); border-radius: 18px; overflow: hidden; max-width: 860px; width: 100%; max-height: 90vh; display: flex; flex-direction: column; z-index: 1; box-shadow: 0 32px 80px rgba(0,0,0,0.6); }
+    .modal-img { width: 100%; height: 260px; object-fit: cover; flex-shrink: 0; border-bottom: 2px solid var(--border-red); }
+    .modal-content { padding: 1.8rem 2rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1.2rem; }
+    .modal-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+    .modal-header-left { display: flex; flex-direction: column; gap: 0.4rem; }
+    .modal-name { font-size: 1.8rem; font-weight: 800; color: var(--white); line-height: 1.1; }
+    .modal-close { background: var(--surface-3); border: 1px solid var(--border); border-radius: 8px; color: var(--gray-2); width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1rem; flex-shrink: 0; transition: all 0.2s; }
+    .modal-close:hover { background: var(--red); color: var(--white); border-color: var(--red); }
+    .modal-desc { font-size: 0.9rem; color: var(--gray-2); line-height: 1.7; }
+    .modal-section-title { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--red); margin-bottom: 0.6rem; }
+    .modal-specs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.5rem; }
+    .modal-spec { background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 0.55rem 0.85rem; }
+    .modal-spec .spec-label { font-size: 0.65rem; color: var(--gray-2); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .modal-spec .spec-val { font-size: 0.88rem; color: var(--white); font-weight: 700; margin-top: 0.15rem; }
+    .modal-res-grid { display: flex; flex-direction: column; gap: 0.4rem; }
+    .modal-res-item { display: flex; align-items: center; gap: 0.7rem; background: var(--surface-2); border: 1px solid var(--border); border-radius: 7px; padding: 0.45rem 0.8rem; }
+    .modal-res-code { font-size: 0.65rem; font-weight: 700; background: rgba(45,106,31,0.15); border: 1px solid rgba(45,106,31,0.35); color: #5eba45; border-radius: 4px; padding: 0.2rem 0.55rem; white-space: nowrap; min-width: 52px; text-align: center; letter-spacing: 0.5px; }
+    .modal-res-name { font-size: 0.8rem; color: var(--white); font-weight: 600; }
+    .modal-res-desc { font-size: 0.72rem; color: var(--gray-2); margin-top: 0.05rem; }
+    .modal-cta { display: flex; gap: 0.8rem; flex-wrap: wrap; padding-top: 0.4rem; border-top: 1px solid var(--border); }
+    .modal-cta a { flex: 1; min-width: 140px; text-align: center; }
+
+    @media (min-width: 640px) {
+      .modal-box { flex-direction: row; max-height: 85vh; }
+      .modal-img { width: 300px; height: auto; border-bottom: none; border-right: 2px solid var(--border-red); object-position: center; }
+      .modal-content { overflow-y: auto; }
+    }
+
     @media (max-width: 768px) {
       .catalog-grid { grid-template-columns: 1fr 1fr; }
       .catalog-download { flex-direction: column; }
@@ -622,6 +657,36 @@
 
   <a class="float-wa" href="https://wa.me/50670536966" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
 
+  <!-- MODAL VARIEDAD -->
+  <div id="varietyModal" role="dialog" aria-modal="true">
+    <div class="modal-backdrop" onclick="closeModal()"></div>
+    <div class="modal-box">
+      <img id="modalImg" class="modal-img" src="" alt="">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-header-left">
+            <span id="modalTag" class="tag"></span>
+            <div id="modalName" class="modal-name"></div>
+          </div>
+          <button class="modal-close" onclick="closeModal()" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <p id="modalDesc" class="modal-desc"></p>
+        <div id="modalSpecsWrap">
+          <div class="modal-section-title">Características</div>
+          <div id="modalSpecs" class="modal-specs-grid"></div>
+        </div>
+        <div>
+          <div class="modal-section-title">Resistencias</div>
+          <div id="modalRes" class="modal-res-grid"></div>
+        </div>
+        <div class="modal-cta">
+          <a href="https://wa.me/50670536966" target="_blank" class="btn btn-red"><i class="fa-brands fa-whatsapp"></i> Consultar por WhatsApp</a>
+          <a href="index.html#contacto" class="btn" style="background:var(--surface-3);border:1px solid var(--border);color:var(--white);">Ver contacto</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
     window.addEventListener('scroll', () => {
       document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
@@ -637,6 +702,156 @@
         c.style.display = (cat === 'todos' || c.dataset.cat === cat) ? 'flex' : 'none';
       });
     }
+    // ── MODAL DATA ──
+    const RES_INFO = {
+      "TMV":      { name: "Tomato Mosaic Virus",           desc: "Virus del mosaico del tomate. Causa moteado y deformación foliar." },
+      "TSWV":     { name: "Tomato Spotted Wilt Virus",     desc: "Virus de la marchitez manchada. Transmitido por trips." },
+      "TYLCV":    { name: "Tomato Yellow Leaf Curl Virus", desc: "Virus del enrollamiento amarillo. Transmitido por mosca blanca." },
+      "Bacteria": { name: "Clavibacter michiganensis",     desc: "Bacteria del cancro bacterial. Manchas en hojas y frutos." },
+      "F1":       { name: "Fusarium oxysporum raza 1",     desc: "Marchitamiento vascular por Fusarium, raza 1." },
+      "F2":       { name: "Fusarium oxysporum raza 2",     desc: "Marchitamiento vascular por Fusarium, raza 2." },
+      "F3":       { name: "Fusarium oxysporum raza 3",     desc: "Marchitamiento vascular por Fusarium, raza 3." },
+      "FORL":     { name: "Fusarium radicis-lycopersici",  desc: "Pudrición de raíz y corona por Fusarium." },
+      "V":        { name: "Verticillium dahliae",           desc: "Marchitamiento vascular por Verticillium." },
+      "N":        { name: "Meloidogyne spp. (Mi)",          desc: "Nemátodos del nudo de raíz. Reducen absorción de nutrientes." },
+      "LSL":      { name: "Long Shelf Life",                desc: "Larga vida de anaquel. Mayor firmeza y durabilidad postcosecha." },
+    };
+
+    const VARIEDADES = {
+      "CACIQUE": {
+        tag: "Tomate BHN", tagClass: "tag-red",
+        img: "assets/hero-cacique.jpeg",
+        desc: "Variedad indeterminada con alta carga de frutos por planta. Excelente adaptación a condiciones tropicales con producción uniforme y consistente. Fruto firme con buena vida poscosecha.",
+        specs: [["Porte","Indeterminado"],["Vida poscosecha","Larga"],["Racimos/planta","8–10"],["Peso promedio","250–320 g"]],
+        res: ["TMV","TYLCV","F1","F2","F3","V","N","LSL"],
+      },
+      "IL-1907": {
+        tag: "Tomate BHN", tagClass: "tag-red",
+        img: "assets/hero-il1907.jpeg",
+        desc: "Híbrido de tomate indeterminado con follaje vigoroso, fruto grande y multilocular con excelente firmeza. Adaptado específicamente a las condiciones climáticas de Costa Rica. Ideal para producción bajo invernadero y a campo abierto.",
+        specs: [["Porte","Indeterminado"],["Tipo de fruto","Multilocular"],["Vida poscosecha","LSL — Larga vida anaquel"]],
+        res: ["TMV","TYLCV","F1","F2","F3","V","N","LSL"],
+      },
+      "IL-1908": {
+        tag: "Tomate BHN", tagClass: "tag-red",
+        img: "assets/hero-il1908.jpeg",
+        desc: "Planta indeterminada de porte alto con frutos de excelente calibre y larga vida poscosecha. Alta productividad con 3–5 frutos por racimo. Ideal para producción de invierno y verano.",
+        specs: [["Altura aprox.","1.8 metros"],["Racimos/planta","8–10"],["Frutos/racimo","3–5"],["Peso promedio","240–280 g"]],
+        res: ["TMV","TSWV","TYLCV","F1","F2","F3","V","N","LSL"],
+      },
+      "IL-1909": {
+        tag: "Tomate BHN", tagClass: "tag-red",
+        img: "assets/hero-il1909.jpeg",
+        desc: "Planta indeterminada con frutos de calibre extragrande y excelente poscosecha. Alta productividad con 3–5 frutos por racimo. Frutos con calibres superiores a 310 g, destacados por su firmeza y larga vida comercial.",
+        specs: [["Altura aprox.","1.8 metros"],["Racimos/planta","8–10"],["Frutos/racimo","3–5"],["Peso promedio","230–310 g"]],
+        res: ["TMV","TSWV","TYLCV","F1","F2","F3","V","N","LSL"],
+      },
+      "JM PLUS": {
+        tag: "Tomate BHN", tagClass: "tag-red",
+        img: "assets/hero-jmplus.jpeg",
+        desc: "Tomate indeterminado de follaje firme moderado. Fruto extragrande redondeado con mesocarpio grueso y consistencia muy firme. Excelente comportamiento en poscosecha y alto valor comercial.",
+        specs: [["Altura aprox.","1.8 metros"],["Racimos/planta","8–10"],["Frutos/racimo","3–5"],["Peso promedio","250–350 g"],["Forma","Redondeada extragrande"]],
+        res: ["TMV","TSWV","TYLCV","F1","F2","F3","V","N","LSL"],
+      },
+      "JR SPECIAL": {
+        tag: "Tomate BHN", tagClass: "tag-red",
+        img: "assets/hero-jrspecial.jpeg",
+        desc: "Excelente vida poscosecha y alto valor comercial. Planta robusta con buen amarre de frutos y producción consistente por racimo. Ideal para mercados que exigen calidad y durabilidad.",
+        specs: [["Altura aprox.","1.8 metros"],["Racimos/planta","8–10"],["Peso promedio","250–300 g"]],
+        res: ["TMV","F1","F2","F3","V","LSL"],
+      },
+      "MILAN": {
+        tag: "Tomate BHN", tagClass: "tag-red",
+        img: "assets/hero-milan.jpeg",
+        desc: "Planta indeterminada con alta carga de frutos por planta (3–7 por racimo). Excelente vida larga de anaquel y amplia resistencia a enfermedades. Destacada productividad en condiciones tropicales.",
+        specs: [["Altura aprox.","1.8 metros"],["Racimos/planta","8–10"],["Frutos/racimo","3–7"],["Peso promedio","250–300 g"]],
+        res: ["TMV","F1","F2","F3","V","LSL"],
+      },
+      "SDGR 21": {
+        tag: "Tomate DGR", tagClass: "tag-red",
+        img: "assets/hero-sdgr21.jpeg",
+        desc: "Tomate tipo Beef indeterminado con planta robusta. Frutos globosos, firmes y de excelente calidad. Variedad insignia de Semillas DGR, desarrollada para las condiciones del trópico centroamericano.",
+        specs: [["Porte","Indeterminado"],["Tipo","Beef"],["Forma","Globosa"],["Peso aprox.","~300 g"]],
+        res: ["TMV","TYLCV","F1","F2","F3","V","LSL"],
+      },
+      "TITAN": {
+        tag: "Tomate BHN", tagClass: "tag-red",
+        img: "assets/hero-titan.jpeg",
+        desc: "Planta indeterminada de porte alto con excelentes características tanto para invierno como para verano. Fruto tipo bola con hombros medios y cierre perfecto. Alta adaptabilidad a diferentes condiciones de cultivo.",
+        specs: [["Altura aprox.","1.8 metros"],["Racimos/planta","8–10"],["Frutos/racimo","3–5"],["Peso promedio","250–350 g"],["Forma","Tipo bola"]],
+        res: ["TMV","F1","F2","F3","V","N","LSL"],
+      },
+      "VULCANO": {
+        tag: "Tomate BHN", tagClass: "tag-red",
+        img: "assets/hero-vulcano.jpeg",
+        desc: "Planta indeterminada de porte alto adaptada a invierno y verano. Fruto tipo bola con hombros medios y cierre excelente. Larga vida de anaquel y alta resistencia a enfermedades foliares y del suelo.",
+        specs: [["Altura aprox.","1.8 metros"],["Racimos/planta","8–10"],["Frutos/racimo","3–5"],["Peso promedio","250–300 g"],["Forma","Tipo bola"]],
+        res: ["TMV","TYLCV","F1","F2","F3","V","N","LSL"],
+      },
+      "PATRÓN": {
+        tag: "Portainjerto", tagClass: "tag-green",
+        img: "assets/hero-patron.jpeg",
+        desc: "Excelente alternativa para cultivar en suelos con problemas de hongos patógenos y nemátodos. Sistema radicular eficiente con alta capacidad de absorción de nutrientes y tolerancia a estreses abióticos: pH, salinidad y bajas temperaturas.",
+        specs: [["Uso recomendado","Suelos con hongos y nemátodos"],["Beneficio clave","Sistema radicular eficiente"],["Tolerancias","pH, salinidad, frío"]],
+        res: ["F1","F2","F3","V"],
+      },
+      "R1912": {
+        tag: "Portainjerto", tagClass: "tag-green",
+        img: "assets/hero-r1912.jpeg",
+        desc: "Portainjerto intraespecífico de innovación genética. Excelente compatibilidad entre portainjerto y copa, brindando un sinergismo óptimo entre ambos materiales. Maximiza la resistencia a enfermedades y el potencial de alta producción.",
+        specs: [["Tipo","Intraespecífico"],["Compatibilidad","Alta con variedades BHN"],["Beneficio","Máxima resistencia + producción"]],
+        res: ["TMV","TSWV","Bacteria","F1","F2","F3","FORL","V","N"],
+      },
+    };
+
+    function openModal(nombre) {
+      const v = VARIEDADES[nombre];
+      if (!v) return;
+      document.getElementById('modalImg').src = v.img;
+      document.getElementById('modalImg').alt = nombre;
+      document.getElementById('modalName').textContent = nombre;
+      const tagEl = document.getElementById('modalTag');
+      tagEl.className = 'tag ' + v.tagClass;
+      tagEl.textContent = v.tag;
+      document.getElementById('modalDesc').textContent = v.desc;
+      // Specs
+      const specsEl = document.getElementById('modalSpecs');
+      specsEl.innerHTML = v.specs.map(([label, val]) =>
+        `<div class="modal-spec"><div class="spec-label">${label}</div><div class="spec-val">${val}</div></div>`
+      ).join('');
+      // Resistances
+      const resEl = document.getElementById('modalRes');
+      resEl.innerHTML = v.res.map(code => {
+        const info = RES_INFO[code] || { name: code, desc: '' };
+        return `<div class="modal-res-item">
+          <span class="modal-res-code">${code}</span>
+          <div><div class="modal-res-name">${info.name}</div>${info.desc ? `<div class="modal-res-desc">${info.desc}</div>` : ''}</div>
+        </div>`;
+      }).join('');
+      const modal = document.getElementById('varietyModal');
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('varietyModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    // Add click handlers and hint to all cards
+    window.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.cat-card').forEach(card => {
+        const name = card.querySelector('h4').textContent.trim();
+        card.addEventListener('click', () => openModal(name));
+        const hint = document.createElement('div');
+        hint.className = 'card-hint';
+        hint.innerHTML = '<i class="fa-solid fa-circle-info"></i> Ver ficha completa';
+        card.querySelector('.cat-body').appendChild(hint);
+      });
+    });
+
     // Auto-activate tab from URL hash (#tomate or #portainjerto)
     window.addEventListener('DOMContentLoaded', () => {
       const hash = location.hash.replace('#', '');
