@@ -520,7 +520,7 @@ def draw_page(c, variedad, page_num, total):
         y_left -= 10*mm
 
     # ── RESISTANCES (two columns) ──
-    y_res = block_bot + 8*mm
+    y_res = block_bot - 4*mm
     c.setFillColor(BLANCO)
     c.setFont("Helvetica-Bold", 8)
     c.drawString(MARGIN, y_res, "RESISTENCIAS")
