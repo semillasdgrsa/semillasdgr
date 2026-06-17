@@ -89,13 +89,15 @@
     #varietyModal.open { display: flex; }
     .modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.82); backdrop-filter: blur(4px); }
     .modal-box { position: relative; background: #141414; border: 1px solid var(--border); border-radius: 18px; overflow: hidden; max-width: 860px; width: 100%; max-height: 90vh; display: flex; flex-direction: column; z-index: 1; box-shadow: 0 32px 80px rgba(0,0,0,0.6); }
-    .modal-img { width: 100%; height: 260px; object-fit: contain; background: #0a0a0a; flex-shrink: 0; border-bottom: 2px solid var(--border-red); }
+    .modal-img-wrap { position: relative; width: 100%; height: 280px; background: linear-gradient(160deg, #1a0505 0%, #2a0808 40%, #1a0505 100%); flex-shrink: 0; border-bottom: 2px solid var(--border-red); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .modal-img-wrap::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.5) 100%); pointer-events: none; z-index: 1; }
+    .modal-img { width: 100%; height: 100%; object-fit: contain; position: relative; z-index: 0; }
+    .modal-close { position: absolute; top: 0.8rem; left: 0.8rem; background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; color: var(--white); width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 0.95rem; z-index: 10; transition: all 0.2s; backdrop-filter: blur(4px); }
+    .modal-close:hover { background: var(--red); border-color: var(--red); }
     .modal-content { padding: 1.8rem 2rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1.2rem; }
-    .modal-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+    .modal-header { display: flex; align-items: flex-start; gap: 1rem; }
     .modal-header-left { display: flex; flex-direction: column; gap: 0.4rem; }
     .modal-name { font-size: 1.8rem; font-weight: 800; color: var(--white); line-height: 1.1; }
-    .modal-close { background: var(--surface-3); border: 1px solid var(--border); border-radius: 8px; color: var(--gray-2); width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1rem; flex-shrink: 0; transition: all 0.2s; }
-    .modal-close:hover { background: var(--red); color: var(--white); border-color: var(--red); }
     .modal-desc { font-size: 0.9rem; color: var(--gray-2); line-height: 1.7; }
     .modal-section-title { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--red); margin-bottom: 0.6rem; }
     .modal-specs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.5rem; }
@@ -112,7 +114,7 @@
 
     @media (min-width: 640px) {
       .modal-box { flex-direction: row; max-height: 85vh; }
-      .modal-img { width: 300px; height: auto; border-bottom: none; border-right: 2px solid var(--border-red); object-fit: contain; }
+      .modal-img-wrap { width: 300px; height: auto; border-bottom: none; border-right: 2px solid var(--border-red); flex-shrink: 0; }
       .modal-content { overflow-y: auto; }
     }
 
@@ -661,14 +663,16 @@
   <div id="varietyModal" role="dialog" aria-modal="true">
     <div class="modal-backdrop" onclick="closeModal()"></div>
     <div class="modal-box">
-      <img id="modalImg" class="modal-img" src="" alt="">
+      <div class="modal-img-wrap">
+        <button class="modal-close" onclick="closeModal()" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+        <img id="modalImg" class="modal-img" src="" alt="">
+      </div>
       <div class="modal-content">
         <div class="modal-header">
           <div class="modal-header-left">
             <span id="modalTag" class="tag"></span>
             <div id="modalName" class="modal-name"></div>
           </div>
-          <button class="modal-close" onclick="closeModal()" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
         </div>
         <p id="modalDesc" class="modal-desc"></p>
         <div id="modalSpecsWrap">
