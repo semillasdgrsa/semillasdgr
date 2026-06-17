@@ -32,7 +32,7 @@ def hero(filename):
 def original(filename):
     return os.path.join(ORIG, filename)
 OUTPUT = "/Users/lucianacastillo/Desktop/Claude Code/Catalogo_Semillas_DGR.pdf"
-LOGO   = "/Users/lucianacastillo/Desktop/Claude Code/assets/logo-dark.jpeg"
+LOGO   = "/Users/lucianacastillo/Desktop/Claude Code/assets/galeria/logo-dark.jpeg"
 BHN    = "/Users/lucianacastillo/Desktop/Claude Code/assets/bhn-seed.png"
 
 def foto(variedad_dir, filename):
@@ -738,13 +738,17 @@ def draw_cover_page(c):
     c.setFillColor(ROJO)
     c.rect(0, H - 60*mm, W, 60*mm, fill=1, stroke=0)
 
-    # Logo centrado en franja roja
+    # Logo centrado en franja roja con fondo blanco
     if os.path.exists(LOGO):
         try:
-            logo_w, logo_h = 55*mm, 20*mm
-            c.drawImage(LOGO, (W - logo_w) / 2, H - 42*mm,
-                        width=logo_w, height=logo_h,
-                        preserveAspectRatio=True, mask='auto')
+            logo_w, logo_h = 62*mm, 22*mm
+            lx = (W - logo_w) / 2
+            ly = H - 44*mm
+            # Fondo blanco redondeado
+            c.setFillColor(BLANCO)
+            c.roundRect(lx - 4*mm, ly - 3*mm, logo_w + 8*mm, logo_h + 6*mm, 3*mm, fill=1, stroke=0)
+            c.drawImage(LOGO, lx, ly, width=logo_w, height=logo_h,
+                        preserveAspectRatio=True, anchor='c', mask='auto')
         except Exception:
             pass
 
