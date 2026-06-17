@@ -45,7 +45,7 @@ VARIEDADES = [
             ("Porte",          "Indeterminado"),
             ("Vida poscosecha","Larga"),
         ],
-        "resistencias": ["V", "F1", "F2", "F3"],
+        "resistencias": ["TMV", "TYLCV", "F1", "F2", "F3", "V", "N", "LSL"],
         "bhn": True,
         "fotos": [
             foto("CACIQUE", "WhatsApp Image 2026-06-16 at 10.37.17.jpeg"),
@@ -69,7 +69,7 @@ VARIEDADES = [
             ("Tipo de fruto",  "Multilocular"),
             ("Vida poscosecha","LSL — Larga vida anaquel"),
         ],
-        "resistencias": ["V", "F1", "F2", "F3", "N", "TMV", "TYLCV", "LSL"],
+        "resistencias": ["TMV", "TYLCV", "F1", "F2", "F3", "V", "N", "LSL"],
         "bhn": True,
         "fotos": [
             foto("IL 1907", "WhatsApp Image 2026-06-16 at 09.14.09.jpeg"),
@@ -94,7 +94,7 @@ VARIEDADES = [
             ("Frutos/racimo",  "3 – 5"),
             ("Peso promedio",  "240 – 280 g"),
         ],
-        "resistencias": ["V", "F1", "F2", "F3", "N", "TMV", "TSWV", "TYLCV", "LSL"],
+        "resistencias": ["TMV", "TSWV", "TYLCV", "F1", "F2", "F3", "V", "N", "LSL"],
         "bhn": True,
         "fotos": [
             foto("IL 1908", "WhatsApp Image 2026-06-16 at 09.18.38.jpeg"),
@@ -119,7 +119,7 @@ VARIEDADES = [
             ("Frutos/racimo",  "3 – 5"),
             ("Peso promedio",  "230 – 310 g"),
         ],
-        "resistencias": ["V", "F1", "F2", "F3", "N", "TMV", "TSWV", "TYLCV", "LSL"],
+        "resistencias": ["TMV", "TSWV", "TYLCV", "F1", "F2", "F3", "V", "N", "LSL"],
         "bhn": True,
         "fotos": [
             foto("IL 1909", "WhatsApp Image 2026-06-16 at 09.36.21.jpeg"),
@@ -145,7 +145,7 @@ VARIEDADES = [
             ("Peso promedio",  "250 – 350 g"),
             ("Forma",          "Redondeada extragrande"),
         ],
-        "resistencias": ["V", "F1", "F2", "F3", "N", "TMV", "TSWV", "TYLCV", "LSL"],
+        "resistencias": ["TMV", "TSWV", "TYLCV", "F1", "F2", "F3", "V", "N", "LSL"],
         "bhn": True,
         "fotos": [
             foto("JM PLUS", "WhatsApp Image 2026-06-16 at 10.24.00.jpeg"),
@@ -167,7 +167,7 @@ VARIEDADES = [
             ("Racimos/planta", "8 – 10"),
             ("Peso promedio",  "250 – 300 g"),
         ],
-        "resistencias": ["V", "F1", "F2", "F3", "TMV", "LSL"],
+        "resistencias": ["TMV", "F1", "F2", "F3", "V", "LSL"],
         "bhn": True,
         "fotos": [
             foto("JR SPECIAL", "WhatsApp Image 2026-06-16 at 09.59.17.jpeg"),
@@ -192,7 +192,7 @@ VARIEDADES = [
             ("Frutos/racimo",  "3 – 7"),
             ("Peso promedio",  "250 – 300 g"),
         ],
-        "resistencias": ["V", "F1", "F2", "F3", "TMV", "LSL"],
+        "resistencias": ["TMV", "F1", "F2", "F3", "V", "LSL"],
         "bhn": True,
         "fotos": [
             foto("MILAN", "WhatsApp Image 2026-06-16 at 10.22.45.jpeg"),
@@ -216,7 +216,7 @@ VARIEDADES = [
             ("Beneficio clave", "Sistema radicular eficiente"),
             ("Tolerancias",     "pH, salinidad, frío"),
         ],
-        "resistencias": ["V", "F1", "F2", "F3"],
+        "resistencias": ["F1", "F2", "F3", "V"],
         "bhn": True,
         "fotos": [
             foto("PORTAINJERTO PATRON", "WhatsApp Image 2026-06-16 at 10.41.45.jpeg"),
@@ -240,7 +240,7 @@ VARIEDADES = [
             ("Compatibilidad", "Alta con variedades BHN"),
             ("Beneficio",      "Máxima resistencia + producción"),
         ],
-        "resistencias": ["V", "F1", "F2", "F3", "N", "TMV", "TSWV", "FORL", "Bacteria"],
+        "resistencias": ["TMV", "TSWV", "Bacteria", "F1", "F2", "F3", "FORL", "V", "N"],
         "bhn": True,
         "fotos": [
             foto("PORTAINJERTO R1912", "WhatsApp Image 2026-06-16 at 11.20.15 (1).jpeg"),
@@ -265,7 +265,7 @@ VARIEDADES = [
             ("Forma",      "Globosa"),
             ("Peso aprox.", "300 g"),
         ],
-        "resistencias": ["V", "F1", "F2", "F3", "TMV", "TYLCV", "LSL"],
+        "resistencias": ["TMV", "TYLCV", "F1", "F2", "F3", "V", "LSL"],
         "bhn": False,
         "fotos": [
             foto("SDGR 21", "WhatsApp Image 2026-06-16 at 09.45.19.jpeg"),
@@ -291,7 +291,7 @@ VARIEDADES = [
             ("Peso promedio",  "250 – 350 g"),
             ("Forma",          "Tipo bola"),
         ],
-        "resistencias": ["V", "F1", "F2", "F3", "N", "TMV", "LSL"],
+        "resistencias": ["TMV", "F1", "F2", "F3", "V", "N", "LSL"],
         "bhn": True,
         "fotos": [
             foto("TITAN", "WhatsApp Image 2026-06-16 at 11.41.15.jpeg"),
@@ -317,25 +317,47 @@ VARIEDADES = [
             ("Peso promedio",  "250 – 300 g"),
             ("Forma",          "Tipo bola"),
         ],
-        "resistencias": ["V", "F1", "F2", "F3", "N", "TMV", "TYLCV", "LSL"],
+        "resistencias": ["TMV", "TYLCV", "F1", "F2", "F3", "V", "N", "LSL"],
         "bhn": True,
         "fotos": [],
     },
 ]
 
 RES_NOMBRES = {
+    "TMV":      "Tomato Mosaic Virus",
+    "TSWV":     "Tomato Spotted Wilt Virus",
+    "TYLCV":    "Tomato Yellow Leaf Curl Virus",
+    "Bacteria": "Clavibacter michiganensis",
+    "F1":       "Fusarium oxysporum raza 1",
+    "F2":       "Fusarium oxysporum raza 2",
+    "F3":       "Fusarium oxysporum raza 3",
+    "FORL":     "Fusarium radicis-lycopersici",
     "V":        "Verticillium dahliae",
-    "F1":       "Fusarium Raza 1",
-    "F2":       "Fusarium Raza 2",
-    "F3":       "Fusarium Raza 3",
-    "N":        "Nemátodos (Mi)",
-    "TMV":      "Tomato mosaic virus",
-    "TSWV":     "Tomato spotted wilt virus",
-    "TYLCV":    "Tomato yellow leaf curl virus",
+    "N":        "Meloidogyne spp. (Mi)",
     "LSL":      "Long Shelf Life",
-    "FORL":     "Fusarium crown & root rot",
-    "Bacteria": "Resistencia bacteriana",
 }
+
+GLOSARIO = [
+    ("VIRUS", ROJO, [
+        ("TMV",   "Tomato Mosaic Virus",            "Virus del mosaico del tomate. Causa moteado y deformación foliar."),
+        ("TSWV",  "Tomato Spotted Wilt Virus",       "Virus de la marchitez manchada. Transmitido por trips."),
+        ("TYLCV", "Tomato Yellow Leaf Curl Virus",   "Virus del enrollamiento amarillo. Transmitido por mosca blanca."),
+    ]),
+    ("BACTERIAS", colors.HexColor("#c8a020"), [
+        ("Bacteria", "Clavibacter michiganensis",    "Bacteria del cancro bacterial. Manchas en hojas y frutos."),
+    ]),
+    ("HONGOS", VERDE, [
+        ("F1/F2/F3", "Fusarium oxysporum lycopersici", "Razas 1, 2 y 3 del marchitamiento por Fusarium."),
+        ("FORL",     "Fusarium radicis-lycopersici",   "Pudrición de raíz y corona por Fusarium."),
+        ("V",        "Verticillium dahliae",            "Marchitamiento vascular por Verticillium."),
+    ]),
+    ("NEMÁTODOS", colors.HexColor("#60a0c8"), [
+        ("N",    "Meloidogyne spp. (Mi)",             "Nemátodos del nudo de raíz. Reducen absorción de nutrientes."),
+    ]),
+    ("CARACTERÍSTICA", GRIS, [
+        ("LSL",  "Long Shelf Life",                  "Larga vida de anaquel. Mayor firmeza y durabilidad postcosecha."),
+    ]),
+]
 
 # ── LAYOUT CONSTANTS ──
 MARGIN = 8 * mm
@@ -545,20 +567,163 @@ def draw_page(c, variedad, page_num, total):
     c.restoreState()
 
 
+def draw_glossary_page(c, page_num, total):
+    c.saveState()
+
+    # Background
+    c.setFillColor(NEGRO)
+    c.rect(0, 0, W, H, fill=1, stroke=0)
+
+    # Red top bar
+    c.setFillColor(ROJO)
+    c.rect(0, H - 14*mm, W, 14*mm, fill=1, stroke=0)
+
+    if os.path.exists(LOGO):
+        try:
+            c.drawImage(LOGO, MARGIN, H - 12.5*mm, width=28*mm, height=10*mm,
+                        preserveAspectRatio=True, mask='auto')
+        except Exception:
+            pass
+
+    c.setFillColor(BLANCO)
+    c.setFont("Helvetica-Bold", 7)
+    c.drawRightString(W - MARGIN, H - 5.5*mm, "GLOSARIO DE RESISTENCIAS")
+    c.setFont("Helvetica", 6)
+    c.drawRightString(W - MARGIN, H - 9.5*mm, f"Pág. {page_num} / {total}")
+
+    # Title
+    y = H - 28*mm
+    c.setFillColor(BLANCO)
+    c.setFont("Helvetica-Bold", 22)
+    c.drawString(MARGIN, y, "Glosario de Resistencias")
+    y -= 5*mm
+    c.setStrokeColor(ROJO)
+    c.setLineWidth(2)
+    c.line(MARGIN, y, 110*mm, y)
+    y -= 8*mm
+
+    # Intro text
+    c.setFillColor(GRIS)
+    c.setFont("Helvetica", 8)
+    intro = ("Los códigos de resistencia se clasifican en dos niveles: HR (High Resistance / Resistencia Alta) e "
+             "IR (Intermediate Resistance / Resistencia Intermedia). Se organizan por grupo de patógeno: "
+             "Virus → Bacterias → Hongos → Nemátodos.")
+    for ln in wrap_text(c, intro, "Helvetica", 8, W - 2*MARGIN):
+        c.drawString(MARGIN, y, ln)
+        y -= 5*mm
+    y -= 4*mm
+
+    # HR / IR legend boxes
+    legend_items = [
+        ("HR", "High Resistance / Resistencia Alta",
+         "La planta controla eficazmente el patógeno bajo presión normal de la enfermedad.",
+         VERDE, VERDE_BG),
+        ("IR", "Intermediate Resistance / Resistencia Intermedia",
+         "La planta reduce el impacto pero puede mostrar síntomas leves bajo alta presión.",
+         colors.HexColor("#c8a020"), colors.HexColor("#1a1500")),
+    ]
+    box_w = (W - 2*MARGIN - 4*mm) / 2
+    for idx, (badge, title, desc, col, bgcol) in enumerate(legend_items):
+        bx = MARGIN + idx * (box_w + 4*mm)
+        c.setFillColor(bgcol)
+        c.roundRect(bx, y - 15*mm, box_w, 18*mm, 2*mm, fill=1, stroke=0)
+        c.setFillColor(col)
+        c.setFont("Helvetica-Bold", 10)
+        c.drawString(bx + 3*mm, y - 3*mm, badge)
+        c.setFillColor(BLANCO)
+        c.setFont("Helvetica-Bold", 7.5)
+        c.drawString(bx + 14*mm, y - 3*mm, title)
+        c.setFillColor(GRIS)
+        c.setFont("Helvetica", 7)
+        for i, ln in enumerate(wrap_text(c, desc, "Helvetica", 7, box_w - 6*mm)):
+            c.drawString(bx + 3*mm, y - 8.5*mm - i*4.5*mm, ln)
+    y -= 24*mm
+
+    # Group sections
+    col_w = (W - 2*MARGIN - 5*mm) / 2
+    col_x = [MARGIN, MARGIN + col_w + 5*mm]
+    col_idx = 0
+    col_y = [y, y]
+
+    for group_name, group_color, items in GLOSARIO:
+        cx = col_x[col_idx]
+        cy = col_y[col_idx]
+
+        # Group header
+        c.setFillColor(group_color)
+        c.setFont("Helvetica-Bold", 7)
+        c.drawString(cx, cy, group_name)
+        c.setStrokeColor(group_color)
+        c.setLineWidth(0.75)
+        c.line(cx, cy - 1.5*mm, cx + col_w, cy - 1.5*mm)
+        cy -= 6*mm
+
+        for code, name, desc in items:
+            row_h = 17*mm
+            c.setFillColor(SURFACE2)
+            c.roundRect(cx, cy - row_h + 2*mm, col_w, row_h, 1.5*mm, fill=1, stroke=0)
+
+            c.setFillColor(group_color)
+            c.setFont("Helvetica-Bold", 8.5)
+            c.drawString(cx + 3*mm, cy - 3*mm, code)
+
+            c.setFillColor(BLANCO)
+            c.setFont("Helvetica-Bold", 7.5)
+            name_lines = wrap_text(c, name, "Helvetica-Bold", 7.5, col_w - 6*mm)
+            for i, ln in enumerate(name_lines[:2]):
+                c.drawString(cx + 3*mm, cy - 7.5*mm - i*4.5*mm, ln)
+
+            c.setFillColor(GRIS)
+            c.setFont("Helvetica", 6.5)
+            desc_lines = wrap_text(c, desc, "Helvetica", 6.5, col_w - 6*mm)
+            base_y = cy - 7.5*mm - len(name_lines[:2])*4.5*mm
+            for i, ln in enumerate(desc_lines[:2]):
+                c.drawString(cx + 3*mm, base_y - 4*mm - i*4*mm, ln)
+
+            cy -= row_h + 2*mm
+
+        cy -= 4*mm
+        col_y[col_idx] = cy
+        col_idx = (col_idx + 1) % 2
+
+    # Footer
+    foot_h = 20*mm
+    c.setFillColor(SURFACE2)
+    c.rect(0, 0, W, foot_h, fill=1, stroke=0)
+    c.setStrokeColor(ROJO)
+    c.setLineWidth(1)
+    c.line(0, foot_h, W, foot_h)
+    c.setFillColor(BLANCO)
+    c.setFont("Helvetica-Bold", 7.5)
+    c.drawString(MARGIN, foot_h - 5*mm, "Distribuido por: SEMILLAS DGR S.A.")
+    c.setFillColor(GRIS)
+    c.setFont("Helvetica", 6.5)
+    c.drawString(MARGIN, foot_h - 9.5*mm, "Milton Castillo H.  |  semillasdgrsa@gmail.com")
+    c.drawString(MARGIN, foot_h - 13.5*mm, "+506 8820-4170  |  +506 2102-0910  |  +506 7053-6966")
+    c.drawRightString(W - MARGIN, foot_h - 5*mm, "semillasdgrsa@gmail.com")
+    c.drawRightString(W - MARGIN, foot_h - 9.5*mm, "semillasdgrsa.github.io/semillasdgr")
+    c.drawRightString(W - MARGIN, foot_h - 13.5*mm, "@semillasdgr")
+
+    c.restoreState()
+
+
 def generar():
     c = canvas.Canvas(OUTPUT, pagesize=A4)
     c.setTitle("Catálogo de Variedades — Semillas DGR S.A.")
     c.setAuthor("Semillas DGR S.A.")
     c.setSubject("Fichas Técnicas de Variedades de Tomate y Portainjertos")
 
-    total = len(VARIEDADES)
+    total = len(VARIEDADES) + 1  # +1 for glossary page
     for i, var in enumerate(VARIEDADES, 1):
         draw_page(c, var, i, total)
         c.showPage()
 
+    draw_glossary_page(c, total, total)
+    c.showPage()
+
     c.save()
     print(f"✅ PDF generado: {OUTPUT}")
-    print(f"   {total} fichas — {sum(len(v['fotos']) for v in VARIEDADES)} fotos incluidas")
+    print(f"   {total - 1} fichas + 1 glosario — {sum(len(v['fotos']) for v in VARIEDADES)} fotos incluidas")
 
 
 if __name__ == "__main__":

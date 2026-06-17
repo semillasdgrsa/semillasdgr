@@ -53,10 +53,40 @@
     .contact-bar .cb-info a { font-size: 0.85rem; color: var(--gray-2); text-decoration: none; transition: color 0.2s; }
     .contact-bar .cb-info a:hover { color: var(--white); }
 
+    /* ── GLOSARIO ── */
+    .res-glossary { margin-top: 3.5rem; background: var(--surface-2); border: 1px solid var(--border); border-radius: 14px; padding: 2rem 2.5rem; }
+    .res-glossary > h3 { font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: 0.3rem; }
+    .res-glossary > .gl-intro { font-size: 0.82rem; color: var(--gray-2); margin-bottom: 1.8rem; line-height: 1.6; }
+    .gl-groups { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.2rem; margin-bottom: 1.6rem; }
+    .gl-group { background: var(--surface-3); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.2rem; }
+    .gl-group-title { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.8rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+    .gl-group-title.virus  { color: #e07050; }
+    .gl-group-title.bacteria { color: #d4a040; }
+    .gl-group-title.hongo  { color: #7db05a; }
+    .gl-group-title.nema   { color: #60a0c8; }
+    .gl-group-title.trait  { color: var(--gray-2); }
+    .gl-item { display: flex; gap: 0.7rem; align-items: flex-start; margin-bottom: 0.7rem; }
+    .gl-item:last-child { margin-bottom: 0; }
+    .gl-code { font-size: 0.65rem; font-weight: 700; background: rgba(45,106,31,0.12); border: 1px solid rgba(45,106,31,0.3); color: #5eba45; border-radius: 3px; padding: 0.2rem 0.5rem; white-space: nowrap; flex-shrink: 0; letter-spacing: 0.5px; margin-top: 1px; }
+    .gl-code.virus    { background: rgba(200,80,40,0.12); border-color: rgba(200,80,40,0.3); color: #e07050; }
+    .gl-code.bacteria { background: rgba(200,150,40,0.12); border-color: rgba(200,150,40,0.3); color: #d4a040; }
+    .gl-code.trait    { background: rgba(100,100,100,0.15); border-color: rgba(100,100,100,0.3); color: var(--gray-2); }
+    .gl-name  { font-size: 0.78rem; font-weight: 600; color: var(--white); line-height: 1.3; }
+    .gl-desc  { font-size: 0.72rem; color: var(--gray-2); line-height: 1.4; margin-top: 0.1rem; }
+    .gl-levels { display: flex; gap: 0.8rem; flex-wrap: wrap; padding-top: 1rem; border-top: 1px solid var(--border); }
+    .gl-level { display: flex; align-items: center; gap: 0.6rem; background: var(--surface-3); border: 1px solid var(--border); border-radius: 7px; padding: 0.5rem 1rem; }
+    .gl-level .lv-badge { font-size: 0.7rem; font-weight: 800; border-radius: 4px; padding: 0.15rem 0.45rem; }
+    .gl-level .lv-badge.hr { background: rgba(45,106,31,0.2); color: #5eba45; border: 1px solid rgba(45,106,31,0.4); }
+    .gl-level .lv-badge.ir { background: rgba(200,160,40,0.15); color: #c8a828; border: 1px solid rgba(200,160,40,0.3); }
+    .gl-level p { font-size: 0.75rem; color: var(--gray-2); line-height: 1.4; }
+    .gl-level strong { color: var(--white); }
+
     @media (max-width: 768px) {
       .catalog-grid { grid-template-columns: 1fr 1fr; }
       .catalog-download { flex-direction: column; }
       .contact-bar { flex-direction: column; align-items: flex-start; }
+      .res-glossary { padding: 1.5rem; }
+      .gl-groups { grid-template-columns: 1fr; }
     }
     @media (max-width: 480px) {
       .catalog-grid { grid-template-columns: 1fr; }
@@ -126,11 +156,11 @@
             <div class="resistencias">
               <div class="res-label">Resistencias</div>
               <div class="res-tags">
-                <span class="res-tag">V</span>
-                <span class="res-tag">F1/F2/F3</span>
-                <span class="res-tag">N</span>
                 <span class="res-tag">TMV</span>
                 <span class="res-tag">TYLCV</span>
+                <span class="res-tag">F1/F2/F3</span>
+                <span class="res-tag">V</span>
+                <span class="res-tag">N</span>
                 <span class="res-tag">LSL</span>
               </div>
             </div>
@@ -151,11 +181,11 @@
             <div class="resistencias">
               <div class="res-label">Resistencias</div>
               <div class="res-tags">
-                <span class="res-tag">V</span>
-                <span class="res-tag">F1/F2/F3</span>
-                <span class="res-tag">N</span>
                 <span class="res-tag">TMV</span>
                 <span class="res-tag">TYLCV</span>
+                <span class="res-tag">F1/F2/F3</span>
+                <span class="res-tag">V</span>
+                <span class="res-tag">N</span>
                 <span class="res-tag">LSL</span>
               </div>
             </div>
@@ -177,12 +207,12 @@
             <div class="resistencias">
               <div class="res-label">Resistencias</div>
               <div class="res-tags">
-                <span class="res-tag">V</span>
-                <span class="res-tag">F1/F2/F3</span>
-                <span class="res-tag">N</span>
                 <span class="res-tag">TMV</span>
                 <span class="res-tag">TSWV</span>
                 <span class="res-tag">TYLCV</span>
+                <span class="res-tag">F1/F2/F3</span>
+                <span class="res-tag">V</span>
+                <span class="res-tag">N</span>
                 <span class="res-tag">LSL</span>
               </div>
             </div>
@@ -204,12 +234,12 @@
             <div class="resistencias">
               <div class="res-label">Resistencias</div>
               <div class="res-tags">
-                <span class="res-tag">V</span>
-                <span class="res-tag">F1/F2/F3</span>
-                <span class="res-tag">N</span>
                 <span class="res-tag">TMV</span>
                 <span class="res-tag">TSWV</span>
                 <span class="res-tag">TYLCV</span>
+                <span class="res-tag">F1/F2/F3</span>
+                <span class="res-tag">V</span>
+                <span class="res-tag">N</span>
                 <span class="res-tag">LSL</span>
               </div>
             </div>
@@ -231,12 +261,12 @@
             <div class="resistencias">
               <div class="res-label">Resistencias</div>
               <div class="res-tags">
-                <span class="res-tag">V</span>
-                <span class="res-tag">F1/F2/F3</span>
-                <span class="res-tag">N</span>
                 <span class="res-tag">TMV</span>
                 <span class="res-tag">TSWV</span>
                 <span class="res-tag">TYLCV</span>
+                <span class="res-tag">F1/F2/F3</span>
+                <span class="res-tag">V</span>
+                <span class="res-tag">N</span>
                 <span class="res-tag">LSL</span>
               </div>
             </div>
@@ -258,9 +288,9 @@
             <div class="resistencias">
               <div class="res-label">Resistencias</div>
               <div class="res-tags">
-                <span class="res-tag">V</span>
-                <span class="res-tag">F1/F2/F3</span>
                 <span class="res-tag">TMV</span>
+                <span class="res-tag">F1/F2/F3</span>
+                <span class="res-tag">V</span>
                 <span class="res-tag">LSL</span>
               </div>
             </div>
@@ -282,9 +312,9 @@
             <div class="resistencias">
               <div class="res-label">Resistencias</div>
               <div class="res-tags">
-                <span class="res-tag">V</span>
-                <span class="res-tag">F1/F2/F3</span>
                 <span class="res-tag">TMV</span>
+                <span class="res-tag">F1/F2/F3</span>
+                <span class="res-tag">V</span>
                 <span class="res-tag">LSL</span>
               </div>
             </div>
@@ -306,10 +336,10 @@
             <div class="resistencias">
               <div class="res-label">Resistencias</div>
               <div class="res-tags">
-                <span class="res-tag">V</span>
-                <span class="res-tag">F1/F2/F3</span>
                 <span class="res-tag">TMV</span>
                 <span class="res-tag">TYLCV</span>
+                <span class="res-tag">F1/F2/F3</span>
+                <span class="res-tag">V</span>
                 <span class="res-tag">LSL</span>
               </div>
             </div>
@@ -331,10 +361,10 @@
             <div class="resistencias">
               <div class="res-label">Resistencias</div>
               <div class="res-tags">
-                <span class="res-tag">V</span>
-                <span class="res-tag">F1/F2/F3</span>
-                <span class="res-tag">N</span>
                 <span class="res-tag">TMV</span>
+                <span class="res-tag">F1/F2/F3</span>
+                <span class="res-tag">V</span>
+                <span class="res-tag">N</span>
                 <span class="res-tag">LSL</span>
               </div>
             </div>
@@ -356,11 +386,11 @@
             <div class="resistencias">
               <div class="res-label">Resistencias</div>
               <div class="res-tags">
-                <span class="res-tag">V</span>
-                <span class="res-tag">F1/F2/F3</span>
-                <span class="res-tag">N</span>
                 <span class="res-tag">TMV</span>
                 <span class="res-tag">TYLCV</span>
+                <span class="res-tag">F1/F2/F3</span>
+                <span class="res-tag">V</span>
+                <span class="res-tag">N</span>
                 <span class="res-tag">LSL</span>
               </div>
             </div>
@@ -380,8 +410,8 @@
             <div class="resistencias">
               <div class="res-label">Resistencias</div>
               <div class="res-tags">
-                <span class="res-tag">V</span>
                 <span class="res-tag">F1/F2/F3</span>
+                <span class="res-tag">V</span>
               </div>
             </div>
           </div>
@@ -400,18 +430,98 @@
             <div class="resistencias">
               <div class="res-label">Resistencias</div>
               <div class="res-tags">
-                <span class="res-tag">V</span>
-                <span class="res-tag">F1/F2/F3</span>
-                <span class="res-tag">N</span>
                 <span class="res-tag">TMV</span>
                 <span class="res-tag">TSWV</span>
-                <span class="res-tag">FORL</span>
                 <span class="res-tag">Bacteria</span>
+                <span class="res-tag">F1/F2/F3</span>
+                <span class="res-tag">FORL</span>
+                <span class="res-tag">V</span>
+                <span class="res-tag">N</span>
               </div>
             </div>
           </div>
         </div>
 
+      </div>
+
+      <!-- GLOSARIO DE RESISTENCIAS -->
+      <div class="res-glossary">
+        <h3>Glosario de Resistencias</h3>
+        <p class="gl-intro">Las resistencias en semillas de tomate se clasifican en dos niveles: <strong>HR</strong> (High Resistance / Resistencia Alta) e <strong>IR</strong> (Intermediate Resistance / Resistencia Intermedia). Los códigos se agrupan por tipo de patógeno: Virus → Bacterias → Hongos → Nemátodos.</p>
+
+        <div class="gl-groups">
+          <!-- VIRUS -->
+          <div class="gl-group">
+            <div class="gl-group-title virus">Virus</div>
+            <div class="gl-item">
+              <span class="gl-code virus">TMV</span>
+              <div><div class="gl-name">Tomato Mosaic Virus</div><div class="gl-desc">Virus del mosaico del tomate. Causa moteado y deformación foliar.</div></div>
+            </div>
+            <div class="gl-item">
+              <span class="gl-code virus">TSWV</span>
+              <div><div class="gl-name">Tomato Spotted Wilt Virus</div><div class="gl-desc">Virus de la marchitez manchada. Transmitido por trips.</div></div>
+            </div>
+            <div class="gl-item">
+              <span class="gl-code virus">TYLCV</span>
+              <div><div class="gl-name">Tomato Yellow Leaf Curl Virus</div><div class="gl-desc">Virus del enrollamiento amarillo. Transmitido por mosca blanca.</div></div>
+            </div>
+          </div>
+
+          <!-- BACTERIAS -->
+          <div class="gl-group">
+            <div class="gl-group-title bacteria">Bacterias</div>
+            <div class="gl-item">
+              <span class="gl-code bacteria">Bacteria</span>
+              <div><div class="gl-name">Clavibacter michiganensis</div><div class="gl-desc">Bacteria del cancro bacterial. Causa manchas en hojas y frutos.</div></div>
+            </div>
+          </div>
+
+          <!-- HONGOS -->
+          <div class="gl-group">
+            <div class="gl-group-title hongo">Hongos</div>
+            <div class="gl-item">
+              <span class="gl-code">F1/F2/F3</span>
+              <div><div class="gl-name">Fusarium oxysporum f.sp. lycopersici</div><div class="gl-desc">Razas 1, 2 y 3 del marchitamiento por Fusarium.</div></div>
+            </div>
+            <div class="gl-item">
+              <span class="gl-code">FORL</span>
+              <div><div class="gl-name">Fusarium oxysporum radicis-lycopersici</div><div class="gl-desc">Pudrición de raíz y corona por Fusarium.</div></div>
+            </div>
+            <div class="gl-item">
+              <span class="gl-code">V</span>
+              <div><div class="gl-name">Verticillium dahliae</div><div class="gl-desc">Marchitamiento vascular por Verticillium.</div></div>
+            </div>
+          </div>
+
+          <!-- NEMÁTODOS -->
+          <div class="gl-group">
+            <div class="gl-group-title nema">Nemátodos</div>
+            <div class="gl-item">
+              <span class="gl-code">N</span>
+              <div><div class="gl-name">Meloidogyne spp. (Mi)</div><div class="gl-desc">Nemátodos del nudo de raíz. Reducen absorción de agua y nutrientes.</div></div>
+            </div>
+          </div>
+
+          <!-- CARACTERÍSTICA -->
+          <div class="gl-group">
+            <div class="gl-group-title trait">Característica</div>
+            <div class="gl-item">
+              <span class="gl-code trait">LSL</span>
+              <div><div class="gl-name">Long Shelf Life</div><div class="gl-desc">Larga vida de anaquel. Mayor firmeza y durabilidad postcosecha.</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gl-levels">
+          <div class="gl-level">
+            <span class="lv-badge hr">HR</span>
+            <p><strong>Resistencia Alta</strong> — La planta controla eficazmente el patógeno bajo presión normal de la enfermedad.</p>
+          </div>
+          <div class="gl-level">
+            <span class="lv-badge ir">IR</span>
+            <p><strong>Resistencia Intermedia</strong> — La planta reduce el impacto del patógeno pero puede mostrar síntomas leves bajo alta presión.</p>
+          </div>
+        </div>
       </div>
 
       <div class="catalog-download">
