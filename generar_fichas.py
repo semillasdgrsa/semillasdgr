@@ -32,7 +32,7 @@ def hero(filename):
 def original(filename):
     return os.path.join(ORIG, filename)
 OUTPUT = "/Users/lucianacastillo/Desktop/Claude Code/Catalogo_Semillas_DGR.pdf"
-LOGO   = "/Users/lucianacastillo/Desktop/Claude Code/assets/galeria/logo-dark.jpeg"
+LOGO   = "/Users/lucianacastillo/Desktop/Claude Code/assets/galeria/logo-light.jpeg"
 BHN    = "/Users/lucianacastillo/Desktop/Claude Code/assets/bhn-seed.png"
 
 def foto(variedad_dir, filename):
@@ -818,23 +818,37 @@ def draw_cover_page(c):
         c.setFont("Helvetica", 6)
         c.drawCentredString(cx + cell_w / 2, cy + 0.5*mm, var["categoria"])
 
-    # ── FRANJA ROJA INFERIOR ──
-    foot_h = 20*mm
+    # ── FOOTER ──
+    foot_h = 22*mm
     c.setFillColor(SURFACE2)
     c.rect(0, 0, W, foot_h, fill=1, stroke=0)
     c.setStrokeColor(ROJO)
     c.setLineWidth(1)
     c.line(0, foot_h, W, foot_h)
+
+    # Logo fondo blanco esquina izquierda
+    if os.path.exists(LOGO):
+        try:
+            logo_w, logo_h = 16*mm, 16*mm
+            lx, ly = MARGIN, (foot_h - logo_h) / 2
+            c.setFillColor(BLANCO)
+            c.roundRect(lx - 1*mm, ly - 1*mm, logo_w + 2*mm, logo_h + 2*mm, 1.5*mm, fill=1, stroke=0)
+            c.drawImage(LOGO, lx, ly, width=logo_w, height=logo_h,
+                        preserveAspectRatio=True, anchor='c', mask='auto')
+        except Exception:
+            pass
+
+    text_x = MARGIN + 20*mm
     c.setFillColor(BLANCO)
     c.setFont("Helvetica-Bold", 7.5)
-    c.drawString(MARGIN, foot_h - 5*mm, "Distribuido por: SEMILLAS DGR S.A.")
+    c.drawString(text_x, foot_h - 6*mm, "Distribuido por: SEMILLAS DGR S.A.")
     c.setFillColor(GRIS)
     c.setFont("Helvetica", 6.5)
-    c.drawString(MARGIN, foot_h - 9.5*mm, "Milton Castillo H.  |  semillasdgrsa@gmail.com")
-    c.drawString(MARGIN, foot_h - 13.5*mm, "+506 8820-4170  |  +506 2102-0910  |  +506 7053-6966")
-    c.drawRightString(W - MARGIN, foot_h - 5*mm, "semillasdgr-cr.com")
-    c.drawRightString(W - MARGIN, foot_h - 9.5*mm, "semillasdgrsa@gmail.com")
-    c.drawRightString(W - MARGIN, foot_h - 13.5*mm, "@semillasdgr")
+    c.drawString(text_x, foot_h - 10.5*mm, "Milton Castillo H.  |  semillasdgrsa@gmail.com")
+    c.drawString(text_x, foot_h - 14.5*mm, "+506 8820-4170  |  +506 2102-0910  |  +506 7053-6966")
+    c.drawRightString(W - MARGIN, foot_h - 6*mm, "semillasdgr-cr.com")
+    c.drawRightString(W - MARGIN, foot_h - 10.5*mm, "semillasdgrsa@gmail.com")
+    c.drawRightString(W - MARGIN, foot_h - 14.5*mm, "@semillasdgr")
 
     c.restoreState()
 
