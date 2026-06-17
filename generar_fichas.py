@@ -521,9 +521,12 @@ def draw_page(c, variedad, page_num, total):
 
     res_list  = variedad["resistencias"]
     col_w_res = (W - 2*MARGIN - 5*mm) / 2
+    half = -(-len(res_list) // 2)  # ceil division
     for i, code in enumerate(res_list):
-        col_x = MARGIN if i % 2 == 0 else MARGIN + col_w_res + 5*mm
-        row_y = y_res - (i // 2) * 9*mm
+        col = 0 if i < half else 1
+        row  = i if col == 0 else i - half
+        col_x = MARGIN if col == 0 else MARGIN + col_w_res + 5*mm
+        row_y = y_res - row * 9*mm
         nombre_res = RES_NOMBRES.get(code, code)
         c.setFillColor(VERDE_BG)
         c.roundRect(col_x, row_y - 1.5*mm, col_w_res, 7*mm, 1.5*mm, fill=1, stroke=0)
