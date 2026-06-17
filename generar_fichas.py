@@ -767,24 +767,26 @@ def draw_cover_page(c):
         except Exception:
             pass
 
-    # ── TÍTULO ──
+    # ── TÍTULO (centrado entre barra roja e índice) ──
+    # Espacio disponible: desde H-cover_bar hasta H-118mm (índice)
+    title_center_y = H - cover_bar - (118*mm - cover_bar) / 2  # centro del espacio
     c.setFillColor(BLANCO)
-    c.setFont("Helvetica-Bold", 26)
+    c.setFont("Helvetica-Bold", 34)
     title = "CATÁLOGO DE FICHAS TÉCNICAS"
-    c.drawCentredString(W / 2, H - cover_bar - 18*mm, title)
+    c.drawCentredString(W / 2, title_center_y + 12*mm, title)
 
     c.setFillColor(ROJO)
-    c.setFont("Helvetica-Bold", 36)
-    c.drawCentredString(W / 2, H - cover_bar - 34*mm, "2026")
+    c.setFont("Helvetica-Bold", 46)
+    c.drawCentredString(W / 2, title_center_y - 10*mm, "2026")
 
     # Línea decorativa
     c.setStrokeColor(ROJO)
     c.setLineWidth(1.5)
-    c.line(MARGIN * 3, H - 100*mm, W - MARGIN * 3, H - 100*mm)
+    c.line(MARGIN * 3, title_center_y - 22*mm, W - MARGIN * 3, title_center_y - 22*mm)
 
     c.setFillColor(GRIS)
     c.setFont("Helvetica", 9)
-    c.drawCentredString(W / 2, H - 107*mm, "Semillas DGR S.A.  ·  Belén, Heredia, Costa Rica")
+    c.drawCentredString(W / 2, title_center_y - 29*mm, "Semillas DGR S.A.  ·  Belén, Heredia, Costa Rica")
 
     # ── ÍNDICE DE VARIEDADES ──
     c.setFillColor(BLANCO)
