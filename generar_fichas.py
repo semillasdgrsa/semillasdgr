@@ -23,6 +23,10 @@ VERDE_BG   = colors.HexColor("#0e2009")
 W, H = A4  # 595 x 842 pt  (210 x 297 mm)
 
 BASE  = "/Users/lucianacastillo/Desktop/Claude Code/assets/catalogo"
+HEROES = "/Users/lucianacastillo/Desktop/Claude Code/assets"
+
+def hero(filename):
+    return os.path.join(HEROES, filename)
 OUTPUT = "/Users/lucianacastillo/Desktop/Claude Code/Catalogo_Semillas_DGR.pdf"
 LOGO   = "/Users/lucianacastillo/Desktop/Claude Code/assets/logo-dark.jpeg"
 BHN    = "/Users/lucianacastillo/Desktop/Claude Code/assets/bhn-seed.png"
@@ -48,7 +52,7 @@ VARIEDADES = [
         "resistencias": ["TMV", "TYLCV", "F1", "F2", "F3", "V", "N", "LSL"],
         "bhn": True,
         "fotos": [
-            foto("CACIQUE", "WhatsApp Image 2026-06-16 at 10.37.17.jpeg"),
+            hero("hero-cacique.jpeg"),
             foto("CACIQUE", "WhatsApp Image 2026-06-16 at 10.36.14.jpeg"),
             foto("CACIQUE", "WhatsApp Image 2026-06-16 at 10.37.17 (1).jpeg"),
             foto("CACIQUE", "WhatsApp Image 2026-06-16 at 10.37.18 (1).jpeg"),
@@ -72,7 +76,7 @@ VARIEDADES = [
         "resistencias": ["TMV", "TYLCV", "F1", "F2", "F3", "V", "N", "LSL"],
         "bhn": True,
         "fotos": [
-            foto("IL 1907", "WhatsApp Image 2026-06-16 at 09.14.09.jpeg"),
+            hero("hero-il1907.jpeg"),
             foto("IL 1907", "WhatsApp Image 2026-06-16 at 09.13.01.jpeg"),
             foto("IL 1907", "WhatsApp Image 2026-06-16 at 09.13.09.jpeg"),
             foto("IL 1907", "WhatsApp Image 2026-06-16 at 09.17.48.jpeg"),
@@ -97,7 +101,7 @@ VARIEDADES = [
         "resistencias": ["TMV", "TSWV", "TYLCV", "F1", "F2", "F3", "V", "N", "LSL"],
         "bhn": True,
         "fotos": [
-            foto("IL 1908", "WhatsApp Image 2026-06-16 at 09.18.38.jpeg"),
+            hero("hero-il1908.jpeg"),
             foto("IL 1908", "WhatsApp Image 2026-06-16 at 09.18.28.jpeg"),
             foto("IL 1908", "WhatsApp Image 2026-06-16 at 09.19.24.jpeg"),
             foto("IL 1908", "WhatsApp Image 2026-06-16 at 09.20.11.jpeg"),
@@ -122,7 +126,7 @@ VARIEDADES = [
         "resistencias": ["TMV", "TSWV", "TYLCV", "F1", "F2", "F3", "V", "N", "LSL"],
         "bhn": True,
         "fotos": [
-            foto("IL 1909", "WhatsApp Image 2026-06-16 at 09.36.21.jpeg"),
+            hero("hero-il1909.jpeg"),
             foto("IL 1909", "WhatsApp Image 2026-06-16 at 09.34.36.jpeg"),
             foto("IL 1909", "WhatsApp Image 2026-06-16 at 09.34.44.jpeg"),
             foto("IL 1909", "WhatsApp Image 2026-06-16 at 09.35.07.jpeg"),
@@ -148,7 +152,7 @@ VARIEDADES = [
         "resistencias": ["TMV", "TSWV", "TYLCV", "F1", "F2", "F3", "V", "N", "LSL"],
         "bhn": True,
         "fotos": [
-            foto("JM PLUS", "WhatsApp Image 2026-06-16 at 10.24.00.jpeg"),
+            hero("hero-jmplus.jpeg"),
             foto("JM PLUS", "WhatsApp Image 2026-06-16 at 10.23.52 (1).jpeg"),
             foto("JM PLUS", "WhatsApp Image 2026-06-16 at 10.23.52.jpeg"),
         ],
@@ -170,7 +174,7 @@ VARIEDADES = [
         "resistencias": ["TMV", "F1", "F2", "F3", "V", "LSL"],
         "bhn": True,
         "fotos": [
-            foto("JR SPECIAL", "WhatsApp Image 2026-06-16 at 09.59.17.jpeg"),
+            hero("hero-jrspecial.jpeg"),
             foto("JR SPECIAL", "WhatsApp Image 2026-06-16 at 09.57.32.jpeg"),
             foto("JR SPECIAL", "WhatsApp Image 2026-06-16 at 09.57.43.jpeg"),
             foto("JR SPECIAL", "WhatsApp Image 2026-06-16 at 09.58.22 (1).jpeg"),
@@ -195,7 +199,7 @@ VARIEDADES = [
         "resistencias": ["TMV", "F1", "F2", "F3", "V", "LSL"],
         "bhn": True,
         "fotos": [
-            foto("MILAN", "WhatsApp Image 2026-06-16 at 10.22.45.jpeg"),
+            hero("hero-milan.jpeg"),
             foto("MILAN", "WhatsApp Image 2026-06-16 at 10.11.54.jpeg"),
             foto("MILAN", "WhatsApp Image 2026-06-16 at 10.11.53.jpeg"),
             foto("MILAN", "WhatsApp Image 2026-06-16 at 10.15.11.jpeg"),
@@ -219,7 +223,7 @@ VARIEDADES = [
         "resistencias": ["F1", "F2", "F3", "V"],
         "bhn": True,
         "fotos": [
-            foto("PORTAINJERTO PATRON", "WhatsApp Image 2026-06-16 at 10.41.45.jpeg"),
+            hero("hero-patron.jpeg"),
             foto("PORTAINJERTO PATRON", "WhatsApp Image 2026-06-16 at 10.41.26.jpeg"),
             foto("PORTAINJERTO PATRON", "WhatsApp Image 2026-06-16 at 10.41.27.jpeg"),
             foto("PORTAINJERTO PATRON", "WhatsApp Image 2026-06-16 at 10.41.45 (1).jpeg"),
@@ -243,7 +247,7 @@ VARIEDADES = [
         "resistencias": ["TMV", "TSWV", "Bacteria", "F1", "F2", "F3", "FORL", "V", "N"],
         "bhn": True,
         "fotos": [
-            foto("PORTAINJERTO R1912", "WhatsApp Image 2026-06-16 at 11.20.15 (1).jpeg"),
+            hero("hero-r1912.jpeg"),
             foto("PORTAINJERTO R1912", "WhatsApp Image 2026-06-16 at 11.22.54.jpeg"),
             foto("PORTAINJERTO R1912", "WhatsApp Image 2026-06-16 at 11.19.17.jpeg"),
             foto("PORTAINJERTO R1912", "WhatsApp Image 2026-06-16 at 11.21.45.jpeg"),
@@ -268,7 +272,7 @@ VARIEDADES = [
         "resistencias": ["TMV", "TYLCV", "F1", "F2", "F3", "V", "LSL"],
         "bhn": False,
         "fotos": [
-            foto("SDGR 21", "WhatsApp Image 2026-06-16 at 09.45.19.jpeg"),
+            hero("hero-sdgr21.jpeg"),
             foto("SDGR 21", "WhatsApp Image 2026-06-16 at 09.43.04.jpeg"),
             foto("SDGR 21", "WhatsApp Image 2026-06-16 at 09.43.32.jpeg"),
             foto("SDGR 21", "WhatsApp Image 2026-06-16 at 09.43.21.jpeg"),
@@ -294,7 +298,7 @@ VARIEDADES = [
         "resistencias": ["TMV", "F1", "F2", "F3", "V", "N", "LSL"],
         "bhn": True,
         "fotos": [
-            foto("TITAN", "WhatsApp Image 2026-06-16 at 11.41.15.jpeg"),
+            hero("hero-titan.jpeg"),
             foto("TITAN", "WhatsApp Image 2026-06-16 at 11.25.58.jpeg"),
             foto("TITAN", "WhatsApp Image 2026-06-16 at 11.35.27.jpeg"),
             foto("TITAN", "WhatsApp Image 2026-06-16 at 11.36.57.jpeg"),
@@ -319,7 +323,9 @@ VARIEDADES = [
         ],
         "resistencias": ["TMV", "TYLCV", "F1", "F2", "F3", "V", "N", "LSL"],
         "bhn": True,
-        "fotos": [],
+        "fotos": [
+            hero("hero-vulcano.jpeg"),
+        ],
     },
 ]
 
