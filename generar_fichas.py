@@ -347,7 +347,9 @@ GLOSARIO = [
         ("Bacteria", "Clavibacter michiganensis",    "Bacteria del cancro bacterial. Manchas en hojas y frutos."),
     ]),
     ("HONGOS", VERDE, [
-        ("F1/F2/F3", "Fusarium oxysporum lycopersici", "Razas 1, 2 y 3 del marchitamiento por Fusarium."),
+        ("F1", "Fusarium oxysporum raza 1", "Marchitamiento vascular por Fusarium, raza 1."),
+        ("F2", "Fusarium oxysporum raza 2", "Marchitamiento vascular por Fusarium, raza 2."),
+        ("F3", "Fusarium oxysporum raza 3", "Marchitamiento vascular por Fusarium, raza 3."),
         ("FORL",     "Fusarium radicis-lycopersici",   "Pudrición de raíz y corona por Fusarium."),
         ("V",        "Verticillium dahliae",            "Marchitamiento vascular por Verticillium."),
     ]),
