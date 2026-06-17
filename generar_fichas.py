@@ -520,7 +520,7 @@ def draw_page(c, variedad, page_num, total):
         y_left -= 10*mm
 
     # ── SEPARATOR ──
-    sep_y = block_bot - 10*mm
+    sep_y = block_bot - 5*mm
     c.setStrokeColor(GRIS3)
     c.setLineWidth(0.5)
     c.line(MARGIN, sep_y, W - MARGIN, sep_y)
