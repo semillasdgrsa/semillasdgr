@@ -453,7 +453,7 @@ def draw_page(c, variedad, page_num, total):
     c.drawRightString(W - MARGIN, H - 12*mm, f"Pág. {page_num} / {total}")
 
     # ── CATEGORY TAG ──
-    y = H - bar_h - 7*mm
+    y = H - bar_h - 12*mm
     cat = variedad["categoria"]
     tag_color = ROJO if variedad["tipo_tag"] == "tomate" else VERDE
     tag_bg = colors.HexColor("#2a0a0a") if variedad["tipo_tag"] == "tomate" else colors.HexColor("#0a1f08")
@@ -527,7 +527,7 @@ def draw_page(c, variedad, page_num, total):
     c.line(MARGIN, sep_y, W - MARGIN, sep_y)
 
     # ── RESISTANCES (two columns) ──
-    y_res = sep_y - 10*mm
+    y_res = sep_y - 14*mm
     c.setFillColor(BLANCO)
     c.setFont("Helvetica-Bold", 7.5)
     c.drawString(MARGIN, y_res, "RESISTENCIAS")
@@ -556,14 +556,13 @@ def draw_page(c, variedad, page_num, total):
 
     # ── 4 SMALL IMAGES (bottom strip) ──
     strip_h   = 45 * mm
-    strip_top = 22 * mm + strip_h   # 67mm from bottom
     img_count = min(4, len(fotos) - 1)
     if img_count > 0:
         gap   = 2.5 * mm
         img_w = (W - 2*MARGIN - (img_count - 1) * gap) / img_count
         for i in range(img_count):
             ix = MARGIN + i * (img_w + gap)
-            iy = 22 * mm
+            iy = 28 * mm
             draw_image_box(c, fotos[i + 1], ix, iy, img_w, strip_h)
 
     # ── FOOTER ──
