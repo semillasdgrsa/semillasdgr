@@ -423,11 +423,14 @@ def draw_page(c, variedad, page_num, total):
     c.setFillColor(ROJO)
     c.rect(0, H - 14*mm, W, 14*mm, fill=1, stroke=0)
 
-    # Logo in bar
+    # Logo esquina superior izquierda con fondo negro
     if os.path.exists(LOGO):
         try:
-            c.drawImage(LOGO, MARGIN, H - 12.5*mm,
-                        width=28*mm, height=10*mm,
+            lw, lh = 28*mm, 10*mm
+            lx, ly = MARGIN, H - 13*mm
+            c.setFillColor(NEGRO)
+            c.roundRect(lx - 1*mm, ly - 1*mm, lw + 2*mm, lh + 2*mm, 1.5*mm, fill=1, stroke=0)
+            c.drawImage(LOGO, lx, ly, width=lw, height=lh,
                         preserveAspectRatio=True, mask='auto')
         except Exception:
             c.setFillColor(BLANCO)
@@ -599,7 +602,11 @@ def draw_glossary_page(c, page_num, total):
 
     if os.path.exists(LOGO):
         try:
-            c.drawImage(LOGO, MARGIN, H - 12.5*mm, width=28*mm, height=10*mm,
+            lw, lh = 28*mm, 10*mm
+            lx, ly = MARGIN, H - 13*mm
+            c.setFillColor(NEGRO)
+            c.roundRect(lx - 1*mm, ly - 1*mm, lw + 2*mm, lh + 2*mm, 1.5*mm, fill=1, stroke=0)
+            c.drawImage(LOGO, lx, ly, width=lw, height=lh,
                         preserveAspectRatio=True, mask='auto')
         except Exception:
             pass
