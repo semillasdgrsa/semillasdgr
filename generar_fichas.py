@@ -519,14 +519,8 @@ def draw_page(c, variedad, page_num, total):
         c.drawRightString(MARGIN + left_w - 3*mm, y_left + 2*mm, valor)
         y_left -= 10*mm
 
-    # ── SEPARATOR ──
-    sep_y = block_bot + 2*mm
-    c.setStrokeColor(GRIS3)
-    c.setLineWidth(0.5)
-    c.line(MARGIN, sep_y, W - MARGIN, sep_y)
-
     # ── RESISTANCES (two columns) ──
-    y_res = sep_y - 10*mm
+    y_res = block_bot + 8*mm
     c.setFillColor(BLANCO)
     c.setFont("Helvetica-Bold", 8)
     c.drawString(MARGIN, y_res, "RESISTENCIAS")
