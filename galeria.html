@@ -68,6 +68,11 @@
     .g-item.tall { height: 380px; }
     .g-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; display: block; }
     .g-item:hover img { transform: scale(1.06); }
+    .g-video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .g-item.video-item { cursor: default; }
+    .g-item.video-item .g-overlay { pointer-events: none; background: rgba(0,0,0,0.18); }
+    .g-item.video-item .g-overlay i { opacity: 1; font-size: 2rem; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.6)); }
+    .g-item.video-item:hover .g-overlay { background: rgba(0,0,0,0.1); }
     .g-overlay {
       position: absolute; inset: 0;
       background: rgba(0,0,0,0); transition: background 0.3s;
@@ -157,7 +162,7 @@
 
       <!-- SDGR 21 -->
       <div class="variety-section" data-variety="sdgr21">
-        <div class="variety-header"><h3>SDGR 21</h3><div class="variety-divider"></div><span class="variety-count">8 fotos</span></div>
+        <div class="variety-header"><h3>SDGR 21</h3><div class="variety-divider"></div><span class="variety-count">8 fotos · 2 videos</span></div>
         <div class="gallery-grid">
           <div class="g-item tall" onclick="abrirLightbox(this)"><img src="assets/galeria-sdgr21-frutos.jpeg" alt="SDGR 21 — Carga de frutos"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
           <div class="g-item" onclick="abrirLightbox(this)"><img src="assets/galeria-sdgr21-racimos.jpeg" alt="SDGR 21 — Racimos abundantes"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
@@ -167,12 +172,14 @@
           <div class="g-item" onclick="abrirLightbox(this)"><img src="assets/galeria-sdgr21-productor.jpeg" alt="SDGR 21 — Productor Ronald Molina"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
           <div class="g-item" onclick="abrirLightbox(this)"><img src="assets/galeria-sdgr21-carga2.jpeg" alt="SDGR 21 — Carga en campo"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
           <div class="g-item" onclick="abrirLightbox(this)"><img src="assets/galeria-sdgr21-plantas.jpeg" alt="SDGR 21 — Plantas"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
+          <div class="g-item video-item tall"><video class="g-video" autoplay muted loop playsinline><source src="assets/video-sdgr21.mp4" type="video/mp4"></video><div class="g-overlay"><i class="fa-solid fa-play"></i></div></div>
+          <div class="g-item video-item"><video class="g-video" autoplay muted loop playsinline><source src="assets/video-sdgr21-2.mp4" type="video/mp4"></video><div class="g-overlay"><i class="fa-solid fa-play"></i></div></div>
         </div>
       </div>
 
       <!-- TITAN -->
       <div class="variety-section" data-variety="titan">
-        <div class="variety-header"><h3>TITAN</h3><div class="variety-divider"></div><span class="variety-count">7 fotos</span></div>
+        <div class="variety-header"><h3>TITAN</h3><div class="variety-divider"></div><span class="variety-count">7 fotos · 1 video</span></div>
         <div class="gallery-grid">
           <div class="g-item" onclick="abrirLightbox(this)"><img src="assets/galeria-titan-carga.jpeg" alt="TITAN — Alta producción"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
           <div class="g-item" onclick="abrirLightbox(this)"><img src="assets/galeria-titan-suelo.jpeg" alt="TITAN — Carga horizontal"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
@@ -181,12 +188,13 @@
           <div class="g-item" onclick="abrirLightbox(this)"><img src="assets/galeria-titan-panama.jpeg" alt="TITAN — Jairo Montenegro, Panamá"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
           <div class="g-item" onclick="abrirLightbox(this)"><img src="assets/galeria-titan-colage.jpeg" alt="TITAN — Variedad"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
           <div class="g-item" onclick="abrirLightbox(this)"><img src="assets/galeria-titan-invernadero.jpeg" alt="TITAN — Invernadero"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
+          <div class="g-item video-item"><video class="g-video" autoplay muted loop playsinline><source src="assets/video-titan.mp4" type="video/mp4"></video><div class="g-overlay"><i class="fa-solid fa-play"></i></div></div>
         </div>
       </div>
 
       <!-- JR Special -->
       <div class="variety-section" data-variety="jrspecial">
-        <div class="variety-header"><h3>JR Special</h3><div class="variety-divider"></div><span class="variety-count">6 fotos</span></div>
+        <div class="variety-header"><h3>JR Special</h3><div class="variety-divider"></div><span class="variety-count">6 fotos · 1 video</span></div>
         <div class="gallery-grid">
           <div class="g-item tall" onclick="abrirLightbox(this)"><img src="assets/galeria-jrspecial-productor.jpeg" alt="JR Special — Productor Bernal Martínez"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
           <div class="g-item" onclick="abrirLightbox(this)"><img src="assets/galeria-jrspecial-campo.jpeg" alt="JR Special — Campo"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
@@ -194,12 +202,13 @@
           <div class="g-item" onclick="abrirLightbox(this)"><img src="assets/galeria-jrspecial-racimos.jpeg" alt="JR Special — Racimos"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
           <div class="g-item" onclick="abrirLightbox(this)"><img src="assets/galeria-jrspecial-cosecha.jpeg" alt="JR Special — Cosecha"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
           <div class="g-item" onclick="abrirLightbox(this)"><img src="assets/galeria-jrspecial-marca.jpeg" alt="JR Special — Marca"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
+          <div class="g-item video-item"><video class="g-video" autoplay muted loop playsinline><source src="assets/video-jrspecial.mp4" type="video/mp4"></video><div class="g-overlay"><i class="fa-solid fa-play"></i></div></div>
         </div>
       </div>
 
       <!-- IL 1907 -->
       <div class="variety-section" data-variety="il1907">
-        <div class="variety-header"><h3>IL 1907</h3><div class="variety-divider"></div><span class="variety-count">7 fotos</span></div>
+        <div class="variety-header"><h3>IL 1907</h3><div class="variety-divider"></div><span class="variety-count">7 fotos · 1 video</span></div>
         <div class="gallery-grid">
           <div class="g-item tall" onclick="abrirLightbox(this)"><img src="assets/galeria-il1907-productor.jpeg" alt="IL 1907 — Héctor Cháves, San Isidro"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
           <div class="g-item" onclick="abrirLightbox(this)"><img src="assets/galeria-il1907-racimo.jpeg" alt="IL 1907 — Racimo"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
@@ -208,24 +217,26 @@
           <div class="g-item" onclick="abrirLightbox(this)"><img src="assets/galeria-il1907-calidad.jpeg" alt="IL 1907 — Control de calidad"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
           <div class="g-item" onclick="abrirLightbox(this)"><img src="assets/galeria-il1907-marca.jpeg" alt="IL 1907 — Variedad Semillas DGR"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
           <div class="g-item" onclick="abrirLightbox(this)"><img src="assets/galeria-il1907-variedad.jpeg" alt="IL 1907 — Campo"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
+          <div class="g-item video-item"><video class="g-video" autoplay muted loop playsinline><source src="assets/video-il1907.mp4" type="video/mp4"></video><div class="g-overlay"><i class="fa-solid fa-play"></i></div></div>
         </div>
       </div>
 
       <!-- IL 1908 -->
       <div class="variety-section" data-variety="il1908">
-        <div class="variety-header"><h3>IL 1908</h3><div class="variety-divider"></div><span class="variety-count">5 fotos</span></div>
+        <div class="variety-header"><h3>IL 1908</h3><div class="variety-divider"></div><span class="variety-count">5 fotos · 1 video</span></div>
         <div class="gallery-grid">
           <div class="g-item" onclick="abrirLightbox(this)"><img src="assets/galeria-il1908-marca.jpeg" alt="IL 1908 — Variedad Semillas DGR"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
           <div class="g-item tall" onclick="abrirLightbox(this)"><img src="assets/galeria-il1908-mezcla.jpeg" alt="IL 1908 — Frutos rojos y verdes"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
           <div class="g-item" onclick="abrirLightbox(this)"><img src="assets/galeria-il1908-rojos.jpeg" alt="IL 1908 — Tomates rojos"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
           <div class="g-item" onclick="abrirLightbox(this)"><img src="assets/galeria-il1908-corte.jpeg" alt="IL 1908 — Corte con calibrador"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
           <div class="g-item" onclick="abrirLightbox(this)"><img src="assets/galeria-il1908-colage.jpeg" alt="IL 1908 — Colage frutos"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
+          <div class="g-item video-item tall"><video class="g-video" autoplay muted loop playsinline><source src="assets/video-il1908.mp4" type="video/mp4"></video><div class="g-overlay"><i class="fa-solid fa-play"></i></div></div>
         </div>
       </div>
 
       <!-- IL 1909 -->
       <div class="variety-section" data-variety="il1909">
-        <div class="variety-header"><h3>IL 1909</h3><div class="variety-divider"></div><span class="variety-count">6 fotos</span></div>
+        <div class="variety-header"><h3>IL 1909</h3><div class="variety-divider"></div><span class="variety-count">6 fotos · 1 video</span></div>
         <div class="gallery-grid">
           <div class="g-item" onclick="abrirLightbox(this)"><img src="assets/galeria-il1909-carga.jpeg" alt="IL 1909 — Carga abundante"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
           <div class="g-item" onclick="abrirLightbox(this)"><img src="assets/galeria-il1909-jairo.jpeg" alt="IL 1909 — Jairo AR, Sabanilla"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
@@ -233,6 +244,7 @@
           <div class="g-item" onclick="abrirLightbox(this)"><img src="assets/galeria-il1909-florescencia.jpeg" alt="IL 1909 — Florescencia"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
           <div class="g-item" onclick="abrirLightbox(this)"><img src="assets/galeria-il1909-floracion.jpeg" alt="IL 1909 — Floración"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
           <div class="g-item" onclick="abrirLightbox(this)"><img src="assets/galeria-il1909-campo.jpeg" alt="IL 1909 — Campo"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
+          <div class="g-item video-item"><video class="g-video" autoplay muted loop playsinline><source src="assets/video-il1909.mp4" type="video/mp4"></video><div class="g-overlay"><i class="fa-solid fa-play"></i></div></div>
         </div>
       </div>
 
@@ -251,43 +263,47 @@
 
       <!-- MILAN -->
       <div class="variety-section" data-variety="milan">
-        <div class="variety-header"><h3>MILAN</h3><div class="variety-divider"></div><span class="variety-count">3 fotos</span></div>
+        <div class="variety-header"><h3>MILAN</h3><div class="variety-divider"></div><span class="variety-count">3 fotos · 1 video</span></div>
         <div class="gallery-grid">
           <div class="g-item" onclick="abrirLightbox(this)"><img src="assets/galeria-milan-planta.jpeg" alt="MILAN — Planta joven"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
           <div class="g-item tall" onclick="abrirLightbox(this)"><img src="assets/galeria-milan-racimo.jpeg" alt="MILAN — Racimo verde"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
           <div class="g-item" onclick="abrirLightbox(this)"><img src="assets/galeria-milan-flores.jpeg" alt="MILAN — Flores"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
+          <div class="g-item video-item tall"><video class="g-video" autoplay muted loop playsinline><source src="assets/video-milan.mp4" type="video/mp4"></video><div class="g-overlay"><i class="fa-solid fa-play"></i></div></div>
         </div>
       </div>
 
       <!-- JM PLUS -->
       <div class="variety-section" data-variety="jmplus">
-        <div class="variety-header"><h3>JM PLUS</h3><div class="variety-divider"></div><span class="variety-count">3 fotos</span></div>
+        <div class="variety-header"><h3>JM PLUS</h3><div class="variety-divider"></div><span class="variety-count">3 fotos · 1 video</span></div>
         <div class="gallery-grid">
           <div class="g-item" onclick="abrirLightbox(this)"><img src="assets/galeria-jmplus-marca.jpeg" alt="JM PLUS — Variedad Semillas DGR"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
           <div class="g-item" onclick="abrirLightbox(this)"><img src="assets/galeria-jmplus-frutos.jpeg" alt="JM PLUS — Frutos y corte"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
           <div class="g-item tall" onclick="abrirLightbox(this)"><img src="assets/galeria-jmplus-planta.jpeg" alt="JM PLUS — Planta"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
+          <div class="g-item video-item"><video class="g-video" autoplay muted loop playsinline><source src="assets/video-jmplus.mp4" type="video/mp4"></video><div class="g-overlay"><i class="fa-solid fa-play"></i></div></div>
         </div>
       </div>
 
       <!-- VULCANO -->
       <div class="variety-section" data-variety="vulcano">
-        <div class="variety-header"><h3>VULCANO</h3><div class="variety-divider"></div><span class="variety-count">3 fotos</span></div>
+        <div class="variety-header"><h3>VULCANO</h3><div class="variety-divider"></div><span class="variety-count">3 fotos · 1 video</span></div>
         <div class="gallery-grid">
           <div class="g-item tall" onclick="abrirLightbox(this)"><img src="assets/galeria-vulcano-cosecha.jpeg" alt="VULCANO — Cosecha"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
           <div class="g-item tall" onclick="abrirLightbox(this)"><img src="assets/galeria-vulcano-campo.jpeg" alt="VULCANO — Campo"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
           <div class="g-item tall" onclick="abrirLightbox(this)"><img src="assets/galeria-vulcano-planta.jpeg" alt="VULCANO — Invernadero"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
+          <div class="g-item video-item tall"><video class="g-video" autoplay muted loop playsinline><source src="assets/video-vulcano.mp4" type="video/mp4"></video><div class="g-overlay"><i class="fa-solid fa-play"></i></div></div>
         </div>
       </div>
 
       <!-- PATRÓN -->
       <div class="variety-section" data-variety="patron">
-        <div class="variety-header"><h3>PATRÓN <span style="font-size:0.7rem;color:var(--gray-3);font-weight:500;letter-spacing:0;">Portainjerto</span></h3><div class="variety-divider"></div><span class="variety-count">5 fotos</span></div>
+        <div class="variety-header"><h3>PATRÓN <span style="font-size:0.7rem;color:var(--gray-3);font-weight:500;letter-spacing:0;">Portainjerto</span></h3><div class="variety-divider"></div><span class="variety-count">5 fotos · 1 video</span></div>
         <div class="gallery-grid">
           <div class="g-item" onclick="abrirLightbox(this)"><img src="assets/galeria-patron-info.jpeg" alt="PATRÓN — Información"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
           <div class="g-item tall" onclick="abrirLightbox(this)"><img src="assets/galeria-patron-raiz.jpeg" alt="PATRÓN — Sistema radicular"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
           <div class="g-item tall" onclick="abrirLightbox(this)"><img src="assets/galeria-patron-planta.jpeg" alt="PATRÓN — Planta"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
           <div class="g-item tall" onclick="abrirLightbox(this)"><img src="assets/galeria-patron-colage.jpeg" alt="PATRÓN — Colage"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
           <div class="g-item" onclick="abrirLightbox(this)"><img src="assets/galeria-patron-descripcion.jpeg" alt="PATRÓN — Descripción"><div class="g-overlay"><i class="fa-solid fa-magnifying-glass"></i></div></div>
+          <div class="g-item video-item"><video class="g-video" autoplay muted loop playsinline><source src="assets/video-patron.mp4" type="video/mp4"></video><div class="g-overlay"><i class="fa-solid fa-play"></i></div></div>
         </div>
       </div>
 
