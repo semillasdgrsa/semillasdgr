@@ -420,40 +420,42 @@ def draw_page(c, variedad, page_num, total):
     c.setFillColor(NEGRO)
     c.rect(0, 0, W, H, fill=1, stroke=0)
 
-    # ── RED TOP BAR ──
+    # ── RED TOP BAR (20mm) ──
+    bar_h = 20*mm
     c.setFillColor(ROJO)
-    c.rect(0, H - 14*mm, W, 14*mm, fill=1, stroke=0)
+    c.rect(0, H - bar_h, W, bar_h, fill=1, stroke=0)
 
-    # Logos debajo de la franja roja: BHN izquierda, DGR fondo negro a la derecha
-    logo_y = H - 14*mm - 13*mm
-    bw, bh = 20*mm, 13*mm
+    # Logos centrados verticalmente en la franja roja: BHN izq, DGR (fondo negro) al lado
+    logo_h = 12*mm
+    logo_y = H - bar_h + (bar_h - logo_h) / 2
+    bw = 22*mm
     bx = MARGIN
     if os.path.exists(BHN):
         try:
-            c.drawImage(BHN, bx, logo_y, width=bw, height=bh,
+            c.drawImage(BHN, bx, logo_y, width=bw, height=logo_h,
                         preserveAspectRatio=True, mask='auto')
         except Exception:
             pass
-    dgr_x = bx + bw + 3*mm
-    dgr_w, dgr_h = 32*mm, 11*mm
-    dgr_path = LOGO_DARK if os.path.exists(LOGO_DARK) else LOGO
-    if os.path.exists(dgr_path):
+    dgr_x = bx + bw + 4*mm
+    dgr_w = 30*mm
+    if os.path.exists(LOGO_DARK):
         try:
             c.setFillColor(NEGRO)
-            c.roundRect(dgr_x - 1*mm, logo_y - 1*mm, dgr_w + 2*mm, dgr_h + 2*mm, 1.5*mm, fill=1, stroke=0)
-            c.drawImage(dgr_path, dgr_x, logo_y, width=dgr_w, height=dgr_h,
+            c.roundRect(dgr_x - 1.5*mm, logo_y - 1.5*mm, dgr_w + 3*mm, logo_h + 3*mm, 2*mm, fill=1, stroke=0)
+            c.drawImage(LOGO_DARK, dgr_x, logo_y, width=dgr_w, height=logo_h,
                         preserveAspectRatio=True, mask='auto')
         except Exception:
             pass
 
+    # Texto derecha en la franja
     c.setFillColor(BLANCO)
     c.setFont("Helvetica-Bold", 7)
-    c.drawRightString(W - MARGIN, H - 5.5*mm, "FICHA TÉCNICA DE VARIEDAD")
+    c.drawRightString(W - MARGIN, H - 7*mm, "FICHA TÉCNICA DE VARIEDAD")
     c.setFont("Helvetica", 6)
-    c.drawRightString(W - MARGIN, H - 9.5*mm, f"Pág. {page_num} / {total}")
+    c.drawRightString(W - MARGIN, H - 12*mm, f"Pág. {page_num} / {total}")
 
     # ── CATEGORY TAG ──
-    y = H - 23*mm
+    y = H - bar_h - 7*mm
     cat = variedad["categoria"]
     tag_color = ROJO if variedad["tipo_tag"] == "tomate" else VERDE
     tag_bg = colors.HexColor("#2a0a0a") if variedad["tipo_tag"] == "tomate" else colors.HexColor("#0a1f08")
@@ -463,17 +465,8 @@ def draw_page(c, variedad, page_num, total):
     c.setFont("Helvetica-Bold", 7.5)
     c.drawString(MARGIN + 2.5*mm, y + 1*mm, cat.upper())
 
-    # BHN logo (top-right)
-    if variedad["bhn"] and os.path.exists(BHN):
-        try:
-            c.drawImage(BHN, W - 50*mm, H - 30*mm,
-                        width=38*mm, height=14*mm,
-                        preserveAspectRatio=True, mask='auto')
-        except Exception:
-            pass
-
     # ── VARIETY NAME ──
-    y -= 10*mm  # y = H-33mm
+    y -= 10*mm  # y = H-37mm approx
     c.setFillColor(BLANCO)
     c.setFont("Helvetica-Bold", 30)
     c.drawString(MARGIN, y, variedad["nombre"])
@@ -605,40 +598,41 @@ def draw_glossary_page(c, page_num, total):
     c.setFillColor(NEGRO)
     c.rect(0, 0, W, H, fill=1, stroke=0)
 
-    # Red top bar
+    # Red top bar (20mm)
+    bar_h = 20*mm
     c.setFillColor(ROJO)
-    c.rect(0, H - 14*mm, W, 14*mm, fill=1, stroke=0)
+    c.rect(0, H - bar_h, W, bar_h, fill=1, stroke=0)
 
-    # Logos debajo de la franja roja: BHN izquierda, DGR fondo negro a la derecha
-    logo_y = H - 14*mm - 13*mm
-    bw, bh = 20*mm, 13*mm
+    # Logos centrados en la franja roja: BHN izq, DGR (fondo negro) al lado
+    logo_h = 12*mm
+    logo_y = H - bar_h + (bar_h - logo_h) / 2
+    bw = 22*mm
     bx = MARGIN
     if os.path.exists(BHN):
         try:
-            c.drawImage(BHN, bx, logo_y, width=bw, height=bh,
+            c.drawImage(BHN, bx, logo_y, width=bw, height=logo_h,
                         preserveAspectRatio=True, mask='auto')
         except Exception:
             pass
-    dgr_x = bx + bw + 3*mm
-    dgr_w, dgr_h = 32*mm, 11*mm
-    dgr_path = LOGO_DARK if os.path.exists(LOGO_DARK) else LOGO
-    if os.path.exists(dgr_path):
+    dgr_x = bx + bw + 4*mm
+    dgr_w = 30*mm
+    if os.path.exists(LOGO_DARK):
         try:
             c.setFillColor(NEGRO)
-            c.roundRect(dgr_x - 1*mm, logo_y - 1*mm, dgr_w + 2*mm, dgr_h + 2*mm, 1.5*mm, fill=1, stroke=0)
-            c.drawImage(dgr_path, dgr_x, logo_y, width=dgr_w, height=dgr_h,
+            c.roundRect(dgr_x - 1.5*mm, logo_y - 1.5*mm, dgr_w + 3*mm, logo_h + 3*mm, 2*mm, fill=1, stroke=0)
+            c.drawImage(LOGO_DARK, dgr_x, logo_y, width=dgr_w, height=logo_h,
                         preserveAspectRatio=True, mask='auto')
         except Exception:
             pass
 
     c.setFillColor(BLANCO)
     c.setFont("Helvetica-Bold", 7)
-    c.drawRightString(W - MARGIN, H - 5.5*mm, "GLOSARIO DE RESISTENCIAS")
+    c.drawRightString(W - MARGIN, H - 7*mm, "GLOSARIO DE RESISTENCIAS")
     c.setFont("Helvetica", 6)
-    c.drawRightString(W - MARGIN, H - 9.5*mm, f"Pág. {page_num} / {total}")
+    c.drawRightString(W - MARGIN, H - 12*mm, f"Pág. {page_num} / {total}")
 
     # Title
-    y = H - 28*mm
+    y = H - bar_h - 8*mm
     c.setFillColor(BLANCO)
     c.setFont("Helvetica-Bold", 22)
     c.drawString(MARGIN, y, "Glosario de Resistencias")
