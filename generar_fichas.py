@@ -738,14 +738,13 @@ def draw_cover_page(c):
     c.setFillColor(ROJO)
     c.rect(0, H - 60*mm, W, 60*mm, fill=1, stroke=0)
 
-    # Logo centrado en franja roja con fondo blanco
+    # Logo centrado en franja roja (fondo negro redondeado)
     if os.path.exists(LOGO):
         try:
             logo_w, logo_h = 62*mm, 22*mm
             lx = (W - logo_w) / 2
             ly = H - 44*mm
-            # Fondo blanco redondeado
-            c.setFillColor(BLANCO)
+            c.setFillColor(NEGRO)
             c.roundRect(lx - 4*mm, ly - 3*mm, logo_w + 8*mm, logo_h + 6*mm, 3*mm, fill=1, stroke=0)
             c.drawImage(LOGO, lx, ly, width=logo_w, height=logo_h,
                         preserveAspectRatio=True, anchor='c', mask='auto')
@@ -826,19 +825,7 @@ def draw_cover_page(c):
     c.setLineWidth(1)
     c.line(0, foot_h, W, foot_h)
 
-    # Logo fondo blanco esquina izquierda
-    if os.path.exists(LOGO):
-        try:
-            logo_w, logo_h = 16*mm, 16*mm
-            lx, ly = MARGIN, (foot_h - logo_h) / 2
-            c.setFillColor(BLANCO)
-            c.roundRect(lx - 1*mm, ly - 1*mm, logo_w + 2*mm, logo_h + 2*mm, 1.5*mm, fill=1, stroke=0)
-            c.drawImage(LOGO, lx, ly, width=logo_w, height=logo_h,
-                        preserveAspectRatio=True, anchor='c', mask='auto')
-        except Exception:
-            pass
-
-    text_x = MARGIN + 20*mm
+    text_x = MARGIN
     c.setFillColor(BLANCO)
     c.setFont("Helvetica-Bold", 7.5)
     c.drawString(text_x, foot_h - 6*mm, "Distribuido por: SEMILLAS DGR S.A.")
