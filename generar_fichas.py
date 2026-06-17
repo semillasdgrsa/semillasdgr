@@ -24,9 +24,13 @@ W, H = A4  # 595 x 842 pt  (210 x 297 mm)
 
 BASE  = "/Users/lucianacastillo/Desktop/Claude Code/assets/catalogo"
 HEROES = "/Users/lucianacastillo/Desktop/Claude Code/assets"
+ORIG   = "/Users/lucianacastillo/Desktop/Claude Code/assets/variedades foto principal"
 
 def hero(filename):
     return os.path.join(HEROES, filename)
+
+def original(filename):
+    return os.path.join(ORIG, filename)
 OUTPUT = "/Users/lucianacastillo/Desktop/Claude Code/Catalogo_Semillas_DGR.pdf"
 LOGO   = "/Users/lucianacastillo/Desktop/Claude Code/assets/logo-dark.jpeg"
 BHN    = "/Users/lucianacastillo/Desktop/Claude Code/assets/bhn-seed.png"
@@ -52,7 +56,7 @@ VARIEDADES = [
         "resistencias": ["TMV", "TYLCV", "F1", "F2", "F3", "V", "N", "LSL"],
         "bhn": True,
         "fotos": [
-            hero("hero-cacique.jpeg"),
+            original("CACIQUE.jpeg"),
             foto("CACIQUE", "WhatsApp Image 2026-06-16 at 10.36.14.jpeg"),
             foto("CACIQUE", "WhatsApp Image 2026-06-16 at 10.37.17 (1).jpeg"),
             foto("CACIQUE", "WhatsApp Image 2026-06-16 at 10.37.18 (1).jpeg"),
@@ -76,7 +80,7 @@ VARIEDADES = [
         "resistencias": ["TMV", "TYLCV", "F1", "F2", "F3", "V", "N", "LSL"],
         "bhn": True,
         "fotos": [
-            hero("hero-il1907.jpeg"),
+            original("IL 1907.jpeg"),
             foto("IL 1907", "WhatsApp Image 2026-06-16 at 09.13.01.jpeg"),
             foto("IL 1907", "WhatsApp Image 2026-06-16 at 09.13.09.jpeg"),
             foto("IL 1907", "WhatsApp Image 2026-06-16 at 09.17.48.jpeg"),
@@ -101,7 +105,7 @@ VARIEDADES = [
         "resistencias": ["TMV", "TSWV", "TYLCV", "F1", "F2", "F3", "V", "N", "LSL"],
         "bhn": True,
         "fotos": [
-            hero("hero-il1908.jpeg"),
+            original("IL1908.jpeg"),
             foto("IL 1908", "WhatsApp Image 2026-06-16 at 09.18.28.jpeg"),
             foto("IL 1908", "WhatsApp Image 2026-06-16 at 09.19.24.jpeg"),
             foto("IL 1908", "WhatsApp Image 2026-06-16 at 09.20.11.jpeg"),
@@ -126,7 +130,7 @@ VARIEDADES = [
         "resistencias": ["TMV", "TSWV", "TYLCV", "F1", "F2", "F3", "V", "N", "LSL"],
         "bhn": True,
         "fotos": [
-            hero("hero-il1909.jpeg"),
+            original("IL 1909.jpeg"),
             foto("IL 1909", "WhatsApp Image 2026-06-16 at 09.34.36.jpeg"),
             foto("IL 1909", "WhatsApp Image 2026-06-16 at 09.34.44.jpeg"),
             foto("IL 1909", "WhatsApp Image 2026-06-16 at 09.35.07.jpeg"),
@@ -152,7 +156,7 @@ VARIEDADES = [
         "resistencias": ["TMV", "TSWV", "TYLCV", "F1", "F2", "F3", "V", "N", "LSL"],
         "bhn": True,
         "fotos": [
-            hero("hero-jmplus.jpeg"),
+            original("JM PLUS.jpeg"),
             foto("JM PLUS", "WhatsApp Image 2026-06-16 at 10.23.52 (1).jpeg"),
             foto("JM PLUS", "WhatsApp Image 2026-06-16 at 10.23.52.jpeg"),
         ],
@@ -174,7 +178,7 @@ VARIEDADES = [
         "resistencias": ["TMV", "F1", "F2", "F3", "V", "LSL"],
         "bhn": True,
         "fotos": [
-            hero("hero-jrspecial.jpeg"),
+            original("JR SPECIAL.jpeg"),
             foto("JR SPECIAL", "WhatsApp Image 2026-06-16 at 09.57.32.jpeg"),
             foto("JR SPECIAL", "WhatsApp Image 2026-06-16 at 09.57.43.jpeg"),
             foto("JR SPECIAL", "WhatsApp Image 2026-06-16 at 09.58.22 (1).jpeg"),
@@ -199,7 +203,7 @@ VARIEDADES = [
         "resistencias": ["TMV", "F1", "F2", "F3", "V", "LSL"],
         "bhn": True,
         "fotos": [
-            hero("hero-milan.jpeg"),
+            original("MILAN.jpeg"),
             foto("MILAN", "WhatsApp Image 2026-06-16 at 10.11.54.jpeg"),
             foto("MILAN", "WhatsApp Image 2026-06-16 at 10.11.53.jpeg"),
             foto("MILAN", "WhatsApp Image 2026-06-16 at 10.15.11.jpeg"),
@@ -223,7 +227,7 @@ VARIEDADES = [
         "resistencias": ["F1", "F2", "F3", "V"],
         "bhn": True,
         "fotos": [
-            hero("hero-patron.jpeg"),
+            original("PORTAINJERTO PATRON.jpeg"),
             foto("PORTAINJERTO PATRON", "WhatsApp Image 2026-06-16 at 10.41.26.jpeg"),
             foto("PORTAINJERTO PATRON", "WhatsApp Image 2026-06-16 at 10.41.27.jpeg"),
             foto("PORTAINJERTO PATRON", "WhatsApp Image 2026-06-16 at 10.41.45 (1).jpeg"),
@@ -247,7 +251,7 @@ VARIEDADES = [
         "resistencias": ["TMV", "TSWV", "Bacteria", "F1", "F2", "F3", "FORL", "V", "N"],
         "bhn": True,
         "fotos": [
-            hero("hero-r1912.jpeg"),
+            original("PORTAINJERTO R 1912.jpeg"),
             foto("PORTAINJERTO R1912", "WhatsApp Image 2026-06-16 at 11.22.54.jpeg"),
             foto("PORTAINJERTO R1912", "WhatsApp Image 2026-06-16 at 11.19.17.jpeg"),
             foto("PORTAINJERTO R1912", "WhatsApp Image 2026-06-16 at 11.21.45.jpeg"),
@@ -272,7 +276,7 @@ VARIEDADES = [
         "resistencias": ["TMV", "TYLCV", "F1", "F2", "F3", "V", "LSL"],
         "bhn": False,
         "fotos": [
-            hero("hero-sdgr21.jpeg"),
+            original("SDGR 21.jpeg"),
             foto("SDGR 21", "WhatsApp Image 2026-06-16 at 09.43.04.jpeg"),
             foto("SDGR 21", "WhatsApp Image 2026-06-16 at 09.43.32.jpeg"),
             foto("SDGR 21", "WhatsApp Image 2026-06-16 at 09.43.21.jpeg"),
@@ -298,7 +302,7 @@ VARIEDADES = [
         "resistencias": ["TMV", "F1", "F2", "F3", "V", "N", "LSL"],
         "bhn": True,
         "fotos": [
-            hero("hero-titan.jpeg"),
+            original("TITAN.jpeg"),
             foto("TITAN", "WhatsApp Image 2026-06-16 at 11.25.58.jpeg"),
             foto("TITAN", "WhatsApp Image 2026-06-16 at 11.35.27.jpeg"),
             foto("TITAN", "WhatsApp Image 2026-06-16 at 11.36.57.jpeg"),
@@ -324,7 +328,7 @@ VARIEDADES = [
         "resistencias": ["TMV", "TYLCV", "F1", "F2", "F3", "V", "N", "LSL"],
         "bhn": True,
         "fotos": [
-            hero("hero-vulcano.jpeg"),
+            original("VULCANO.jpeg"),
         ],
     },
 ]
