@@ -685,6 +685,7 @@
         </div>
         <div class="modal-cta">
           <a href="https://wa.me/50670536966" target="_blank" class="btn" style="background:#25d366;color:#fff;border:none;"><i class="fa-brands fa-whatsapp"></i> Consultar por WhatsApp</a>
+          <a id="modalPdfBtn" href="#" download class="btn btn-red"><i class="fa-solid fa-file-pdf"></i> Descargar Ficha PDF</a>
         </div>
       </div>
     </div>
@@ -815,12 +816,37 @@
       },
     };
 
+    const PDF_FICHAS = {
+      "CACIQUE":               "assets/fichas/Ficha_CACIQUE.pdf",
+      "IL-1907":               "assets/fichas/Ficha_IL1907.pdf",
+      "IL-1908":               "assets/fichas/Ficha_IL1908.pdf",
+      "IL-1909":               "assets/fichas/Ficha_IL1909.pdf",
+      "JM PLUS":               "assets/fichas/Ficha_JM_PLUS.pdf",
+      "JR SPECIAL":            "assets/fichas/Ficha_JR_SPECIAL.pdf",
+      "MILAN":                 "assets/fichas/Ficha_MILAN.pdf",
+      "PATRÓN":                "assets/fichas/Ficha_PATRÓN.pdf",
+      "R1912":                 "assets/fichas/Ficha_R1912.pdf",
+      "SDGR 21":               "assets/fichas/Ficha_SDGR_21.pdf",
+      "TITAN":                 "assets/fichas/Ficha_TITAN.pdf",
+      "VULCANO":               "assets/fichas/Ficha_VULCANO.pdf",
+    };
+
     function openModal(nombre) {
       const v = VARIEDADES[nombre];
       if (!v) return;
       document.getElementById('modalImg').src = v.img;
       document.getElementById('modalImg').alt = nombre;
       document.getElementById('modalName').textContent = nombre;
+      // PDF download button
+      const pdfBtn = document.getElementById('modalPdfBtn');
+      const pdfPath = PDF_FICHAS[nombre];
+      if (pdfPath) {
+        pdfBtn.href = pdfPath;
+        pdfBtn.download = `Ficha_${nombre.replace(/ /g,'_')}.pdf`;
+        pdfBtn.style.display = '';
+      } else {
+        pdfBtn.style.display = 'none';
+      }
       const tagEl = document.getElementById('modalTag');
       tagEl.className = 'tag ' + v.tagClass;
       tagEl.textContent = v.tag;

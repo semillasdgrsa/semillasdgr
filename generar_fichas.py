@@ -741,5 +741,25 @@ def generar():
     print(f"   {total - 1} fichas + 1 glosario — {sum(len(v['fotos']) for v in VARIEDADES)} fotos incluidas")
 
 
+def generar_individuales():
+    """Genera un PDF individual (ficha + glosario) por cada variedad."""
+    out_dir = os.path.join(os.path.dirname(OUTPUT), "assets", "fichas")
+    os.makedirs(out_dir, exist_ok=True)
+    for var in VARIEDADES:
+        nombre_slug = var["nombre"].replace(" ", "_").replace("-", "")
+        out_path = os.path.join(out_dir, f"Ficha_{nombre_slug}.pdf")
+        c = canvas.Canvas(out_path, pagesize=A4)
+        c.setTitle(f"Ficha Técnica — {var['nombre']} — Semillas DGR S.A.")
+        c.setAuthor("Semillas DGR S.A.")
+        draw_page(c, var, 1, 2)
+        c.showPage()
+        draw_glossary_page(c, 2, 2)
+        c.showPage()
+        c.save()
+        print(f"  ✅ {out_path}")
+    print(f"\n✅ {len(VARIEDADES)} fichas individuales generadas en assets/fichas/")
+
+
 if __name__ == "__main__":
     generar()
+    generar_individuales()
