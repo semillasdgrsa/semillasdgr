@@ -82,7 +82,7 @@ VARIEDADES = [
         "fotos": [
             original("IL 1907.jpeg"),
             foto("IL 1907", "WhatsApp Image 2026-06-16 at 09.13.01.jpeg"),
-            foto("IL 1907", "WhatsApp Image 2026-06-16 at 09.13.09.jpeg"),
+            foto("IL 1907", "WhatsApp Image 2026-06-16 at 09.14.09.jpeg"),
             foto("IL 1907", "WhatsApp Image 2026-06-16 at 09.17.48.jpeg"),
             foto("IL 1907", "WhatsApp Image 2026-06-16 at 09.15.27.jpeg"),
         ],
@@ -329,6 +329,10 @@ VARIEDADES = [
         "bhn": True,
         "fotos": [
             original("VULCANO.jpeg"),
+            foto("VULCANO", "WhatsApp Image 2026-06-16 at 21.10.35 (4).jpeg"),
+            foto("VULCANO", "WhatsApp Image 2026-06-16 at 21.10.35.jpeg"),
+            foto("VULCANO", "WhatsApp Image 2026-06-16 at 21.10.35 (5).jpeg"),
+            foto("VULCANO", "WhatsApp Image 2026-06-16 at 21.10.36.jpeg"),
         ],
     },
 ]
