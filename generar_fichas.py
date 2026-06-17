@@ -53,7 +53,7 @@ VARIEDADES = [
             ("Porte",          "Indeterminado"),
             ("Vida poscosecha","Larga"),
         ],
-        "resistencias": ["TMV", "TYLCV", "F1", "F2", "F3", "V", "N", "LSL"],
+        "resistencias": ["V", "F1", "F2", "F3", "N", "TMV", "TSWV", "TYLCV"],
         "bhn": True,
         "fotos": [
             original("CACIQUE.jpeg"),
