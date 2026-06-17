@@ -464,13 +464,13 @@ def draw_page(c, variedad, page_num, total):
     c.drawString(MARGIN + 2.5*mm, y + 1*mm, cat.upper())
 
     # ── VARIETY NAME ──
-    y -= 10*mm  # y = H-37mm approx
+    y -= 12*mm
     c.setFillColor(BLANCO)
     c.setFont("Helvetica-Bold", 30)
     c.drawString(MARGIN, y, variedad["nombre"])
 
     # Red underline
-    y -= 5*mm
+    y -= 7*mm
     c.setStrokeColor(ROJO)
     c.setLineWidth(2)
     c.line(MARGIN, y, 90*mm, y)
@@ -628,11 +628,11 @@ def draw_glossary_page(c, page_num, total):
     c.drawRightString(W - MARGIN, H - 12*mm, f"Pág. {page_num} / {total}")
 
     # Title
-    y = H - bar_h - 8*mm
+    y = H - bar_h - 12*mm
     c.setFillColor(BLANCO)
     c.setFont("Helvetica-Bold", 22)
     c.drawString(MARGIN, y, "Glosario de Resistencias")
-    y -= 5*mm
+    y -= 7*mm
     c.setStrokeColor(ROJO)
     c.setLineWidth(2)
     c.line(MARGIN, y, 110*mm, y)
@@ -751,16 +751,17 @@ def draw_cover_page(c):
     c.setFillColor(NEGRO)
     c.rect(0, 0, W, H, fill=1, stroke=0)
 
-    # ── FRANJA ROJA SUPERIOR ──
+    # ── FRANJA ROJA SUPERIOR (35mm) ──
+    cover_bar = 35*mm
     c.setFillColor(ROJO)
-    c.rect(0, H - 60*mm, W, 60*mm, fill=1, stroke=0)
+    c.rect(0, H - cover_bar, W, cover_bar, fill=1, stroke=0)
 
-    # Logo centrado en franja roja (sin rectángulo negro)
+    # Logo centrado en franja roja
     if os.path.exists(LOGO):
         try:
-            logo_w, logo_h = 62*mm, 22*mm
+            logo_w, logo_h = 50*mm, 18*mm
             lx = (W - logo_w) / 2
-            ly = H - 44*mm
+            ly = H - cover_bar + (cover_bar - logo_h) / 2
             c.drawImage(LOGO, lx, ly, width=logo_w, height=logo_h,
                         preserveAspectRatio=True, anchor='c', mask='auto')
         except Exception:
@@ -770,11 +771,11 @@ def draw_cover_page(c):
     c.setFillColor(BLANCO)
     c.setFont("Helvetica-Bold", 26)
     title = "CATÁLOGO DE FICHAS TÉCNICAS"
-    c.drawCentredString(W / 2, H - 78*mm, title)
+    c.drawCentredString(W / 2, H - cover_bar - 18*mm, title)
 
     c.setFillColor(ROJO)
     c.setFont("Helvetica-Bold", 36)
-    c.drawCentredString(W / 2, H - 94*mm, "2026")
+    c.drawCentredString(W / 2, H - cover_bar - 34*mm, "2026")
 
     # Línea decorativa
     c.setStrokeColor(ROJO)
