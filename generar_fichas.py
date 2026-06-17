@@ -424,23 +424,24 @@ def draw_page(c, variedad, page_num, total):
     c.setFillColor(ROJO)
     c.rect(0, H - 14*mm, W, 14*mm, fill=1, stroke=0)
 
-    # Logos esquina superior izquierda: DGR + BHN
-    lw, lh = 38*mm, 13*mm
-    lx, ly = MARGIN, H - 14*mm
-    if os.path.exists(LOGO):
-        try:
-            c.drawImage(LOGO, lx, ly, width=lw, height=lh,
-                        preserveAspectRatio=True, mask='auto')
-        except Exception:
-            c.setFillColor(BLANCO)
-            c.setFont("Helvetica-Bold", 9)
-            c.drawString(lx, H - 8*mm, "SEMILLAS DGR")
+    # Logos debajo de la franja roja: BHN izquierda, DGR fondo negro a la derecha
+    logo_y = H - 14*mm - 13*mm
+    bw, bh = 20*mm, 13*mm
+    bx = MARGIN
     if os.path.exists(BHN):
         try:
-            bw, bh = 18*mm, 12*mm
-            bx = lx + lw + 3*mm
-            by = H - 13.5*mm
-            c.drawImage(BHN, bx, by, width=bw, height=bh,
+            c.drawImage(BHN, bx, logo_y, width=bw, height=bh,
+                        preserveAspectRatio=True, mask='auto')
+        except Exception:
+            pass
+    dgr_x = bx + bw + 3*mm
+    dgr_w, dgr_h = 32*mm, 11*mm
+    dgr_path = LOGO_DARK if os.path.exists(LOGO_DARK) else LOGO
+    if os.path.exists(dgr_path):
+        try:
+            c.setFillColor(NEGRO)
+            c.roundRect(dgr_x - 1*mm, logo_y - 1*mm, dgr_w + 2*mm, dgr_h + 2*mm, 1.5*mm, fill=1, stroke=0)
+            c.drawImage(dgr_path, dgr_x, logo_y, width=dgr_w, height=dgr_h,
                         preserveAspectRatio=True, mask='auto')
         except Exception:
             pass
@@ -608,20 +609,24 @@ def draw_glossary_page(c, page_num, total):
     c.setFillColor(ROJO)
     c.rect(0, H - 14*mm, W, 14*mm, fill=1, stroke=0)
 
-    lw, lh = 38*mm, 13*mm
-    lx, ly = MARGIN, H - 14*mm
-    if os.path.exists(LOGO):
+    # Logos debajo de la franja roja: BHN izquierda, DGR fondo negro a la derecha
+    logo_y = H - 14*mm - 13*mm
+    bw, bh = 20*mm, 13*mm
+    bx = MARGIN
+    if os.path.exists(BHN):
         try:
-            c.drawImage(LOGO, lx, ly, width=lw, height=lh,
+            c.drawImage(BHN, bx, logo_y, width=bw, height=bh,
                         preserveAspectRatio=True, mask='auto')
         except Exception:
             pass
-    if os.path.exists(BHN):
+    dgr_x = bx + bw + 3*mm
+    dgr_w, dgr_h = 32*mm, 11*mm
+    dgr_path = LOGO_DARK if os.path.exists(LOGO_DARK) else LOGO
+    if os.path.exists(dgr_path):
         try:
-            bw, bh = 18*mm, 12*mm
-            bx = lx + lw + 3*mm
-            by = H - 13.5*mm
-            c.drawImage(BHN, bx, by, width=bw, height=bh,
+            c.setFillColor(NEGRO)
+            c.roundRect(dgr_x - 1*mm, logo_y - 1*mm, dgr_w + 2*mm, dgr_h + 2*mm, 1.5*mm, fill=1, stroke=0)
+            c.drawImage(dgr_path, dgr_x, logo_y, width=dgr_w, height=dgr_h,
                         preserveAspectRatio=True, mask='auto')
         except Exception:
             pass
