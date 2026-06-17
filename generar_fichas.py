@@ -726,13 +726,126 @@ def draw_glossary_page(c, page_num, total):
     c.restoreState()
 
 
+def draw_cover_page(c):
+    """Portada + índice de variedades."""
+    c.saveState()
+
+    # ── FONDO ──
+    c.setFillColor(NEGRO)
+    c.rect(0, 0, W, H, fill=1, stroke=0)
+
+    # ── FRANJA ROJA SUPERIOR ──
+    c.setFillColor(ROJO)
+    c.rect(0, H - 60*mm, W, 60*mm, fill=1, stroke=0)
+
+    # Logo centrado en franja roja
+    if os.path.exists(LOGO):
+        try:
+            logo_w, logo_h = 55*mm, 20*mm
+            c.drawImage(LOGO, (W - logo_w) / 2, H - 42*mm,
+                        width=logo_w, height=logo_h,
+                        preserveAspectRatio=True, mask='auto')
+        except Exception:
+            pass
+
+    # ── TÍTULO ──
+    c.setFillColor(BLANCO)
+    c.setFont("Helvetica-Bold", 26)
+    title = "CATÁLOGO DE FICHAS TÉCNICAS"
+    c.drawCentredString(W / 2, H - 78*mm, title)
+
+    c.setFillColor(ROJO)
+    c.setFont("Helvetica-Bold", 36)
+    c.drawCentredString(W / 2, H - 94*mm, "2026")
+
+    # Línea decorativa
+    c.setStrokeColor(ROJO)
+    c.setLineWidth(1.5)
+    c.line(MARGIN * 3, H - 100*mm, W - MARGIN * 3, H - 100*mm)
+
+    c.setFillColor(GRIS)
+    c.setFont("Helvetica", 9)
+    c.drawCentredString(W / 2, H - 107*mm, "Semillas DGR S.A.  ·  Belén, Heredia, Costa Rica")
+
+    # ── ÍNDICE DE VARIEDADES ──
+    c.setFillColor(BLANCO)
+    c.setFont("Helvetica-Bold", 10)
+    c.drawCentredString(W / 2, H - 118*mm, "ÍNDICE DE VARIEDADES")
+    c.setStrokeColor(GRIS3)
+    c.setLineWidth(0.5)
+    c.line(MARGIN, H - 121*mm, W - MARGIN, H - 121*mm)
+
+    # Grid: 4 columnas x 3 filas = 12 variedades
+    cols = 4
+    rows = 3
+    gap_x = 4*mm
+    gap_y = 5*mm
+    grid_top = H - 128*mm
+    grid_w = W - 2*MARGIN
+    cell_w = (grid_w - (cols - 1) * gap_x) / cols
+    cell_h = (grid_top - 28*mm - (rows - 1) * gap_y) / rows  # 28mm for footer area
+    img_h = cell_h - 10*mm  # space for name below image
+
+    for idx, var in enumerate(VARIEDADES):
+        col = idx % cols
+        row = idx // cols
+        cx = MARGIN + col * (cell_w + gap_x)
+        cy = grid_top - row * (cell_h + gap_y) - cell_h
+
+        # Foto principal
+        foto_path = var["fotos"][0] if var["fotos"] else None
+        c.setFillColor(SURFACE3)
+        c.roundRect(cx, cy + 10*mm, cell_w, img_h, 2*mm, fill=1, stroke=0)
+        if foto_path and os.path.exists(foto_path):
+            try:
+                c.drawImage(foto_path, cx, cy + 10*mm, width=cell_w, height=img_h,
+                            preserveAspectRatio=True, anchor='c', mask='auto')
+            except Exception:
+                pass
+
+        # Nombre
+        tag_color = ROJO if var["tipo_tag"] == "tomate" else VERDE
+        c.setFillColor(tag_color)
+        c.setFont("Helvetica-Bold", 7.5)
+        c.drawCentredString(cx + cell_w / 2, cy + 3.5*mm, var["nombre"])
+
+        # Categoría
+        c.setFillColor(GRIS)
+        c.setFont("Helvetica", 6)
+        c.drawCentredString(cx + cell_w / 2, cy + 0.5*mm, var["categoria"])
+
+    # ── FRANJA ROJA INFERIOR ──
+    foot_h = 20*mm
+    c.setFillColor(SURFACE2)
+    c.rect(0, 0, W, foot_h, fill=1, stroke=0)
+    c.setStrokeColor(ROJO)
+    c.setLineWidth(1)
+    c.line(0, foot_h, W, foot_h)
+    c.setFillColor(BLANCO)
+    c.setFont("Helvetica-Bold", 7.5)
+    c.drawString(MARGIN, foot_h - 5*mm, "Distribuido por: SEMILLAS DGR S.A.")
+    c.setFillColor(GRIS)
+    c.setFont("Helvetica", 6.5)
+    c.drawString(MARGIN, foot_h - 9.5*mm, "Milton Castillo H.  |  semillasdgrsa@gmail.com")
+    c.drawString(MARGIN, foot_h - 13.5*mm, "+506 8820-4170  |  +506 2102-0910  |  +506 7053-6966")
+    c.drawRightString(W - MARGIN, foot_h - 5*mm, "semillasdgr-cr.com")
+    c.drawRightString(W - MARGIN, foot_h - 9.5*mm, "semillasdgrsa@gmail.com")
+    c.drawRightString(W - MARGIN, foot_h - 13.5*mm, "@semillasdgr")
+
+    c.restoreState()
+
+
 def generar():
     c = canvas.Canvas(OUTPUT, pagesize=A4)
     c.setTitle("Catálogo de Variedades — Semillas DGR S.A.")
     c.setAuthor("Semillas DGR S.A.")
     c.setSubject("Fichas Técnicas de Variedades de Tomate y Portainjertos")
 
-    total = len(VARIEDADES) + 1  # +1 for glossary page
+    # Portada
+    draw_cover_page(c)
+    c.showPage()
+
+    total = len(VARIEDADES) + 1  # +1 for glossary page (portada no cuenta)
     for i, var in enumerate(VARIEDADES, 1):
         draw_page(c, var, i, total)
         c.showPage()
@@ -742,7 +855,7 @@ def generar():
 
     c.save()
     print(f"✅ PDF generado: {OUTPUT}")
-    print(f"   {total - 1} fichas + 1 glosario — {sum(len(v['fotos']) for v in VARIEDADES)} fotos incluidas")
+    print(f"   Portada + {total - 1} fichas + 1 glosario — {sum(len(v['fotos']) for v in VARIEDADES)} fotos incluidas")
 
 
 def generar_individuales():
