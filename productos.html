@@ -10,8 +10,9 @@
   <link rel="stylesheet" href="assets/styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-    .prod-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s; }
+    .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 1.5rem; }
+    .products-bottom { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+    .prod-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s; cursor: pointer; text-decoration: none; display: block; }
     .prod-card:hover { transform: translateY(-6px); border-color: var(--border-red); box-shadow: 0 12px 40px rgba(204,34,34,0.12); }
     .prod-img-wrap { overflow: hidden; }
     .prod-img { width: 100%; height: 220px; object-fit: cover; border-bottom: 2px solid var(--surface-3); transition: transform 0.4s; }
@@ -22,8 +23,26 @@
     .prod-features { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
     .prod-features li { font-size: 0.85rem; color: var(--gray-2); display: flex; align-items: center; gap: 0.5rem; }
     .prod-features li::before { content: ""; width: 6px; height: 6px; background: var(--red); border-radius: 50%; flex-shrink: 0; }
+    /* Servicio card horizontal */
+    .prod-card.serv-card { display: flex; flex-direction: row; }
+    .prod-card.serv-card .prod-img-wrap { width: 320px; flex-shrink: 0; }
+    .prod-card.serv-card .prod-img { height: 100%; min-height: 200px; }
+    .prod-card.serv-card .prod-body { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    /* WA modal */
+    #waModal { display:none; position:fixed; inset:0; z-index:9999; align-items:center; justify-content:center; }
+    #waModal.open { display:flex; }
+    #waModal .wa-backdrop { position:absolute; inset:0; background:rgba(0,0,0,0.65); backdrop-filter:blur(4px); }
+    #waModal .wa-box { position:relative; z-index:1; background:var(--card); border:1px solid var(--border); border-radius:16px; padding:2.5rem 2rem; max-width:420px; width:90%; text-align:center; }
+    #waModal .wa-box h3 { font-size:1.2rem; font-weight:700; margin-bottom:0.6rem; }
+    #waModal .wa-box p { font-size:0.9rem; color:var(--gray-2); margin-bottom:1.5rem; }
+    #waModal .wa-box .wa-close { position:absolute; top:0.8rem; right:1rem; background:none; border:none; color:var(--gray-3); font-size:1.2rem; cursor:pointer; }
     @media (max-width: 1024px) { .products-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 768px) { .products-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) {
+      .products-grid { grid-template-columns: 1fr; }
+      .prod-card.serv-card { flex-direction: column; }
+      .prod-card.serv-card .prod-img-wrap { width: 100%; }
+      .prod-card.serv-card .prod-img { height: 220px; }
+    }
   </style>
 </head>
 <body>
@@ -57,8 +76,12 @@
   <!-- PRODUCTS -->
   <section class="section">
     <div class="container">
+
+      <!-- Top row: Tomate · Chile Dulce · Portainjertos -->
       <div class="products-grid">
-        <a href="catalogo.html#tomate" class="prod-card" style="text-decoration:none;cursor:pointer;">
+
+        <!-- TOMATE -->
+        <a href="catalogo.html#tomate" class="prod-card" style="text-decoration:none;">
           <div class="prod-img-wrap"><img class="prod-img" src="assets/dgr-tomates-closeup.jpeg" alt="Tomate"></div>
           <div class="prod-body">
             <span class="tag tag-red">Tomate</span>
@@ -72,7 +95,9 @@
             </ul>
           </div>
         </a>
-        <div class="prod-card">
+
+        <!-- CHILE DULCE -->
+        <div class="prod-card" onclick="abrirWAModal()">
           <div class="prod-img-wrap"><img class="prod-img" src="https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?w=600&q=80" alt="Chile Dulce"></div>
           <div class="prod-body">
             <span class="tag tag-amber">Chile Dulce</span>
@@ -86,12 +111,33 @@
             </ul>
           </div>
         </div>
-        <a href="index.html#contacto" class="prod-card" style="text-decoration:none;cursor:pointer;">
-          <div class="prod-img-wrap"><img class="prod-img" src="assets/variedad-il1907.jpeg" alt="Campo de cultivo"></div>
+
+        <!-- PORTAINJERTOS -->
+        <a href="catalogo.html#portainjerto" class="prod-card" style="text-decoration:none;">
+          <div class="prod-img-wrap"><img class="prod-img" src="assets/hero-patron.jpeg" alt="Portainjertos"></div>
+          <div class="prod-body">
+            <span class="tag tag-green">Portainjertos</span>
+            <h3>Portainjertos para Tomate</h3>
+            <p>Soluciones de portainjerto para mejorar vigor, rendimiento y resistencia a suelo en el cultivo de tomate.</p>
+            <ul class="prod-features">
+              <li>Mayor vigor y sanidad radicular</li>
+              <li>Resistencia a patógenos del suelo</li>
+              <li>Compatibilidad probada con tomate</li>
+              <li>Incremento en rendimiento por ciclo</li>
+            </ul>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- Bottom row: Servicios -->
+      <div class="products-bottom">
+        <a href="index.html#contacto" class="prod-card serv-card" style="text-decoration:none;">
+          <div class="prod-img-wrap"><img class="prod-img" src="assets/variedad-il1907.jpeg" alt="Asesoría"></div>
           <div class="prod-body">
             <span class="tag tag-green">Servicio</span>
             <h3>Asesoría para el Productor</h3>
-            <p>Acompañamiento desde la selección de la semilla hasta las mejores prácticas de cultivo.</p>
+            <p>Acompañamiento desde la selección de la semilla hasta las mejores prácticas de cultivo. Nuestro equipo técnico lo orienta según su zona, condiciones de cultivo y necesidades específicas.</p>
             <ul class="prod-features">
               <li>Recomendación de variedad según zona</li>
               <li>Guías de siembra y manejo</li>
@@ -101,8 +147,23 @@
           </div>
         </a>
       </div>
+
     </div>
   </section>
+
+  <!-- WHATSAPP MODAL (Chile Dulce) -->
+  <div id="waModal">
+    <div class="wa-backdrop" onclick="cerrarWAModal()"></div>
+    <div class="wa-box">
+      <button class="wa-close" onclick="cerrarWAModal()"><i class="fa-solid fa-xmark"></i></button>
+      <i class="fa-brands fa-whatsapp" style="font-size:2.5rem;color:#25d366;margin-bottom:1rem;display:block;"></i>
+      <h3>Consulte nuestras variedades de Chile Dulce</h3>
+      <p>Las variedades de Chile Dulce están disponibles bajo pedido. Escríbanos por WhatsApp y le asesoramos según su zona y necesidades.</p>
+      <a href="https://wa.me/50670536966?text=Hola,%20me%20interesa%20información%20sobre%20las%20variedades%20de%20Chile%20Dulce." target="_blank" class="btn" style="background:#25d366;color:#fff;border:none;width:100%;justify-content:center;">
+        <i class="fa-brands fa-whatsapp"></i> Consultar por WhatsApp
+      </a>
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <footer>
@@ -153,6 +214,12 @@
     function toggleMenu() {
       document.getElementById('navLinks').classList.toggle('open');
       document.getElementById('hamburger').classList.toggle('open');
+    }
+    function abrirWAModal() {
+      document.getElementById('waModal').classList.add('open');
+    }
+    function cerrarWAModal() {
+      document.getElementById('waModal').classList.remove('open');
     }
   </script>
 </body>
