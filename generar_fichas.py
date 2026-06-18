@@ -359,9 +359,7 @@ GLOSARIO = [
         ("TSWV",  "Tomato Spotted Wilt Virus",       "Virus de la marchitez manchada. Transmitido por trips."),
         ("TYLCV", "Tomato Yellow Leaf Curl Virus",   "Virus del enrollamiento amarillo. Transmitido por mosca blanca."),
     ]),
-    ("BACTERIAS", colors.HexColor("#c8a020"), [
-        ("Bacteria", "Clavibacter michiganensis",    "Bacteria del cancro bacterial. Manchas en hojas y frutos."),
-    ]),
+    # col derecha
     ("HONGOS", VERDE, [
         ("F1", "Fusarium oxysporum raza 1", "Marchitamiento vascular por Fusarium, raza 1."),
         ("F2", "Fusarium oxysporum raza 2", "Marchitamiento vascular por Fusarium, raza 2."),
@@ -370,9 +368,15 @@ GLOSARIO = [
         ("V",           "Verticillium dahliae",            "Marchitamiento vascular por Verticillium."),
         ("Phytophtora", "Phytophtora capsici",             "Pudrición de raíz y corona por Phytophtora."),
     ]),
+    # col izquierda
+    ("BACTERIAS", colors.HexColor("#c8a020"), [
+        ("Bacteria", "Clavibacter michiganensis",    "Bacteria del cancro bacterial. Manchas en hojas y frutos."),
+    ]),
+    # col derecha
     ("NEMÁTODOS", colors.HexColor("#60a0c8"), [
         ("N",    "Meloidogyne spp. (Mi)",             "Nemátodos del nudo de raíz. Reducen absorción de nutrientes."),
     ]),
+    # col izquierda
     ("CARACTERÍSTICA", GRIS, [
         ("LSL",  "Long Shelf Life",                  "Larga vida de anaquel. Mayor firmeza y durabilidad postcosecha."),
     ]),
