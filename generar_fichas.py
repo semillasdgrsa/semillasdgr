@@ -128,7 +128,7 @@ VARIEDADES = [
             ("Frutos/racimo",  "3 – 5"),
             ("Peso promedio",  "230 – 310 g"),
         ],
-        "resistencias": ["TMV", "TSWV", "TYLCV", "F1", "F2", "F3", "V", "N", "LSL"],
+        "resistencias": ["TMV", "TSWV", "TYLCV", "F1", "F2", "F3", "FORL", "V", "N"],
         "bhn": True,
         "fotos": [
             original("IL 1909.jpeg"),
@@ -154,7 +154,7 @@ VARIEDADES = [
             ("Peso promedio",  "250 – 350 g"),
             ("Forma",          "Redondeada extragrande"),
         ],
-        "resistencias": ["TMV", "TSWV", "TYLCV", "F1", "F2", "F3", "V", "N", "LSL"],
+        "resistencias": ["TMV", "TSWV", "TYLCV", "F1", "F2", "F3", "V", "N"],
         "bhn": True,
         "fotos": [
             original("JM PLUS.jpeg"),
@@ -176,7 +176,7 @@ VARIEDADES = [
             ("Racimos/planta", "8 – 10"),
             ("Peso promedio",  "250 – 300 g"),
         ],
-        "resistencias": ["TMV", "F1", "F2", "F3", "V", "LSL"],
+        "resistencias": ["TMV", "F1", "F2", "F3", "V"],
         "bhn": True,
         "fotos": [
             original("JR SPECIAL.jpeg"),
@@ -201,7 +201,7 @@ VARIEDADES = [
             ("Frutos/racimo",  "3 – 7"),
             ("Peso promedio",  "250 – 300 g"),
         ],
-        "resistencias": ["TMV", "F1", "F2", "F3", "V", "LSL"],
+        "resistencias": ["TMV", "F1", "F2", "F3", "V"],
         "bhn": True,
         "fotos": [
             original("MILAN.jpeg"),
@@ -225,7 +225,7 @@ VARIEDADES = [
             ("Beneficio clave", "Sistema radicular eficiente"),
             ("Tolerancias",     "pH, salinidad, frío"),
         ],
-        "resistencias": ["TMV", "TSWV", "Bacteria", "F1", "F2", "F3", "FORL", "V", "N", "Phytophtora"],
+        "resistencias": ["TMV", "Bacteria", "F1", "F2", "F3", "FORL", "V", "N"],
         "bhn": True,
         "fotos": [
             original("PORTAINJERTO PATRON.jpeg"),
@@ -249,14 +249,14 @@ VARIEDADES = [
             ("Compatibilidad", "Alta con variedades BHN"),
             ("Beneficio",      "Máxima resistencia + producción"),
         ],
-        "resistencias": ["TMV", "TSWV", "Bacteria", "F1", "F2", "F3", "FORL", "V", "N", "Phytophtora"],
+        "resistencias": ["TMV", "Bacteria", "F1", "F2", "F3", "FORL", "V", "N", "Phytophtora"],
         "bhn": True,
         "fotos": [
             original("PORTAINJERTO R 1912.jpeg"),
-            foto("PORTAINJERTO R1912", "WhatsApp Image 2026-06-16 at 11.22.54.jpeg"),
-            foto("PORTAINJERTO R1912", "WhatsApp Image 2026-06-16 at 11.19.17.jpeg"),
-            foto("PORTAINJERTO R1912", "WhatsApp Image 2026-06-16 at 11.21.45.jpeg"),
-            foto("PORTAINJERTO R1912", "WhatsApp Image 2026-06-16 at 11.20.15.jpeg"),
+            foto("PORTAINJERTO R1912", "WhatsApp Image 2026-06-16 at 11.19.17 (1).jpeg"),
+            foto("PORTAINJERTO R1912", "WhatsApp Image 2026-06-16 at 11.19.17 (2).jpeg"),
+            foto("PORTAINJERTO R1912", "WhatsApp Image 2026-06-16 at 11.23.56.jpeg"),
+            foto("PORTAINJERTO R1912", "WhatsApp Image 2026-06-16 at 11.20.15 (1).jpeg"),
         ],
     },
     {
@@ -274,7 +274,7 @@ VARIEDADES = [
             ("Forma",      "Globosa"),
             ("Peso aprox.", "300 g"),
         ],
-        "resistencias": ["TMV", "TYLCV", "F1", "F2", "F3", "V", "LSL"],
+        "resistencias": ["TMV", "TYLCV", "F1", "F2", "F3", "V", "N", "LSL"],
         "bhn": False,
         "fotos": [
             original("SDGR 21.jpeg"),
@@ -300,7 +300,7 @@ VARIEDADES = [
             ("Peso promedio",  "250 – 350 g"),
             ("Forma",          "Tipo bola"),
         ],
-        "resistencias": ["TMV", "F1", "F2", "F3", "V", "N", "LSL"],
+        "resistencias": ["TMV", "F1", "F2", "F3", "V", "N"],
         "bhn": True,
         "fotos": [
             original("TITAN.jpeg"),
@@ -326,13 +326,13 @@ VARIEDADES = [
             ("Peso promedio",  "250 – 300 g"),
             ("Forma",          "Tipo bola"),
         ],
-        "resistencias": ["TMV", "TSWV", "TYLCV", "F1", "F2", "F3", "FORL", "V", "N", "LSL"],
+        "resistencias": ["TMV", "TSWV", "TYLCV", "F1", "F2", "F3", "FORL", "V", "N"],
         "bhn": True,
         "fotos": [
             original("VULCANO.jpeg"),
             foto("VULCANO", "WhatsApp Image 2026-06-16 at 21.10.35 (4).jpeg"),
             foto("VULCANO", "WhatsApp Image 2026-06-16 at 21.10.35.jpeg"),
-            foto("VULCANO", "WhatsApp Image 2026-06-16 at 21.10.35 (5).jpeg"),
+            foto("VULCANO", "WhatsApp Image 2026-06-16 at 21.10.35 (1).jpeg"),
             foto("VULCANO", "WhatsApp Image 2026-06-16 at 21.10.36.jpeg"),
         ],
     },
@@ -366,8 +366,9 @@ GLOSARIO = [
         ("F1", "Fusarium oxysporum raza 1", "Marchitamiento vascular por Fusarium, raza 1."),
         ("F2", "Fusarium oxysporum raza 2", "Marchitamiento vascular por Fusarium, raza 2."),
         ("F3", "Fusarium oxysporum raza 3", "Marchitamiento vascular por Fusarium, raza 3."),
-        ("FORL",     "Fusarium radicis-lycopersici",   "Pudrición de raíz y corona por Fusarium."),
-        ("V",        "Verticillium dahliae",            "Marchitamiento vascular por Verticillium."),
+        ("FORL",        "Fusarium radicis-lycopersici",   "Pudrición de raíz y corona por Fusarium."),
+        ("V",           "Verticillium dahliae",            "Marchitamiento vascular por Verticillium."),
+        ("Phytophtora", "Phytophtora capsici",             "Pudrición de raíz y corona por Phytophtora."),
     ]),
     ("NEMÁTODOS", colors.HexColor("#60a0c8"), [
         ("N",    "Meloidogyne spp. (Mi)",             "Nemátodos del nudo de raíz. Reducen absorción de nutrientes."),
@@ -560,7 +561,7 @@ def draw_page(c, variedad, page_num, total):
             draw_image_box(c, fotos[i + 1], ix, iy, img_w, strip_h)
 
     # ── FOOTER ──
-    foot_h = 20 * mm
+    foot_h = 24 * mm
     c.setFillColor(SURFACE2)
     c.rect(0, 0, W, foot_h, fill=1, stroke=0)
     c.setStrokeColor(ROJO)
@@ -572,8 +573,9 @@ def draw_page(c, variedad, page_num, total):
     c.drawString(MARGIN, foot_h - 5*mm, "Distribuido por: SEMILLAS DGR S.A.")
     c.setFillColor(GRIS)
     c.setFont("Helvetica", 6.5)
-    c.drawString(MARGIN, foot_h - 9.5*mm,  "Milton Castillo H.  |  semillasdgrsa@gmail.com")
-    c.drawString(MARGIN, foot_h - 13.5*mm, "+506 8820-4170  |  +506 2102-0910  |  +506 7053-6966")
+    c.drawString(MARGIN, foot_h - 9.5*mm,  "Edificio Ribleh, San Antonio de Belén, Heredia — Local 5")
+    c.drawString(MARGIN, foot_h - 13.5*mm, "Milton Castillo H.  |  semillasdgrsa@gmail.com")
+    c.drawString(MARGIN, foot_h - 17.5*mm, "+506 8820-4170  |  +506 2102-0910  |  +506 7053-6966")
 
     c.drawRightString(W - MARGIN, foot_h - 5*mm,  "semillasdgrsa@gmail.com")
     c.drawRightString(W - MARGIN, foot_h - 9.5*mm, "semillasdgr-cr.com")
@@ -716,7 +718,7 @@ def draw_glossary_page(c, page_num, total):
         col_idx = (col_idx + 1) % 2
 
     # Footer
-    foot_h = 20*mm
+    foot_h = 24*mm
     c.setFillColor(SURFACE2)
     c.rect(0, 0, W, foot_h, fill=1, stroke=0)
     c.setStrokeColor(ROJO)
@@ -727,9 +729,10 @@ def draw_glossary_page(c, page_num, total):
     c.drawString(MARGIN, foot_h - 5*mm, "Distribuido por: SEMILLAS DGR S.A.")
     c.setFillColor(GRIS)
     c.setFont("Helvetica", 6.5)
-    c.drawString(MARGIN, foot_h - 9.5*mm, "Milton Castillo H.  |  semillasdgrsa@gmail.com")
-    c.drawString(MARGIN, foot_h - 13.5*mm, "+506 8820-4170  |  +506 2102-0910  |  +506 7053-6966")
-    c.drawRightString(W - MARGIN, foot_h - 5*mm, "semillasdgrsa@gmail.com")
+    c.drawString(MARGIN, foot_h - 9.5*mm,  "Edificio Ribleh, San Antonio de Belén, Heredia — Local 5")
+    c.drawString(MARGIN, foot_h - 13.5*mm, "Milton Castillo H.  |  semillasdgrsa@gmail.com")
+    c.drawString(MARGIN, foot_h - 17.5*mm, "+506 8820-4170  |  +506 2102-0910  |  +506 7053-6966")
+    c.drawRightString(W - MARGIN, foot_h - 5*mm,  "semillasdgrsa@gmail.com")
     c.drawRightString(W - MARGIN, foot_h - 9.5*mm, "semillasdgr-cr.com")
     c.drawRightString(W - MARGIN, foot_h - 13.5*mm, "@semillasdgr")
 
@@ -829,7 +832,7 @@ def draw_cover_page(c):
         c.drawCentredString(cx + cell_w / 2, cy + 0.5*mm, var["categoria"])
 
     # ── FOOTER ──
-    foot_h = 22*mm
+    foot_h = 26*mm
     c.setFillColor(SURFACE2)
     c.rect(0, 0, W, foot_h, fill=1, stroke=0)
     c.setStrokeColor(ROJO)
@@ -842,9 +845,10 @@ def draw_cover_page(c):
     c.drawString(text_x, foot_h - 6*mm, "Distribuido por: SEMILLAS DGR S.A.")
     c.setFillColor(GRIS)
     c.setFont("Helvetica", 6.5)
-    c.drawString(text_x, foot_h - 10.5*mm, "Milton Castillo H.  |  semillasdgrsa@gmail.com")
-    c.drawString(text_x, foot_h - 14.5*mm, "+506 8820-4170  |  +506 2102-0910  |  +506 7053-6966")
-    c.drawRightString(W - MARGIN, foot_h - 6*mm, "semillasdgr-cr.com")
+    c.drawString(text_x, foot_h - 10.5*mm, "Edificio Ribleh, San Antonio de Belén, Heredia — Local 5")
+    c.drawString(text_x, foot_h - 14.5*mm, "Milton Castillo H.  |  semillasdgrsa@gmail.com")
+    c.drawString(text_x, foot_h - 18.5*mm, "+506 8820-4170  |  +506 2102-0910  |  +506 7053-6966")
+    c.drawRightString(W - MARGIN, foot_h - 6*mm,  "semillasdgr-cr.com")
     c.drawRightString(W - MARGIN, foot_h - 10.5*mm, "semillasdgrsa@gmail.com")
     c.drawRightString(W - MARGIN, foot_h - 14.5*mm, "@semillasdgr")
 
