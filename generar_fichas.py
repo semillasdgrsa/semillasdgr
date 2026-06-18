@@ -694,28 +694,33 @@ def draw_glossary_page(c, page_num, total):
         cy -= 6*mm
 
         for code, name, desc in items:
-            row_h = 17*mm
+            row_h = 22*mm
+            box_top = cy
+            box_bot = cy - row_h
             c.setFillColor(SURFACE2)
-            c.roundRect(cx, cy - row_h + 2*mm, col_w, row_h, 1.5*mm, fill=1, stroke=0)
+            c.roundRect(cx, box_bot, col_w, row_h, 1.5*mm, fill=1, stroke=0)
 
+            # Code badge (top-left inside box)
             c.setFillColor(group_color)
             c.setFont("Helvetica-Bold", 8.5)
-            c.drawString(cx + 3*mm, cy - 3*mm, code)
+            c.drawString(cx + 3*mm, box_top - 5*mm, code)
 
+            # Name (bold, below code)
             c.setFillColor(BLANCO)
-            c.setFont("Helvetica-Bold", 7.5)
-            name_lines = wrap_text(c, name, "Helvetica-Bold", 7.5, col_w - 6*mm)
+            c.setFont("Helvetica-Bold", 7)
+            name_lines = wrap_text(c, name, "Helvetica-Bold", 7, col_w - 6*mm)
             for i, ln in enumerate(name_lines[:2]):
-                c.drawString(cx + 3*mm, cy - 7.5*mm - i*4.5*mm, ln)
+                c.drawString(cx + 3*mm, box_top - 10*mm - i*4*mm, ln)
 
+            # Description (gray, below name)
             c.setFillColor(GRIS)
             c.setFont("Helvetica", 6.5)
             desc_lines = wrap_text(c, desc, "Helvetica", 6.5, col_w - 6*mm)
-            base_y = cy - 7.5*mm - len(name_lines[:2])*4.5*mm
+            desc_start = box_top - 10*mm - len(name_lines[:2])*4*mm - 3.5*mm
             for i, ln in enumerate(desc_lines[:2]):
-                c.drawString(cx + 3*mm, base_y - 4*mm - i*4*mm, ln)
+                c.drawString(cx + 3*mm, desc_start - i*3.5*mm, ln)
 
-            cy -= row_h + 2*mm
+            cy -= row_h + 2.5*mm
 
         cy -= 4*mm
         col_y[col_idx] = cy
