@@ -1,0 +1,13 @@
+{
+  "name": "claude-code-project",
+  "version": "1.0.0",
+  "description": "A basic web project",
+  "scripts": {
+    "setup": "npm install",
+    "start": "npx live-server .",
+    "dev": "npx live-server ."
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}

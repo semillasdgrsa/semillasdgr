@@ -78,7 +78,7 @@ VARIEDADES = [
             ("Tipo de fruto",  "Multilocular"),
             ("Vida poscosecha","LSL — Larga vida anaquel"),
         ],
-        "resistencias": ["TMV", "TYLCV", "F1", "F2", "F3", "V", "N", "LSL"],
+        "resistencias": ["TMV", "TSWV", "TYLCV", "F1", "F2", "F3", "V", "N", "LSL"],
         "bhn": True,
         "fotos": [
             original("IL 1907.jpeg"),
@@ -225,7 +225,7 @@ VARIEDADES = [
             ("Beneficio clave", "Sistema radicular eficiente"),
             ("Tolerancias",     "pH, salinidad, frío"),
         ],
-        "resistencias": ["TMV", "TSWV", "Bacteria", "F1", "F2", "F3", "FORL", "V", "N"],
+        "resistencias": ["TMV", "TSWV", "Bacteria", "F1", "F2", "F3", "FORL", "V", "N", "Phytophtora"],
         "bhn": True,
         "fotos": [
             original("PORTAINJERTO PATRON.jpeg"),
@@ -249,7 +249,7 @@ VARIEDADES = [
             ("Compatibilidad", "Alta con variedades BHN"),
             ("Beneficio",      "Máxima resistencia + producción"),
         ],
-        "resistencias": ["TMV", "TSWV", "Bacteria", "F1", "F2", "F3", "FORL", "V", "N"],
+        "resistencias": ["TMV", "TSWV", "Bacteria", "F1", "F2", "F3", "FORL", "V", "N", "Phytophtora"],
         "bhn": True,
         "fotos": [
             original("PORTAINJERTO R 1912.jpeg"),
@@ -326,7 +326,7 @@ VARIEDADES = [
             ("Peso promedio",  "250 – 300 g"),
             ("Forma",          "Tipo bola"),
         ],
-        "resistencias": ["TMV", "TYLCV", "F1", "F2", "F3", "V", "N", "LSL"],
+        "resistencias": ["TMV", "TSWV", "TYLCV", "F1", "F2", "F3", "FORL", "V", "N", "LSL"],
         "bhn": True,
         "fotos": [
             original("VULCANO.jpeg"),
@@ -350,6 +350,7 @@ RES_NOMBRES = {
     "V":        "Verticillium dahliae",
     "N":        "Meloidogyne spp. (Mi)",
     "LSL":      "Long Shelf Life",
+    "Phytophtora": "Phytophtora capsici (pudrición raíz)",
 }
 
 GLOSARIO = [
