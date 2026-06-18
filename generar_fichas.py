@@ -78,7 +78,7 @@ VARIEDADES = [
             ("Tipo de fruto",  "Multilocular"),
             ("Vida poscosecha","LSL — Larga vida anaquel"),
         ],
-        "resistencias": ["TMV", "TSWV", "TYLCV", "F1", "F2", "F3", "V", "N", "LSL"],
+        "resistencias": ["TMV", "TSWV", "TYLCV", "F1", "F2", "F3", "FORL", "V", "N", "LSL"],
         "bhn": True,
         "fotos": [
             original("IL 1907.jpeg"),
