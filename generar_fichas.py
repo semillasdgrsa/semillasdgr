@@ -225,7 +225,7 @@ VARIEDADES = [
             ("Beneficio clave", "Sistema radicular eficiente"),
             ("Tolerancias",     "pH, salinidad, frío"),
         ],
-        "resistencias": ["F1", "F2", "F3", "V"],
+        "resistencias": ["TMV", "TSWV", "Bacteria", "F1", "F2", "F3", "FORL", "V", "N"],
         "bhn": True,
         "fotos": [
             original("PORTAINJERTO PATRON.jpeg"),
