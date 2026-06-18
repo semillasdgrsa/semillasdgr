@@ -17,24 +17,21 @@
   <link rel="stylesheet" href="assets/styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 1.5rem; }
-    .products-bottom { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
-    .prod-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s; cursor: pointer; text-decoration: none; display: block; }
+    .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+    .prod-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s; cursor: pointer; text-decoration: none; display: flex; flex-direction: column; }
     .prod-card:hover { transform: translateY(-6px); border-color: var(--border-red); box-shadow: 0 12px 40px rgba(204,34,34,0.12); }
-    .prod-img-wrap { overflow: hidden; }
-    .prod-img { width: 100%; height: 220px; object-fit: cover; border-bottom: 2px solid var(--surface-3); transition: transform 0.4s; }
-    .prod-card:hover .prod-img { transform: scale(1.04); }
-    .prod-body { padding: 1.6rem; }
-    .prod-body h3 { font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
-    .prod-body p { font-size: 0.88rem; color: var(--gray-2); margin-bottom: 1rem; }
-    .prod-features { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
-    .prod-features li { font-size: 0.85rem; color: var(--gray-2); display: flex; align-items: center; gap: 0.5rem; }
-    .prod-features li::before { content: ""; width: 6px; height: 6px; background: var(--red); border-radius: 50%; flex-shrink: 0; }
-    /* Servicio card horizontal */
-    .prod-card.serv-card { display: flex; flex-direction: row; }
-    .prod-card.serv-card .prod-img-wrap { width: 320px; flex-shrink: 0; }
-    .prod-card.serv-card .prod-img { height: 100%; min-height: 200px; }
-    .prod-card.serv-card .prod-body { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .prod-icon-wrap { display: flex; align-items: center; justify-content: center; padding: 2rem 1rem 1rem; }
+    .prod-icon { width: 72px; height: 72px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+    .prod-icon.red  { background: rgba(204,34,34,0.12);  color: var(--red); }
+    .prod-icon.amber{ background: rgba(200,160,32,0.12); color: #c8a020; }
+    .prod-icon.green{ background: rgba(94,186,69,0.12);  color: #5eba45; }
+    .prod-icon.blue { background: rgba(96,160,200,0.12); color: #60a0c8; }
+    .prod-body { padding: 0 1.4rem 1.6rem; flex: 1; display: flex; flex-direction: column; }
+    .prod-body h3 { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 0.4rem; }
+    .prod-body p { font-size: 0.82rem; color: var(--gray-2); margin-bottom: 0.9rem; line-height: 1.55; }
+    .prod-features { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; margin-top: auto; }
+    .prod-features li { font-size: 0.8rem; color: var(--gray-2); display: flex; align-items: center; gap: 0.45rem; }
+    .prod-features li::before { content: ""; width: 5px; height: 5px; background: var(--red); border-radius: 50%; flex-shrink: 0; }
     /* WA modal */
     #waModal { display:none; position:fixed; inset:0; z-index:9999; align-items:center; justify-content:center; }
     #waModal.open { display:flex; }
@@ -44,12 +41,7 @@
     #waModal .wa-box p { font-size:0.9rem; color:var(--gray-2); margin-bottom:1.5rem; }
     #waModal .wa-box .wa-close { position:absolute; top:0.8rem; right:1rem; background:none; border:none; color:var(--gray-3); font-size:1.2rem; cursor:pointer; }
     @media (max-width: 1024px) { .products-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 768px) {
-      .products-grid { grid-template-columns: 1fr; }
-      .prod-card.serv-card { flex-direction: column; }
-      .prod-card.serv-card .prod-img-wrap { width: 100%; }
-      .prod-card.serv-card .prod-img { height: 220px; }
-    }
+    @media (max-width: 600px)  { .products-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -84,12 +76,13 @@
   <section class="section">
     <div class="container">
 
-      <!-- Top row: Tomate · Chile Dulce · Portainjertos -->
       <div class="products-grid">
 
         <!-- TOMATE -->
         <a href="catalogo.html#tomate" class="prod-card" style="text-decoration:none;">
-          <div class="prod-img-wrap"><img class="prod-img" src="assets/galeria/dgr-tomates-closeup.jpeg" alt="Tomate"></div>
+          <div class="prod-icon-wrap">
+            <div class="prod-icon red"><i class="fa-solid fa-apple-whole"></i></div>
+          </div>
           <div class="prod-body">
             <span class="tag tag-red">Tomate</span>
             <h3>Semillas de Tomate Premium</h3>
@@ -105,7 +98,9 @@
 
         <!-- CHILE DULCE -->
         <div class="prod-card" onclick="abrirWAModal()">
-          <div class="prod-img-wrap"><img class="prod-img" src="https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?w=600&q=80" alt="Chile Dulce"></div>
+          <div class="prod-icon-wrap">
+            <div class="prod-icon amber"><i class="fa-solid fa-pepper-hot"></i></div>
+          </div>
           <div class="prod-body">
             <span class="tag tag-amber">Chile Dulce</span>
             <h3>Semillas de Chile Dulce Premium</h3>
@@ -121,7 +116,9 @@
 
         <!-- PORTAINJERTOS -->
         <a href="catalogo.html#portainjerto" class="prod-card" style="text-decoration:none;">
-          <div class="prod-img-wrap"><img class="prod-img" src="assets/hero-patron.jpeg" alt="Portainjertos"></div>
+          <div class="prod-icon-wrap">
+            <div class="prod-icon green"><i class="fa-solid fa-seedling"></i></div>
+          </div>
           <div class="prod-body">
             <span class="tag tag-green">Portainjertos</span>
             <h3>Portainjertos para Tomate</h3>
@@ -135,16 +132,15 @@
           </div>
         </a>
 
-      </div>
-
-      <!-- Bottom row: Servicios -->
-      <div class="products-bottom">
-        <a href="index.html#contacto" class="prod-card serv-card" style="text-decoration:none;">
-          <div class="prod-img-wrap"><img class="prod-img" src="assets/galeria/variedad-il1907.jpeg" alt="Asesoría"></div>
+        <!-- ASESORÍA -->
+        <a href="index.html#contacto" class="prod-card" style="text-decoration:none;">
+          <div class="prod-icon-wrap">
+            <div class="prod-icon blue"><i class="fa-solid fa-handshake"></i></div>
+          </div>
           <div class="prod-body">
             <span class="tag tag-green">Servicio</span>
             <h3>Asesoría para el Productor</h3>
-            <p>Acompañamiento desde la selección de la semilla hasta las mejores prácticas de cultivo. Nuestro equipo técnico lo orienta según su zona, condiciones de cultivo y necesidades específicas.</p>
+            <p>Acompañamiento desde la selección de la semilla hasta las mejores prácticas de cultivo.</p>
             <ul class="prod-features">
               <li>Recomendación de variedad según zona</li>
               <li>Guías de siembra y manejo</li>
@@ -153,6 +149,7 @@
             </ul>
           </div>
         </a>
+
       </div>
 
     </div>
