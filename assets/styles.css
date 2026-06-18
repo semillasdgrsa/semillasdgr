@@ -86,6 +86,7 @@ nav.scrolled { border-bottom-color: var(--border-red); }
 .tag-red { background: rgba(204,34,34,0.15); color: #ff6666; border: 1px solid rgba(204,34,34,0.3); }
 .tag-amber { background: rgba(176,96,16,0.15); color: #e8a030; border: 1px solid rgba(176,96,16,0.3); }
 .tag-green { background: rgba(45,106,31,0.15); color: #5eba45; border: 1px solid rgba(45,106,31,0.3); }
+.tag-blue  { background: rgba(96,160,200,0.15); color: #60a0c8; border: 1px solid rgba(96,160,200,0.3); }
 
 /* ── TICKER ── */
 .ticker { background: var(--red); padding: 0.7rem 0; overflow: hidden; white-space: nowrap; }
