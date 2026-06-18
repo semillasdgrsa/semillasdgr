@@ -249,7 +249,7 @@ VARIEDADES = [
             ("Compatibilidad", "Alta con variedades BHN"),
             ("Beneficio",      "Máxima resistencia + producción"),
         ],
-        "resistencias": ["TMV", "Bacteria", "F1", "F2", "F3", "FORL", "V", "N", "Phytophtora"],
+        "resistencias": ["TMV", "Bacteria", "F1", "F2", "F3", "FORL", "Phytophtora", "V", "N"],
         "bhn": True,
         "fotos": [
             original("PORTAINJERTO R 1912.jpeg"),
