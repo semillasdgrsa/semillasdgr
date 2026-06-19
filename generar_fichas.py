@@ -32,8 +32,8 @@ def hero(filename):
 def original(filename):
     return os.path.join(ORIG, filename)
 OUTPUT = "/Users/lucianacastillo/semillas webpage/Catalogo_Semillas_DGR.pdf"
-LOGO   = "/Users/lucianacastillo/semillas webpage/assets/galeria/logo-light.jpeg"
-LOGO_DARK = "/Users/lucianacastillo/semillas webpage/assets/galeria/logo-dark.jpeg"
+LOGO   = "/Users/lucianacastillo/semillas webpage/assets/galeria/general/logo-light.jpeg"
+LOGO_DARK = "/Users/lucianacastillo/semillas webpage/assets/galeria/general/logo-dark.jpeg"
 BHN    = "/Users/lucianacastillo/semillas webpage/assets/bhn-seed.png"
 
 def foto(variedad_dir, filename):
