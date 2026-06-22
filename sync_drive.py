@@ -77,14 +77,25 @@ def sync_from_drive():
         dst_dir = GALERIA_DIR / key
         dst_dir.mkdir(parents=True, exist_ok=True)
 
+        # Add new images from Drive
+        drive_image_names = set()
         for src_file in src_dir.iterdir():
             ext = src_file.suffix.lower()
             if ext not in IMAGE_EXTS | VIDEO_EXTS:
                 continue
+            if ext in IMAGE_EXTS:
+                drive_image_names.add(src_file.name)
             dst_file = dst_dir / src_file.name
             if not dst_file.exists():
                 shutil.copy2(src_file, dst_file)
                 print(f"  ✅  Added {key}/{src_file.name}")
+                changed = True
+
+        # Delete images removed from Drive (videos are never auto-deleted)
+        for dst_file in dst_dir.iterdir():
+            if dst_file.suffix.lower() in IMAGE_EXTS and dst_file.name not in drive_image_names:
+                dst_file.unlink()
+                print(f"  🗑️  Removed {key}/{dst_file.name}")
                 changed = True
 
     shutil.rmtree(TMP_DIR)
