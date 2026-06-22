@@ -35,6 +35,25 @@ jobs:
           echo "=== assets/galeria structure ==="
           find assets/galeria -type f | sort
 
+      - name: Send failure email
+        if: failure()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: lcastillo789987@gmail.com
+          password: ${{ secrets.GMAIL_APP_PASSWORD }}
+          to: lcastillo789987@gmail.com
+          from: Semillas DGR <lcastillo789987@gmail.com>
+          subject: "⚠️ Sync galería falló — Semillas DGR"
+          body: |
+            La sincronización automática de Google Drive falló.
+
+            Fecha: ${{ github.run_started_at }}
+            Ver detalles: https://github.com/semillasdgrsa/semillasdgr/actions/runs/${{ github.run_id }}
+
+            Revisa el error y corre el workflow manualmente cuando esté listo.
+
       - name: Commit and push if changed
         run: |
           git config user.name  "github-actions[bot]"
