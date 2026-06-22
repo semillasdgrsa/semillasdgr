@@ -24,7 +24,7 @@ W, H = A4  # 595 x 842 pt  (210 x 297 mm)
 
 BASE  = "/Users/lucianacastillo/semillas webpage/assets/catalogo"
 HEROES = "/Users/lucianacastillo/semillas webpage/assets"
-ORIG   = "/Users/lucianacastillo/semillas webpage/assets/variedades foto principal"
+ORIG   = "/Users/lucianacastillo/semillas webpage/assets/catalogo/variedades foto principal"
 
 def hero(filename):
     return os.path.join(HEROES, filename)
