@@ -66,10 +66,23 @@ def sync_from_drive():
     if result.returncode != 0:
         print("⚠️  gdown exited with errors (large files may have been skipped). Processing what was downloaded…")
 
+    # gdown may create a named subfolder inside TMP_DIR — find the actual root
+    actual_root = TMP_DIR
+    subdirs = [d for d in TMP_DIR.iterdir() if d.is_dir()]
+    variety_keys = {v["key"] for v in VARIETIES}
+    if subdirs and not any(d.name in variety_keys for d in subdirs):
+        actual_root = subdirs[0]
+        print(f"📁  gdown created subfolder: {actual_root.name}")
+
+    # Debug: show what was downloaded
+    print("=== Downloaded structure ===")
+    for p in sorted(actual_root.rglob("*")):
+        print(f"  {p.relative_to(actual_root)}")
+
     changed = False
     for v in VARIETIES:
         key = v["key"]
-        src_dir = TMP_DIR / key
+        src_dir = actual_root / key
         if not src_dir.exists():
             print(f"  ⚠️  No subfolder '{key}' found in Drive — skipping")
             continue
