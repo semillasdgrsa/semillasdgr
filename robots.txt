@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://semillasdgr-cr.com/sitemap.xml
