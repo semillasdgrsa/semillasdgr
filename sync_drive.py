@@ -89,6 +89,10 @@ def sync_from_drive():
                 shutil.copy2(src_file, dst_file)
                 print(f"  ✅  Added {key}/{src_file.name}")
                 changed = True
+            elif src_file.stat().st_size != dst_file.stat().st_size:
+                shutil.copy2(src_file, dst_file)
+                print(f"  🔄  Updated {key}/{src_file.name}")
+                changed = True
 
         # Delete images removed from Drive (videos are never auto-deleted)
         for dst_file in dst_dir.iterdir():
