@@ -60,11 +60,11 @@ def sync_from_drive():
     url = f"https://drive.google.com/drive/folders/{GDRIVE_FOLDER_ID}"
     print(f"⬇️  Downloading from Drive: {url}")
     result = subprocess.run(
-        ["gdown", "--folder", url, "-O", str(TMP_DIR)],
+        ["gdown", "--folder", url, "-O", str(TMP_DIR), "--fuzzy"],
         capture_output=False,
     )
     if result.returncode != 0:
-        sys.exit("❌  gdown failed. Make sure the folder is shared publicly.")
+        print("⚠️  gdown exited with errors (large files may have been skipped). Processing what was downloaded…")
 
     changed = False
     for v in VARIETIES:
@@ -77,14 +77,13 @@ def sync_from_drive():
         dst_dir = GALERIA_DIR / key
         dst_dir.mkdir(parents=True, exist_ok=True)
 
-        # Add new images from Drive
+        # Add new images from Drive (videos are managed manually, not via Drive)
         drive_image_names = set()
         for src_file in src_dir.iterdir():
             ext = src_file.suffix.lower()
-            if ext not in IMAGE_EXTS | VIDEO_EXTS:
+            if ext not in IMAGE_EXTS:
                 continue
-            if ext in IMAGE_EXTS:
-                drive_image_names.add(src_file.name)
+            drive_image_names.add(src_file.name)
             dst_file = dst_dir / src_file.name
             if not dst_file.exists():
                 shutil.copy2(src_file, dst_file)
