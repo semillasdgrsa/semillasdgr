@@ -60,7 +60,7 @@ def sync_from_drive():
     url = f"https://drive.google.com/drive/folders/{GDRIVE_FOLDER_ID}"
     print(f"⬇️  Downloading from Drive: {url}")
     result = subprocess.run(
-        ["gdown", "--folder", url, "-O", str(TMP_DIR), "--remaining-ok"],
+        ["gdown", "--folder", url, "-O", str(TMP_DIR)],
         capture_output=False,
     )
     if result.returncode != 0:
