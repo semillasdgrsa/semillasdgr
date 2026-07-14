@@ -238,7 +238,7 @@
       <i class="fa-brands fa-whatsapp" style="font-size:2.5rem;color:#25d366;margin-bottom:1rem;display:block;"></i>
       <h3>Consulte nuestras variedades de Chile Dulce</h3>
       <p>Las variedades de Chile Dulce están disponibles bajo pedido. Escríbanos por WhatsApp y le asesoramos según su zona y necesidades.</p>
-      <a href="https://wa.me/50670536966?text=Hola,%20me%20interesa%20información%20sobre%20las%20variedades%20de%20Chile%20Dulce." target="_blank" class="btn" style="background:#25d366;color:#fff;border:none;width:100%;justify-content:center;">
+      <a href="#" onclick="showWASelector(event,'Hola,%20me%20interesa%20información%20sobre%20las%20variedades%20de%20Chile%20Dulce.','Hola,%20me%20interesa%20información%20sobre%20las%20variedades%20de%20Chile%20Dulce.')" class="btn" style="background:#25d366;color:#fff;border:none;width:100%;justify-content:center;">
         <i class="fa-brands fa-whatsapp"></i> Consultar por WhatsApp
       </a>
     </div>
@@ -279,12 +279,36 @@
       <div class="social-links">
         <a class="social-link" href="https://www.instagram.com/semillasdgr/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
         <a class="social-link" href="https://www.facebook.com/profile.php?id=61586373789656" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-        <a class="social-link" href="https://wa.me/50670536966" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+        <a class="social-link" href="#" onclick="showWASelector(event)"><i class="fa-brands fa-whatsapp"></i></a>
       </div>
     </div>
   </footer>
 
-  <a class="float-wa" href="https://wa.me/50670536966" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+  <a class="float-wa" href="#" onclick="showWASelector(event)"><i class="fa-brands fa-whatsapp"></i></a>
+
+  <!-- WA Country Selector Modal -->
+  <div id="wa-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:9999;align-items:center;justify-content:center;" onclick="this.style.display='none'">
+    <div onclick="event.stopPropagation()" style="background:#fff;border-radius:16px;padding:2rem 2.5rem;max-width:360px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+      <p style="font-family:'Poppins',sans-serif;font-size:1.1rem;font-weight:700;margin:0 0 1.5rem;color:#1a1a1a;">¿Desde dónde nos escribís?</p>
+      <div style="display:flex;gap:1rem;justify-content:center;">
+        <a id="wa-cr" href="https://wa.me/50670536966" target="_blank" onclick="document.getElementById('wa-modal').style.display='none'" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0.5rem;padding:1rem;border-radius:12px;border:2px solid #e5e7eb;text-decoration:none;color:#1a1a1a;font-family:'Poppins',sans-serif;font-weight:600;font-size:0.9rem;">
+          <span style="font-size:2rem;">🇨🇷</span> Costa Rica
+        </a>
+        <a id="wa-pty" href="https://wa.me/50763911504" target="_blank" onclick="document.getElementById('wa-modal').style.display='none'" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0.5rem;padding:1rem;border-radius:12px;border:2px solid #e5e7eb;text-decoration:none;color:#1a1a1a;font-family:'Poppins',sans-serif;font-weight:600;font-size:0.9rem;">
+          <span style="font-size:2rem;">🇵🇦</span> Panamá
+        </a>
+      </div>
+      <button onclick="document.getElementById('wa-modal').style.display='none'" style="margin-top:1.2rem;background:none;border:none;color:#6b7280;font-size:0.85rem;cursor:pointer;font-family:'Poppins',sans-serif;">Cancelar</button>
+    </div>
+  </div>
+  <script>
+  function showWASelector(e, msgCR, msgPTY) {
+    e.preventDefault();
+    document.getElementById('wa-cr').href = 'https://wa.me/50670536966' + (msgCR ? '?text=' + msgCR : '');
+    document.getElementById('wa-pty').href = 'https://wa.me/50763911504' + (msgPTY ? '?text=' + msgPTY : '');
+    document.getElementById('wa-modal').style.display = 'flex';
+  }
+  </script>
 
   <script>
     window.addEventListener('scroll', () => {
