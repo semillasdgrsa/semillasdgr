@@ -383,7 +383,7 @@ GLOSARIO = [
 ]
 
 # ── LAYOUT CONSTANTS ──
-MARGIN = 8 * mm
+MARGIN = 11 * mm
 HALF   = W / 2
 
 
@@ -426,15 +426,15 @@ def draw_page(c, variedad, page_num, total):
     c.setFillColor(NEGRO)
     c.rect(0, 0, W, H, fill=1, stroke=0)
 
-    # ── RED TOP BAR (20mm) ──
-    bar_h = 20*mm
+    # ── RED TOP BAR (22mm) ──
+    bar_h = 22*mm
     c.setFillColor(ROJO)
     c.rect(0, H - bar_h, W, bar_h, fill=1, stroke=0)
 
-    # Logos centrados verticalmente en la franja roja: DGR izq, BHN al lado
-    logo_h = 12*mm
+    # Logos centrados verticalmente en la franja roja
+    logo_h = 14*mm
     logo_y = H - bar_h + (bar_h - logo_h) / 2
-    dgr_w = 30*mm
+    dgr_w = 34*mm
     dgr_x = MARGIN
     if os.path.exists(LOGO):
         try:
@@ -442,7 +442,7 @@ def draw_page(c, variedad, page_num, total):
                         preserveAspectRatio=True, mask='auto')
         except Exception:
             pass
-    bw = 22*mm
+    bw = 25*mm
     bx = dgr_x + dgr_w + 4*mm
     if os.path.exists(BHN):
         try:
@@ -453,37 +453,37 @@ def draw_page(c, variedad, page_num, total):
 
     # Texto derecha en la franja
     c.setFillColor(BLANCO)
-    c.setFont("Helvetica-Bold", 7)
-    c.drawRightString(W - MARGIN, H - 7*mm, "FICHA TÉCNICA DE VARIEDAD")
-    c.setFont("Helvetica", 6)
-    c.drawRightString(W - MARGIN, H - 12*mm, f"Pág. {page_num} / {total}")
+    c.setFont("Helvetica-Bold", 8.5)
+    c.drawRightString(W - MARGIN, H - 8*mm, "FICHA TÉCNICA DE VARIEDAD")
+    c.setFont("Helvetica", 7.5)
+    c.drawRightString(W - MARGIN, H - 15*mm, f"Pág. {page_num} / {total}")
 
     # ── CATEGORY TAG ──
-    y = H - bar_h - 16*mm
+    y = H - bar_h - 15*mm
     cat = variedad["categoria"]
     tag_color = ROJO if variedad["tipo_tag"] == "tomate" else VERDE
     tag_bg = colors.HexColor("#fde8e8") if variedad["tipo_tag"] == "tomate" else colors.HexColor("#e4f5de")
     c.setFillColor(tag_bg)
-    c.roundRect(MARGIN, y - 1.5*mm, 40*mm, 7*mm, 2*mm, fill=1, stroke=0)
+    c.roundRect(MARGIN, y - 2*mm, 46*mm, 8.5*mm, 2*mm, fill=1, stroke=0)
     c.setFillColor(tag_color)
-    c.setFont("Helvetica-Bold", 7.5)
-    c.drawString(MARGIN + 2.5*mm, y + 1*mm, cat.upper())
+    c.setFont("Helvetica-Bold", 9)
+    c.drawString(MARGIN + 3*mm, y + 1.5*mm, cat.upper())
 
     # ── VARIETY NAME ──
-    y -= 14*mm
+    y -= 16*mm
     c.setFillColor(BLANCO)
-    c.setFont("Helvetica-Bold", 30)
+    c.setFont("Helvetica-Bold", 36)
     c.drawString(MARGIN, y, variedad["nombre"])
 
     # Red underline
-    y -= 8*mm
+    y -= 9*mm
     c.setStrokeColor(ROJO)
     c.setLineWidth(2)
-    c.line(MARGIN, y, 90*mm, y)
+    c.line(MARGIN, y, 95*mm, y)
 
     # ── TWO-COLUMN BLOCK: Description+Specs (left) | Hero image (right) ──
     block_top = y - 8*mm
-    block_h   = 95 * mm
+    block_h   = 88 * mm
     block_bot = block_top - block_h
 
     left_w  = HALF - MARGIN - 3*mm
@@ -497,75 +497,75 @@ def draw_page(c, variedad, page_num, total):
     # Description (left column)
     y_left = block_top
     c.setFillColor(GRIS)
-    c.setFont("Helvetica", 8.5)
-    desc_lines = wrap_text(c, variedad["descripcion"], "Helvetica", 8.5, left_w)
+    c.setFont("Helvetica", 10)
+    desc_lines = wrap_text(c, variedad["descripcion"], "Helvetica", 10, left_w)
     for ln in desc_lines:
         c.drawString(MARGIN, y_left, ln)
-        y_left -= 5.5*mm
+        y_left -= 6*mm
 
-    y_left -= 6*mm
+    y_left -= 5*mm
 
     # Specs (left column, below description)
     c.setFillColor(BLANCO)
-    c.setFont("Helvetica-Bold", 8)
+    c.setFont("Helvetica-Bold", 10)
     c.drawString(MARGIN, y_left, "CARACTERÍSTICAS")
     c.setStrokeColor(ROJO)
     c.setLineWidth(1)
-    c.line(MARGIN, y_left - 1.5*mm, MARGIN + 38*mm, y_left - 1.5*mm)
-    y_left -= 9*mm
+    c.line(MARGIN, y_left - 2*mm, MARGIN + 44*mm, y_left - 2*mm)
+    y_left -= 10*mm
 
     for label, valor in variedad["specs"]:
         c.setFillColor(SURFACE2)
-        c.roundRect(MARGIN, y_left - 1.5*mm, left_w, 7.5*mm, 1.5*mm, fill=1, stroke=0)
+        c.roundRect(MARGIN, y_left - 2*mm, left_w, 9*mm, 1.5*mm, fill=1, stroke=0)
         c.setFillColor(GRIS)
-        c.setFont("Helvetica", 7.5)
+        c.setFont("Helvetica", 9)
         c.drawString(MARGIN + 3*mm, y_left + 2*mm, label + ":")
         c.setFillColor(BLANCO)
-        c.setFont("Helvetica-Bold", 7.5)
+        c.setFont("Helvetica-Bold", 9)
         c.drawRightString(MARGIN + left_w - 3*mm, y_left + 2*mm, valor)
-        y_left -= 10*mm
+        y_left -= 11*mm
 
     # ── RESISTANCES (two columns) ──
-    y_res = block_bot - 4*mm
+    y_res = block_bot - 5*mm
     c.setFillColor(BLANCO)
-    c.setFont("Helvetica-Bold", 8)
+    c.setFont("Helvetica-Bold", 10)
     c.drawString(MARGIN, y_res, "RESISTENCIAS")
     c.setStrokeColor(ROJO)
     c.setLineWidth(1)
-    c.line(MARGIN, y_res - 1.5*mm, MARGIN + 38*mm, y_res - 1.5*mm)
-    y_res -= 9*mm
+    c.line(MARGIN, y_res - 2*mm, MARGIN + 44*mm, y_res - 2*mm)
+    y_res -= 11*mm
 
     res_list  = variedad["resistencias"]
     col_w_res = (W - 2*MARGIN - 5*mm) / 2
-    half = -(-len(res_list) // 2)  # ceil division
+    half = -(-len(res_list) // 2)
     for i, code in enumerate(res_list):
         col = 0 if i < half else 1
         row  = i if col == 0 else i - half
         col_x = MARGIN if col == 0 else MARGIN + col_w_res + 5*mm
-        row_y = y_res - row * 9.5*mm
+        row_y = y_res - row * 10.5*mm
         nombre_res = RES_NOMBRES.get(code, code)
         c.setFillColor(VERDE_BG)
-        c.roundRect(col_x, row_y - 1.5*mm, col_w_res, 7.5*mm, 1.5*mm, fill=1, stroke=0)
+        c.roundRect(col_x, row_y - 2*mm, col_w_res, 9*mm, 1.5*mm, fill=1, stroke=0)
         c.setFillColor(VERDE)
-        c.setFont("Helvetica-Bold", 7.5)
+        c.setFont("Helvetica-Bold", 9)
         c.drawString(col_x + 3*mm, row_y + 2*mm, code)
         c.setFillColor(GRIS)
-        c.setFont("Helvetica", 7)
-        c.drawString(col_x + 14*mm, row_y + 2*mm, nombre_res)
+        c.setFont("Helvetica", 8.5)
+        c.drawString(col_x + 16*mm, row_y + 2*mm, nombre_res)
 
     # ── 4 SMALL IMAGES (bottom strip) ──
-    strip_h   = 45 * mm
+    strip_h   = 40 * mm
     img_count = min(4, len(fotos) - 1)
     if img_count > 0:
         gap   = 2.5 * mm
         img_w = (W - 2*MARGIN - (img_count - 1) * gap) / img_count
         for i in range(img_count):
             ix = MARGIN + i * (img_w + gap)
-            iy = 32 * mm
+            iy = 30 * mm
             draw_image_box(c, fotos[i + 1], ix, iy, img_w, strip_h)
 
     # ── FOOTER ──
-    foot_h = 24 * mm
+    foot_h = 26 * mm
     c.setFillColor(SURFACE2)
     c.rect(0, 0, W, foot_h, fill=1, stroke=0)
     c.setStrokeColor(ROJO)
@@ -573,17 +573,17 @@ def draw_page(c, variedad, page_num, total):
     c.line(0, foot_h, W, foot_h)
 
     c.setFillColor(BLANCO)
-    c.setFont("Helvetica-Bold", 7.5)
-    c.drawString(MARGIN, foot_h - 5*mm, "Distribuido por: SEMILLAS DGR S.A.")
+    c.setFont("Helvetica-Bold", 9)
+    c.drawString(MARGIN, foot_h - 6*mm, "Distribuido por: SEMILLAS DGR S.A.")
     c.setFillColor(GRIS)
-    c.setFont("Helvetica", 6.5)
-    c.drawString(MARGIN, foot_h - 9.5*mm,  "Edificio Ribleh, San Antonio de Belén, Heredia — Local 5")
-    c.drawString(MARGIN, foot_h - 13.5*mm, "Milton Castillo H.  |  semillasdgrsa@gmail.com")
-    c.drawString(MARGIN, foot_h - 17.5*mm, "+506 8820-4170  |  +506 2102-0910  |  +506 7053-6966")
+    c.setFont("Helvetica", 8)
+    c.drawString(MARGIN, foot_h - 11*mm,  "Edificio Ribleh, San Antonio de Belén, Heredia — Local 5")
+    c.drawString(MARGIN, foot_h - 16*mm, "Milton Castillo H.  |  semillasdgrsa@gmail.com")
+    c.drawString(MARGIN, foot_h - 21*mm, "+506 7053-6966  |  +507 6391-1504")
 
-    c.drawRightString(W - MARGIN, foot_h - 5*mm,  "semillasdgrsa@gmail.com")
-    c.drawRightString(W - MARGIN, foot_h - 9.5*mm, "semillasdgr-cr.com")
-    c.drawRightString(W - MARGIN, foot_h - 13.5*mm, "@semillasdgr")
+    c.drawRightString(W - MARGIN, foot_h - 6*mm,  "semillasdgrsa@gmail.com")
+    c.drawRightString(W - MARGIN, foot_h - 11*mm, "semillas-dgr.com")
+    c.drawRightString(W - MARGIN, foot_h - 16*mm, "@semillasdgr")
 
     c.restoreState()
 
@@ -595,15 +595,15 @@ def draw_glossary_page(c, page_num, total):
     c.setFillColor(NEGRO)
     c.rect(0, 0, W, H, fill=1, stroke=0)
 
-    # Red top bar (20mm)
-    bar_h = 20*mm
+    # Red top bar (22mm)
+    bar_h = 22*mm
     c.setFillColor(ROJO)
     c.rect(0, H - bar_h, W, bar_h, fill=1, stroke=0)
 
-    # Logos centrados en la franja roja: BHN izq, DGR (fondo negro) al lado
-    logo_h = 12*mm
+    # Logos
+    logo_h = 14*mm
     logo_y = H - bar_h + (bar_h - logo_h) / 2
-    bw = 22*mm
+    bw = 25*mm
     bx = MARGIN
     if os.path.exists(BHN):
         try:
@@ -612,7 +612,7 @@ def draw_glossary_page(c, page_num, total):
         except Exception:
             pass
     dgr_x = bx + bw + 4*mm
-    dgr_w = 30*mm
+    dgr_w = 34*mm
     if os.path.exists(LOGO):
         try:
             c.drawImage(LOGO, dgr_x, logo_y, width=dgr_w, height=logo_h,
@@ -621,31 +621,31 @@ def draw_glossary_page(c, page_num, total):
             pass
 
     c.setFillColor(BLANCO)
-    c.setFont("Helvetica-Bold", 7)
-    c.drawRightString(W - MARGIN, H - 7*mm, "GLOSARIO DE RESISTENCIAS")
-    c.setFont("Helvetica", 6)
-    c.drawRightString(W - MARGIN, H - 12*mm, f"Pág. {page_num} / {total}")
+    c.setFont("Helvetica-Bold", 8.5)
+    c.drawRightString(W - MARGIN, H - 8*mm, "GLOSARIO DE RESISTENCIAS")
+    c.setFont("Helvetica", 7.5)
+    c.drawRightString(W - MARGIN, H - 15*mm, f"Pág. {page_num} / {total}")
 
     # Title
-    y = H - bar_h - 12*mm
+    y = H - bar_h - 13*mm
     c.setFillColor(BLANCO)
-    c.setFont("Helvetica-Bold", 22)
+    c.setFont("Helvetica-Bold", 26)
     c.drawString(MARGIN, y, "Glosario de Resistencias")
-    y -= 7*mm
+    y -= 8*mm
     c.setStrokeColor(ROJO)
     c.setLineWidth(2)
-    c.line(MARGIN, y, 110*mm, y)
-    y -= 8*mm
+    c.line(MARGIN, y, 118*mm, y)
+    y -= 9*mm
 
     # Intro text
     c.setFillColor(GRIS)
-    c.setFont("Helvetica", 8)
+    c.setFont("Helvetica", 9)
     intro = ("Los códigos de resistencia se clasifican en dos niveles: HR (High Resistance / Resistencia Alta) e "
              "IR (Intermediate Resistance / Resistencia Intermedia). Se organizan por grupo de patógeno: "
              "Virus → Bacterias → Hongos → Nemátodos.")
-    for ln in wrap_text(c, intro, "Helvetica", 8, W - 2*MARGIN):
+    for ln in wrap_text(c, intro, "Helvetica", 9, W - 2*MARGIN):
         c.drawString(MARGIN, y, ln)
-        y -= 5*mm
+        y -= 5.5*mm
     y -= 4*mm
 
     # HR / IR legend boxes
@@ -661,18 +661,18 @@ def draw_glossary_page(c, page_num, total):
     for idx, (badge, title, desc, col, bgcol) in enumerate(legend_items):
         bx = MARGIN + idx * (box_w + 4*mm)
         c.setFillColor(bgcol)
-        c.roundRect(bx, y - 15*mm, box_w, 18*mm, 2*mm, fill=1, stroke=0)
+        c.roundRect(bx, y - 17*mm, box_w, 20*mm, 2*mm, fill=1, stroke=0)
         c.setFillColor(col)
-        c.setFont("Helvetica-Bold", 10)
-        c.drawString(bx + 3*mm, y - 3*mm, badge)
+        c.setFont("Helvetica-Bold", 12)
+        c.drawString(bx + 3*mm, y - 4*mm, badge)
         c.setFillColor(BLANCO)
-        c.setFont("Helvetica-Bold", 7.5)
-        c.drawString(bx + 14*mm, y - 3*mm, title)
+        c.setFont("Helvetica-Bold", 9)
+        c.drawString(bx + 16*mm, y - 4*mm, title)
         c.setFillColor(GRIS)
-        c.setFont("Helvetica", 7)
-        for i, ln in enumerate(wrap_text(c, desc, "Helvetica", 7, box_w - 6*mm)):
-            c.drawString(bx + 3*mm, y - 8.5*mm - i*4.5*mm, ln)
-    y -= 24*mm
+        c.setFont("Helvetica", 8)
+        for i, ln in enumerate(wrap_text(c, desc, "Helvetica", 8, box_w - 6*mm)):
+            c.drawString(bx + 3*mm, y - 10*mm - i*5*mm, ln)
+    y -= 27*mm
 
     # Group sections
     col_w = (W - 2*MARGIN - 5*mm) / 2
@@ -686,64 +686,64 @@ def draw_glossary_page(c, page_num, total):
 
         # Group header
         c.setFillColor(group_color)
-        c.setFont("Helvetica-Bold", 7)
+        c.setFont("Helvetica-Bold", 9)
         c.drawString(cx, cy, group_name)
         c.setStrokeColor(group_color)
         c.setLineWidth(0.75)
-        c.line(cx, cy - 1.5*mm, cx + col_w, cy - 1.5*mm)
-        cy -= 6*mm
+        c.line(cx, cy - 2*mm, cx + col_w, cy - 2*mm)
+        cy -= 7*mm
 
         for code, name, desc in items:
-            row_h = 22*mm
+            row_h = 25*mm
             box_top = cy
             box_bot = cy - row_h
             c.setFillColor(SURFACE2)
             c.roundRect(cx, box_bot, col_w, row_h, 1.5*mm, fill=1, stroke=0)
 
-            # Code badge (top-left inside box)
+            # Code badge
             c.setFillColor(group_color)
-            c.setFont("Helvetica-Bold", 8.5)
-            c.drawString(cx + 3*mm, box_top - 5*mm, code)
+            c.setFont("Helvetica-Bold", 10)
+            c.drawString(cx + 3*mm, box_top - 6*mm, code)
 
-            # Name (bold, below code)
+            # Name
             c.setFillColor(BLANCO)
-            c.setFont("Helvetica-Bold", 7)
-            name_lines = wrap_text(c, name, "Helvetica-Bold", 7, col_w - 6*mm)
+            c.setFont("Helvetica-Bold", 8.5)
+            name_lines = wrap_text(c, name, "Helvetica-Bold", 8.5, col_w - 6*mm)
             for i, ln in enumerate(name_lines[:2]):
-                c.drawString(cx + 3*mm, box_top - 10*mm - i*4*mm, ln)
+                c.drawString(cx + 3*mm, box_top - 12*mm - i*4.5*mm, ln)
 
-            # Description (gray, below name)
+            # Description
             c.setFillColor(GRIS)
-            c.setFont("Helvetica", 6.5)
-            desc_lines = wrap_text(c, desc, "Helvetica", 6.5, col_w - 6*mm)
-            desc_start = box_top - 10*mm - len(name_lines[:2])*4*mm - 3.5*mm
+            c.setFont("Helvetica", 7.5)
+            desc_lines = wrap_text(c, desc, "Helvetica", 7.5, col_w - 6*mm)
+            desc_start = box_top - 12*mm - len(name_lines[:2])*4.5*mm - 4*mm
             for i, ln in enumerate(desc_lines[:2]):
-                c.drawString(cx + 3*mm, desc_start - i*3.5*mm, ln)
+                c.drawString(cx + 3*mm, desc_start - i*4*mm, ln)
 
-            cy -= row_h + 2.5*mm
+            cy -= row_h + 3*mm
 
         cy -= 4*mm
         col_y[col_idx] = cy
         col_idx = (col_idx + 1) % 2
 
     # Footer
-    foot_h = 24*mm
+    foot_h = 26*mm
     c.setFillColor(SURFACE2)
     c.rect(0, 0, W, foot_h, fill=1, stroke=0)
     c.setStrokeColor(ROJO)
     c.setLineWidth(1)
     c.line(0, foot_h, W, foot_h)
     c.setFillColor(BLANCO)
-    c.setFont("Helvetica-Bold", 7.5)
-    c.drawString(MARGIN, foot_h - 5*mm, "Distribuido por: SEMILLAS DGR S.A.")
+    c.setFont("Helvetica-Bold", 9)
+    c.drawString(MARGIN, foot_h - 6*mm, "Distribuido por: SEMILLAS DGR S.A.")
     c.setFillColor(GRIS)
-    c.setFont("Helvetica", 6.5)
-    c.drawString(MARGIN, foot_h - 9.5*mm,  "Edificio Ribleh, San Antonio de Belén, Heredia — Local 5")
-    c.drawString(MARGIN, foot_h - 13.5*mm, "Milton Castillo H.  |  semillasdgrsa@gmail.com")
-    c.drawString(MARGIN, foot_h - 17.5*mm, "+506 8820-4170  |  +506 2102-0910  |  +506 7053-6966")
-    c.drawRightString(W - MARGIN, foot_h - 5*mm,  "semillasdgrsa@gmail.com")
-    c.drawRightString(W - MARGIN, foot_h - 9.5*mm, "semillasdgr-cr.com")
-    c.drawRightString(W - MARGIN, foot_h - 13.5*mm, "@semillasdgr")
+    c.setFont("Helvetica", 8)
+    c.drawString(MARGIN, foot_h - 11*mm,  "Edificio Ribleh, San Antonio de Belén, Heredia — Local 5")
+    c.drawString(MARGIN, foot_h - 16*mm, "Milton Castillo H.  |  semillasdgrsa@gmail.com")
+    c.drawString(MARGIN, foot_h - 21*mm, "+506 7053-6966  |  +507 6391-1504")
+    c.drawRightString(W - MARGIN, foot_h - 6*mm,  "semillasdgrsa@gmail.com")
+    c.drawRightString(W - MARGIN, foot_h - 11*mm, "semillas-dgr.com")
+    c.drawRightString(W - MARGIN, foot_h - 16*mm, "@semillasdgr")
 
     c.restoreState()
 
