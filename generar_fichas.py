@@ -9,16 +9,16 @@ from reportlab.lib.units import mm
 from reportlab.pdfgen import canvas
 import os
 
-# ── COLORES ──
-NEGRO      = colors.HexColor("#0a0a0a")
-SURFACE2   = colors.HexColor("#181818")
-SURFACE3   = colors.HexColor("#1f1f1f")
-ROJO       = colors.HexColor("#cc2222")
-BLANCO     = colors.HexColor("#ffffff")
-GRIS       = colors.HexColor("#888888")
-GRIS3      = colors.HexColor("#444444")
-VERDE      = colors.HexColor("#5eba45")
-VERDE_BG   = colors.HexColor("#0e2009")
+# ── COLORES (versión impresión fondo blanco) ──
+NEGRO      = colors.HexColor("#ffffff")   # fondo principal → blanco
+SURFACE2   = colors.HexColor("#f0f0f0")   # superficies secundarias → gris muy claro
+SURFACE3   = colors.HexColor("#e8e8e8")   # fondo caja imagen → gris claro
+ROJO       = colors.HexColor("#cc2222")   # rojo corporativo (igual)
+BLANCO     = colors.HexColor("#1a1a1a")   # texto principal → casi negro
+GRIS       = colors.HexColor("#555555")   # texto secundario → gris oscuro
+GRIS3      = colors.HexColor("#aaaaaa")   # líneas decorativas → gris medio
+VERDE      = colors.HexColor("#2e7a1a")   # verde resistencias (más oscuro para fondo blanco)
+VERDE_BG   = colors.HexColor("#e4f5de")   # fondo verde → verde muy claro
 
 W, H = A4  # 595 x 842 pt  (210 x 297 mm)
 
@@ -462,7 +462,7 @@ def draw_page(c, variedad, page_num, total):
     y = H - bar_h - 16*mm
     cat = variedad["categoria"]
     tag_color = ROJO if variedad["tipo_tag"] == "tomate" else VERDE
-    tag_bg = colors.HexColor("#2a0a0a") if variedad["tipo_tag"] == "tomate" else colors.HexColor("#0a1f08")
+    tag_bg = colors.HexColor("#fde8e8") if variedad["tipo_tag"] == "tomate" else colors.HexColor("#e4f5de")
     c.setFillColor(tag_bg)
     c.roundRect(MARGIN, y - 1.5*mm, 40*mm, 7*mm, 2*mm, fill=1, stroke=0)
     c.setFillColor(tag_color)
@@ -655,7 +655,7 @@ def draw_glossary_page(c, page_num, total):
          VERDE, VERDE_BG),
         ("IR", "Intermediate Resistance / Resistencia Intermedia",
          "La planta reduce el impacto pero puede mostrar síntomas leves bajo alta presión.",
-         colors.HexColor("#c8a020"), colors.HexColor("#1a1500")),
+         colors.HexColor("#c8a020"), colors.HexColor("#fef8e0")),
     ]
     box_w = (W - 2*MARGIN - 4*mm) / 2
     for idx, (badge, title, desc, col, bgcol) in enumerate(legend_items):
