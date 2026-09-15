@@ -289,7 +289,7 @@ VARIEDADES = [
         ],
     },
     {
-        "nombre": "BRS 152",
+        "nombre": "0152",
         "categoria": "Chile Dulce",
         "tipo_tag": "chile",
         "descripcion": (
@@ -303,7 +303,7 @@ VARIEDADES = [
         "fotos": [],
     },
     {
-        "nombre": "BRS 153",
+        "nombre": "0153",
         "categoria": "Chile Dulce",
         "tipo_tag": "chile",
         "descripcion": (
@@ -317,7 +317,7 @@ VARIEDADES = [
         "fotos": [],
     },
     {
-        "nombre": "BRS 154",
+        "nombre": "0154",
         "categoria": "Chile Dulce",
         "tipo_tag": "chile",
         "descripcion": (
