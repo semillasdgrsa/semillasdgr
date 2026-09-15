@@ -463,7 +463,7 @@ def draw_page(c, variedad, page_num, total):
     if variedad["tipo_tag"] == "tomate":
         tag_color = ROJO
         tag_bg = colors.HexColor("#fde8e8")
-    elif variedad["tipo_tag"] == "chile":
+    elif variedad["tipo_tag"] == "portainjerto":
         tag_color = AMARILLO
         tag_bg = colors.HexColor("#fff8e1")
     else:
@@ -839,7 +839,7 @@ def draw_cover_page(c):
         AMARILLO = colors.HexColor("#b8860b")
         if var["tipo_tag"] == "tomate":
             tag_color = ROJO
-        elif var["tipo_tag"] == "chile":
+        elif var["tipo_tag"] == "portainjerto":
             tag_color = AMARILLO
         else:
             tag_color = VERDE
