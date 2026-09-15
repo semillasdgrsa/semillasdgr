@@ -164,54 +164,6 @@ VARIEDADES = [
         ],
     },
     {
-        "nombre": "PATRÓN",
-        "categoria": "Portainjerto",
-        "tipo_tag": "portainjerto",
-        "descripcion": (
-            "Excelente alternativa para cultivar en suelos con problemas de hongos patógenos "
-            "y nemátodos. Sistema radicular eficiente con alta capacidad de absorción de "
-            "nutrientes y tolerancia a estreses abióticos: pH, salinidad y bajas temperaturas."
-        ),
-        "specs": [
-            ("Uso recomendado", "Suelos con hongos y nemátodos"),
-            ("Beneficio clave", "Sistema radicular eficiente"),
-            ("Tolerancias",     "pH, salinidad, frío"),
-        ],
-        "resistencias": ["TMV", "Bacteria", "F1", "F2", "F3", "FORL", "V", "N"],
-        "bhn": True,
-        "fotos": [
-            original("PORTAINJERTO PATRON.jpeg"),
-            foto("PORTAINJERTO PATRON", "WhatsApp Image 2026-06-16 at 10.41.26.jpeg"),
-            foto("PORTAINJERTO PATRON", "WhatsApp Image 2026-06-16 at 10.41.27.jpeg"),
-            foto("PORTAINJERTO PATRON", "WhatsApp Image 2026-06-16 at 10.41.45 (1).jpeg"),
-            foto("PORTAINJERTO PATRON", "WhatsApp Image 2026-06-16 at 11.45.58.jpeg"),
-        ],
-    },
-    {
-        "nombre": "R1912",
-        "categoria": "Portainjerto",
-        "tipo_tag": "portainjerto",
-        "descripcion": (
-            "Portainjerto intraespecífico de innovación genética. Excelente compatibilidad "
-            "entre portainjerto y copa, brindando un sinergismo óptimo entre ambos materiales. "
-            "Maximiza la resistencia a enfermedades y el potencial de alta producción."
-        ),
-        "specs": [
-            ("Tipo",           "Intraespecífico"),
-            ("Compatibilidad", "Alta con variedades BHN"),
-            ("Beneficio",      "Máxima resistencia + producción"),
-        ],
-        "resistencias": ["TMV", "Bacteria", "F1", "F2", "F3", "FORL", "Phytophtora", "V", "N"],
-        "bhn": True,
-        "fotos": [
-            original("PORTAINJERTO R 1912.jpeg"),
-            foto("PORTAINJERTO R1912", "WhatsApp Image 2026-06-16 at 11.19.17 (1).jpeg"),
-            foto("PORTAINJERTO R1912", "WhatsApp Image 2026-06-16 at 11.19.17 (2).jpeg"),
-            foto("PORTAINJERTO R1912", "WhatsApp Image 2026-06-16 at 11.23.56.jpeg"),
-            foto("PORTAINJERTO R1912", "WhatsApp Image 2026-06-16 at 11.20.15 (1).jpeg"),
-        ],
-    },
-    {
         "nombre": "SDGR 21",
         "categoria": "Tomate DGR",
         "tipo_tag": "tomate",
@@ -286,6 +238,54 @@ VARIEDADES = [
             foto("VULCANO", "WhatsApp Image 2026-06-16 at 21.10.35.jpeg"),
             foto("VULCANO", "WhatsApp Image 2026-06-16 at 21.10.35 (1).jpeg"),
             foto("VULCANO", "WhatsApp Image 2026-06-16 at 21.10.36.jpeg"),
+        ],
+    },
+    {
+        "nombre": "PATRÓN",
+        "categoria": "Portainjerto",
+        "tipo_tag": "portainjerto",
+        "descripcion": (
+            "Excelente alternativa para cultivar en suelos con problemas de hongos patógenos "
+            "y nemátodos. Sistema radicular eficiente con alta capacidad de absorción de "
+            "nutrientes y tolerancia a estreses abióticos: pH, salinidad y bajas temperaturas."
+        ),
+        "specs": [
+            ("Uso recomendado", "Suelos con hongos y nemátodos"),
+            ("Beneficio clave", "Sistema radicular eficiente"),
+            ("Tolerancias",     "pH, salinidad, frío"),
+        ],
+        "resistencias": ["TMV", "Bacteria", "F1", "F2", "F3", "FORL", "V", "N"],
+        "bhn": True,
+        "fotos": [
+            original("PORTAINJERTO PATRON.jpeg"),
+            foto("PORTAINJERTO PATRON", "WhatsApp Image 2026-06-16 at 10.41.26.jpeg"),
+            foto("PORTAINJERTO PATRON", "WhatsApp Image 2026-06-16 at 10.41.27.jpeg"),
+            foto("PORTAINJERTO PATRON", "WhatsApp Image 2026-06-16 at 10.41.45 (1).jpeg"),
+            foto("PORTAINJERTO PATRON", "WhatsApp Image 2026-06-16 at 11.45.58.jpeg"),
+        ],
+    },
+    {
+        "nombre": "R1912",
+        "categoria": "Portainjerto",
+        "tipo_tag": "portainjerto",
+        "descripcion": (
+            "Portainjerto intraespecífico de innovación genética. Excelente compatibilidad "
+            "entre portainjerto y copa, brindando un sinergismo óptimo entre ambos materiales. "
+            "Maximiza la resistencia a enfermedades y el potencial de alta producción."
+        ),
+        "specs": [
+            ("Tipo",           "Intraespecífico"),
+            ("Compatibilidad", "Alta con variedades BHN"),
+            ("Beneficio",      "Máxima resistencia + producción"),
+        ],
+        "resistencias": ["TMV", "Bacteria", "F1", "F2", "F3", "FORL", "Phytophtora", "V", "N"],
+        "bhn": True,
+        "fotos": [
+            original("PORTAINJERTO R 1912.jpeg"),
+            foto("PORTAINJERTO R1912", "WhatsApp Image 2026-06-16 at 11.19.17 (1).jpeg"),
+            foto("PORTAINJERTO R1912", "WhatsApp Image 2026-06-16 at 11.19.17 (2).jpeg"),
+            foto("PORTAINJERTO R1912", "WhatsApp Image 2026-06-16 at 11.23.56.jpeg"),
+            foto("PORTAINJERTO R1912", "WhatsApp Image 2026-06-16 at 11.20.15 (1).jpeg"),
         ],
     },
     {
