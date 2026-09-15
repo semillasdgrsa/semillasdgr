@@ -424,12 +424,19 @@ def draw_page(c, variedad, page_num, total):
     c.setFillColor(NEGRO)
     c.rect(0, 0, W, H, fill=1, stroke=0)
 
-    # ── RED TOP BAR (22mm) ──
+    # ── TOP BAR (22mm) — color by type ──
     bar_h = 22*mm
-    c.setFillColor(ROJO)
+    _AMARILLO = colors.HexColor("#b8860b")
+    if variedad["tipo_tag"] == "tomate":
+        bar_color = ROJO
+    elif variedad["tipo_tag"] == "portainjerto":
+        bar_color = _AMARILLO
+    else:
+        bar_color = VERDE
+    c.setFillColor(bar_color)
     c.rect(0, H - bar_h, W, bar_h, fill=1, stroke=0)
 
-    # Logos centrados verticalmente en la franja roja
+    # Logos centrados verticalmente en la franja
     logo_h = 14*mm
     logo_y = H - bar_h + (bar_h - logo_h) / 2
     dgr_w = 34*mm
