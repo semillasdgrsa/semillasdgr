@@ -288,6 +288,48 @@ VARIEDADES = [
             foto("VULCANO", "WhatsApp Image 2026-06-16 at 21.10.36.jpeg"),
         ],
     },
+    {
+        "nombre": "BRS 152",
+        "categoria": "Chile Dulce",
+        "tipo_tag": "chile",
+        "descripcion": (
+            "Variedad de chile dulce de alta productividad y excelente adaptación a las "
+            "condiciones del trópico centroamericano. Fruto de gran calibre, paredes gruesas "
+            "y excelente vida poscosecha. Próximamente información técnica detallada."
+        ),
+        "specs": [],
+        "resistencias": [],
+        "bhn": False,
+        "fotos": [],
+    },
+    {
+        "nombre": "BRS 153",
+        "categoria": "Chile Dulce",
+        "tipo_tag": "chile",
+        "descripcion": (
+            "Variedad de chile dulce de alta productividad y excelente adaptación a las "
+            "condiciones del trópico centroamericano. Fruto de gran calibre, paredes gruesas "
+            "y excelente vida poscosecha. Próximamente información técnica detallada."
+        ),
+        "specs": [],
+        "resistencias": [],
+        "bhn": False,
+        "fotos": [],
+    },
+    {
+        "nombre": "BRS 154",
+        "categoria": "Chile Dulce",
+        "tipo_tag": "chile",
+        "descripcion": (
+            "Variedad de chile dulce de alta productividad y excelente adaptación a las "
+            "condiciones del trópico centroamericano. Fruto de gran calibre, paredes gruesas "
+            "y excelente vida poscosecha. Próximamente información técnica detallada."
+        ),
+        "specs": [],
+        "resistencias": [],
+        "bhn": False,
+        "fotos": [],
+    },
 ]
 
 RES_NOMBRES = {
@@ -341,7 +383,6 @@ HALF   = W / 2
 
 def draw_image_box(c, path, x, y, w, h, radius=1.5*mm):
     """Draws a rounded-corner clipped image box with dark bg fallback."""
-    # Dark background
     c.setFillColor(SURFACE3)
     c.roundRect(x, y, w, h, radius, fill=1, stroke=0)
     if path and os.path.exists(path):
@@ -350,6 +391,11 @@ def draw_image_box(c, path, x, y, w, h, radius=1.5*mm):
                         preserveAspectRatio=True, anchor='c', mask='auto')
         except Exception:
             pass
+    else:
+        # Placeholder text when no image available
+        c.setFillColor(GRIS3)
+        c.setFont("Helvetica", 8)
+        c.drawCentredString(x + w / 2, y + h / 2, "Foto proximamente")
 
 
 def wrap_text(c, text, font, size, max_width):
