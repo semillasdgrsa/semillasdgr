@@ -139,30 +139,6 @@ VARIEDADES = [
         ],
     },
     {
-        "nombre": "JM PLUS",
-        "categoria": "Tomate BHN",
-        "tipo_tag": "tomate",
-        "descripcion": (
-            "Tomate indeterminado de follaje firme moderado. Fruto extragrande redondeado con "
-            "mesocarpio grueso y consistencia muy firme. Excelente comportamiento en poscosecha "
-            "y alto valor comercial."
-        ),
-        "specs": [
-            ("Altura aprox.",  "1.8 metros"),
-            ("Racimos/planta", "8 – 10"),
-            ("Frutos/racimo",  "3 – 5"),
-            ("Peso promedio",  "250 – 350 g"),
-            ("Forma",          "Redondeada extragrande"),
-        ],
-        "resistencias": ["TMV", "TSWV", "TYLCV", "F1", "F2", "F3", "V", "N"],
-        "bhn": True,
-        "fotos": [
-            original("JM PLUS.jpeg"),
-            foto("JM PLUS", "WhatsApp Image 2026-06-16 at 10.23.52 (1).jpeg"),
-            foto("JM PLUS", "WhatsApp Image 2026-06-16 at 10.23.52.jpeg"),
-        ],
-    },
-    {
         "nombre": "JR SPECIAL",
         "categoria": "Tomate BHN",
         "tipo_tag": "tomate",
