@@ -65,30 +65,6 @@ VARIEDADES = [
         ],
     },
     {
-        "nombre": "IL-1907",
-        "categoria": "Tomate BHN",
-        "tipo_tag": "tomate",
-        "descripcion": (
-            "Híbrido de tomate indeterminado con follaje vigoroso, fruto grande y multilocular "
-            "con excelente firmeza. Adaptado específicamente a las condiciones climáticas de "
-            "Costa Rica. Ideal para producción bajo invernadero y a campo abierto."
-        ),
-        "specs": [
-            ("Porte",          "Indeterminado"),
-            ("Tipo de fruto",  "Multilocular"),
-            ("Vida poscosecha","LSL — Larga vida anaquel"),
-        ],
-        "resistencias": ["TMV", "TSWV", "TYLCV", "F1", "F2", "F3", "FORL", "V", "N", "LSL"],
-        "bhn": True,
-        "fotos": [
-            original("IL 1907.jpeg"),
-            foto("IL 1907", "WhatsApp Image 2026-06-16 at 09.13.01.jpeg"),
-            foto("IL 1907", "WhatsApp Image 2026-06-16 at 09.14.09.jpeg"),
-            foto("IL 1907", "WhatsApp Image 2026-06-16 at 09.17.48.jpeg"),
-            foto("IL 1907", "WhatsApp Image 2026-06-16 at 09.15.27.jpeg"),
-        ],
-    },
-    {
         "nombre": "IL-1908",
         "categoria": "Tomate BHN",
         "tipo_tag": "tomate",
