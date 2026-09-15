@@ -459,8 +459,16 @@ def draw_page(c, variedad, page_num, total):
     # ── CATEGORY TAG ──
     y = H - bar_h - 15*mm
     cat = variedad["categoria"]
-    tag_color = ROJO if variedad["tipo_tag"] == "tomate" else VERDE
-    tag_bg = colors.HexColor("#fde8e8") if variedad["tipo_tag"] == "tomate" else colors.HexColor("#e4f5de")
+    AMARILLO = colors.HexColor("#b8860b")
+    if variedad["tipo_tag"] == "tomate":
+        tag_color = ROJO
+        tag_bg = colors.HexColor("#fde8e8")
+    elif variedad["tipo_tag"] == "chile":
+        tag_color = AMARILLO
+        tag_bg = colors.HexColor("#fff8e1")
+    else:
+        tag_color = VERDE
+        tag_bg = colors.HexColor("#e4f5de")
     c.setFillColor(tag_bg)
     c.roundRect(MARGIN, y - 2*mm, 46*mm, 8.5*mm, 2*mm, fill=1, stroke=0)
     c.setFillColor(tag_color)
@@ -801,9 +809,9 @@ def draw_cover_page(c):
 
     # Grid: 4 columnas x 3 filas = 12 variedades
     cols = 4
-    rows = 3
+    rows = 4
     gap_x = 4*mm
-    gap_y = 5*mm
+    gap_y = 4*mm
     grid_top = H - 128*mm
     grid_w = W - 2*MARGIN
     cell_w = (grid_w - (cols - 1) * gap_x) / cols
@@ -828,7 +836,13 @@ def draw_cover_page(c):
                 pass
 
         # Nombre
-        tag_color = ROJO if var["tipo_tag"] == "tomate" else VERDE
+        AMARILLO = colors.HexColor("#b8860b")
+        if var["tipo_tag"] == "tomate":
+            tag_color = ROJO
+        elif var["tipo_tag"] == "chile":
+            tag_color = AMARILLO
+        else:
+            tag_color = VERDE
         c.setFillColor(tag_color)
         c.setFont("Helvetica-Bold", 7.5)
         c.drawCentredString(cx + cell_w / 2, cy + 3.5*mm, var["nombre"])
