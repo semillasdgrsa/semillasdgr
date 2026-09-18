@@ -107,11 +107,11 @@ VARIEDADES = [
         "resistencias": ["TMV", "TSWV", "TYLCV", "F1", "F2", "F3", "FORL", "V", "N"],
         "bhn": True,
         "fotos": [
-            original("IL 1909.jpeg"),
-            foto("IL 1909", "WhatsApp Image 2026-06-16 at 09.34.36.jpeg"),
-            foto("IL 1909", "WhatsApp Image 2026-06-16 at 09.34.44.jpeg"),
-            foto("IL 1909", "WhatsApp Image 2026-06-16 at 09.35.07.jpeg"),
-            foto("IL 1909", "WhatsApp Image 2026-06-16 at 09.40.26.jpeg"),
+            foto("IL 1909", "il1909-campo-05.jpeg"),
+            foto("IL 1909", "il1909-campo-07.jpeg"),
+            foto("IL 1909", "il1909-campo-06.jpeg"),
+            foto("IL 1909", "il1909-campo-09.jpeg"),
+            foto("IL 1909", "il1909-campo-10.jpeg"),
         ],
     },
     {
