@@ -333,7 +333,10 @@ VARIEDADES = [
         "specs": [],
         "resistencias": [],
         "bhn": False,
-        "fotos": [],
+        "fotos": [
+            foto("0154", "0154-campo-01.jpeg"),
+            foto("0154", "0154-campo-02.jpeg"),
+        ],
     },
 ]
 
