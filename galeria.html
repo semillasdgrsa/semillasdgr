@@ -18,72 +18,95 @@
   <link rel="stylesheet" href="assets/styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    /* ── Filter tabs ── */
+    /* ── Filter bar ── */
     .gallery-filters {
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 1.2rem 1.4rem;
       margin-bottom: 2.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.7rem;
     }
-    .gf-row {
+
+    /* Top tab bar */
+    .gf-tabbar {
+      display: flex;
+      align-items: stretch;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .gf-tab {
+      flex: 1;
       display: flex;
       align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.85rem 0.5rem;
+      border: none;
+      background: transparent;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--gray-2);
+      cursor: pointer;
+      transition: background 0.18s, color 0.18s;
+      border-right: 1px solid var(--border);
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      position: relative;
+    }
+    .gf-tab:last-child { border-right: none; }
+    .gf-tab i { font-size: 0.9rem; }
+    .gf-tab:hover { background: var(--surface-2); color: var(--text); }
+    .gf-tab.active {
+      color: #fff;
+      font-weight: 700;
+    }
+    .gf-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: rgba(255,255,255,0.5);
+      border-radius: 3px 3px 0 0;
+    }
+    /* per-tab colors */
+    .gf-tab[data-cat="todas"].active    { background: #1a1a1a; }
+    .gf-tab[data-cat="tomate"].active   { background: #cc2222; }
+    .gf-tab[data-cat="portainjerto"].active { background: #b8860b; }
+    .gf-tab[data-cat="chile"].active    { background: #2d8a4e; }
+    .gf-tab[data-cat="ensayos"].active  { background: #4a7fb5; }
+    .gf-tab[data-cat="tomate"]:hover    { color: #cc2222; }
+    .gf-tab[data-cat="portainjerto"]:hover { color: #b8860b; }
+    .gf-tab[data-cat="chile"]:hover     { color: #2d8a4e; }
+    .gf-tab[data-cat="ensayos"]:hover   { color: #4a7fb5; }
+
+    /* Sub-filter pill row */
+    .gf-subbar {
+      display: none;
       flex-wrap: wrap;
       gap: 0.4rem;
+      padding: 0.9rem 0 0.2rem;
+      align-items: center;
     }
-    .gf-row-top {
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0.7rem;
-      margin-bottom: 0.1rem;
-    }
-    .gf-label {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gray-3);
-      white-space: nowrap;
-      min-width: 90px;
-      padding-right: 0.5rem;
-    }
-    .gf-btn {
-      padding: 0.38rem 1rem;
+    .gf-subbar.visible { display: flex; }
+    .gf-pill {
+      padding: 0.32rem 0.95rem;
       border: 1.5px solid var(--border);
       border-radius: 999px;
       background: var(--surface);
       color: var(--gray-2);
       font-family: 'Poppins', sans-serif;
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       font-weight: 600;
       cursor: pointer;
-      transition: background 0.18s, border-color 0.18s, color 0.18s, box-shadow 0.18s;
+      transition: all 0.15s;
       letter-spacing: 0.02em;
       white-space: nowrap;
     }
-    .gf-btn:hover {
-      border-color: var(--red);
-      color: var(--red);
-      background: var(--surface-2);
-    }
-    .gf-btn.active {
-      background: var(--red);
-      border-color: var(--red);
-      color: #fff;
-      box-shadow: 0 2px 8px rgba(204,34,34,0.25);
-    }
-    /* category accent colors on hover */
-    .gf-row.cat-tomate .gf-btn:hover   { border-color: #e05252; color: #e05252; }
-    .gf-row.cat-tomate .gf-btn.active  { background: #e05252; border-color: #e05252; box-shadow: 0 2px 8px rgba(224,82,82,0.28); }
-    .gf-row.cat-porto .gf-btn:hover    { border-color: #b8860b; color: #b8860b; }
-    .gf-row.cat-porto .gf-btn.active   { background: #c9960d; border-color: #c9960d; box-shadow: 0 2px 8px rgba(200,150,13,0.28); }
-    .gf-row.cat-chile .gf-btn:hover    { border-color: #2d8a4e; color: #2d8a4e; }
-    .gf-row.cat-chile .gf-btn.active   { background: #2d8a4e; border-color: #2d8a4e; box-shadow: 0 2px 8px rgba(45,138,78,0.28); }
-    .gf-row.cat-ensayos .gf-btn:hover  { border-color: #4a7fb5; color: #4a7fb5; }
-    .gf-row.cat-ensayos .gf-btn.active { background: #4a7fb5; border-color: #4a7fb5; box-shadow: 0 2px 8px rgba(74,127,181,0.28); }
+    .gf-pill:hover  { background: var(--surface-2); color: var(--text); border-color: var(--gray-3); }
+    .gf-pill.active { background: #cc2222; border-color: #cc2222; color: #fff; box-shadow: 0 2px 6px rgba(204,34,34,0.22); }
+    .gf-subbar[data-cat="portainjerto"] .gf-pill.active { background: #b8860b; border-color: #b8860b; box-shadow: 0 2px 6px rgba(184,134,11,0.22); }
+    .gf-subbar[data-cat="chile"] .gf-pill.active        { background: #2d8a4e; border-color: #2d8a4e; box-shadow: 0 2px 6px rgba(45,138,78,0.22); }
+    .gf-subbar[data-cat="ensayos"] .gf-pill.active      { background: #4a7fb5; border-color: #4a7fb5; box-shadow: 0 2px 6px rgba(74,127,181,0.22); }
 
     /* ── Variety sections ── */
     .variety-section { margin-bottom: 3rem; }
@@ -197,49 +220,61 @@
   <section class="section">
     <div class="container">
 
-      <!-- Filter tabs -->
+      <!-- Filter bar -->
       <div class="gallery-filters">
-        <!-- Todas -->
-        <div class="gf-row gf-row-top">
-          <button class="gf-btn active" onclick="filtrarVariedad('todas', this)">🌿 Todas las fotos</button>
+
+        <!-- Tab bar -->
+        <div class="gf-tabbar">
+          <button class="gf-tab active" data-cat="todas" onclick="tabClick('todas', this)">
+            <i class="fa-solid fa-border-all"></i> Todas
+          </button>
+          <button class="gf-tab" data-cat="tomate" onclick="tabClick('tomate', this)">
+            <i class="fa-solid fa-seedling"></i> Tomate
+          </button>
+          <button class="gf-tab" data-cat="portainjerto" onclick="tabClick('portainjerto', this)">
+            <i class="fa-solid fa-leaf"></i> Portainjerto
+          </button>
+          <button class="gf-tab" data-cat="chile" onclick="tabClick('chile', this)">
+            <i class="fa-solid fa-pepper-hot"></i> Chile Dulce
+          </button>
+          <button class="gf-tab" data-cat="ensayos" onclick="tabClick('ensayos', this)">
+            <i class="fa-solid fa-flask"></i> Ensayos
+          </button>
         </div>
 
-        <!-- Tomate -->
-        <div class="gf-row cat-tomate">
-          <span class="gf-label"><i class="fa-solid fa-seedling" style="margin-right:0.35rem;color:#e05252;"></i>Tomate</span>
-          <button class="gf-btn" onclick="filtrarCategoria('tomate', this)">Todos</button>
-          <button class="gf-btn" onclick="filtrarVariedad('cacique', this)">CACIQUE</button>
-          <button class="gf-btn" onclick="filtrarVariedad('il1908', this)">IL 1908</button>
-          <button class="gf-btn" onclick="filtrarVariedad('il1909', this)">IL 1909</button>
-          <button class="gf-btn" onclick="filtrarVariedad('jrspecial', this)">JR Special</button>
-          <button class="gf-btn" onclick="filtrarVariedad('milan', this)">MILAN</button>
-          <button class="gf-btn" onclick="filtrarVariedad('sdgr21', this)">SDGR 21</button>
-          <button class="gf-btn" onclick="filtrarVariedad('titan', this)">TITAN</button>
-          <button class="gf-btn" onclick="filtrarVariedad('vulcano', this)">VULCANO</button>
+        <!-- Sub-filter pills: Tomate -->
+        <div class="gf-subbar" data-cat="tomate">
+          <button class="gf-pill active" onclick="subPillClick('tomate', this)" data-action="cat">Todos los tomates</button>
+          <button class="gf-pill" onclick="subPillClick('cacique', this)" data-action="var">CACIQUE</button>
+          <button class="gf-pill" onclick="subPillClick('il1908', this)" data-action="var">IL 1908</button>
+          <button class="gf-pill" onclick="subPillClick('il1909', this)" data-action="var">IL 1909</button>
+          <button class="gf-pill" onclick="subPillClick('jrspecial', this)" data-action="var">JR Special</button>
+          <button class="gf-pill" onclick="subPillClick('milan', this)" data-action="var">MILAN</button>
+          <button class="gf-pill" onclick="subPillClick('sdgr21', this)" data-action="var">SDGR 21</button>
+          <button class="gf-pill" onclick="subPillClick('titan', this)" data-action="var">TITAN</button>
+          <button class="gf-pill" onclick="subPillClick('vulcano', this)" data-action="var">VULCANO</button>
         </div>
 
-        <!-- Portainjerto -->
-        <div class="gf-row cat-porto">
-          <span class="gf-label"><i class="fa-solid fa-leaf" style="margin-right:0.35rem;color:#c9960d;"></i>Portainjerto</span>
-          <button class="gf-btn" onclick="filtrarCategoria('portainjerto', this)">Todos</button>
-          <button class="gf-btn" onclick="filtrarVariedad('patron', this)">PATRÓN</button>
-          <button class="gf-btn" onclick="filtrarVariedad('r1912', this)">R 1912</button>
+        <!-- Sub-filter pills: Portainjerto -->
+        <div class="gf-subbar" data-cat="portainjerto">
+          <button class="gf-pill active" onclick="subPillClick('portainjerto', this)" data-action="cat">Todos los portainjertos</button>
+          <button class="gf-pill" onclick="subPillClick('patron', this)" data-action="var">PATRÓN</button>
+          <button class="gf-pill" onclick="subPillClick('r1912', this)" data-action="var">R 1912</button>
         </div>
 
-        <!-- Chile Dulce -->
-        <div class="gf-row cat-chile">
-          <span class="gf-label"><i class="fa-solid fa-pepper-hot" style="margin-right:0.35rem;color:#2d8a4e;"></i>Chile Dulce</span>
-          <button class="gf-btn" onclick="filtrarCategoria('chile', this)">Todos</button>
-          <button class="gf-btn" onclick="filtrarVariedad('brs0152', this)">BRS-0152</button>
-          <button class="gf-btn" onclick="filtrarVariedad('brs0153', this)">BRS-0153</button>
-          <button class="gf-btn" onclick="filtrarVariedad('brs0154', this)">BRS-0154</button>
+        <!-- Sub-filter pills: Chile Dulce -->
+        <div class="gf-subbar" data-cat="chile">
+          <button class="gf-pill active" onclick="subPillClick('chile', this)" data-action="cat">Todos los chiles</button>
+          <button class="gf-pill" onclick="subPillClick('brs0152', this)" data-action="var">BRS-0152</button>
+          <button class="gf-pill" onclick="subPillClick('brs0153', this)" data-action="var">BRS-0153</button>
+          <button class="gf-pill" onclick="subPillClick('brs0154', this)" data-action="var">BRS-0154</button>
         </div>
 
-        <!-- Ensayos -->
-        <div class="gf-row cat-ensayos">
-          <span class="gf-label"><i class="fa-solid fa-flask" style="margin-right:0.35rem;color:#4a7fb5;"></i>Ensayos</span>
-          <button class="gf-btn" onclick="filtrarCategoria('ensayos', this)">Ensayos de Campo</button>
+        <!-- Sub-filter pills: Ensayos (no sub-varieties yet) -->
+        <div class="gf-subbar" data-cat="ensayos">
+          <button class="gf-pill active" onclick="subPillClick('ensayos', this)" data-action="cat">Ensayos de Campo</button>
         </div>
+
       </div>
 
       <!-- CACIQUE -->
@@ -551,28 +586,38 @@
       document.getElementById('navLinks').classList.toggle('open');
       document.getElementById('hamburger').classList.toggle('open');
     }
-    function filtrarVariedad(variedad, btn) {
-      document.querySelectorAll('.gf-btn').forEach(b => b.classList.remove('active'));
+    function tabClick(cat, btn) {
+      // activate tab
+      document.querySelectorAll('.gf-tab').forEach(t => t.classList.remove('active'));
       btn.classList.add('active');
+      // show/hide subbars
+      document.querySelectorAll('.gf-subbar').forEach(sb => {
+        sb.classList.toggle('visible', sb.dataset.cat === cat);
+      });
+      // reset sub-pills in active subbar
+      const subbar = document.querySelector('.gf-subbar[data-cat="' + cat + '"]');
+      if (subbar) {
+        subbar.querySelectorAll('.gf-pill').forEach(p => p.classList.remove('active'));
+        subbar.querySelector('.gf-pill').classList.add('active');
+      }
+      // show sections
       document.querySelectorAll('.variety-section').forEach(sec => {
-        if (variedad === 'todas' || sec.dataset.variety === variedad) {
-          sec.classList.remove('hidden');
-        } else {
-          sec.classList.add('hidden');
-        }
+        sec.classList.toggle('hidden', cat !== 'todas' && sec.dataset.cat !== cat);
       });
     }
-    function filtrarCategoria(cat, btn) {
-      document.querySelectorAll('.gf-btn').forEach(b => b.classList.remove('active'));
+    function subPillClick(value, btn) {
+      const subbar = btn.closest('.gf-subbar');
+      subbar.querySelectorAll('.gf-pill').forEach(p => p.classList.remove('active'));
       btn.classList.add('active');
+      const isCat = btn.dataset.action === 'cat';
       document.querySelectorAll('.variety-section').forEach(sec => {
-        if (sec.dataset.cat === cat) {
-          sec.classList.remove('hidden');
-        } else {
-          sec.classList.add('hidden');
-        }
+        const match = isCat ? sec.dataset.cat === value : sec.dataset.variety === value;
+        sec.classList.toggle('hidden', !match);
       });
     }
+    // legacy — keep for any old inline calls
+    function filtrarVariedad(v, btn) { subPillClick(v, btn); }
+    function filtrarCategoria(c, btn) { subPillClick(c, btn); }
     function abrirLightbox(el) {
       const img = el.querySelector('img');
       if (!img) return;
