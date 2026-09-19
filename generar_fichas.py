@@ -321,12 +321,18 @@ VARIEDADES = [
         "categoria": "Chile Dulce",
         "tipo_tag": "chile",
         "descripcion": (
-            "Variedad de chile dulce de alta productividad y excelente adaptación a las "
-            "condiciones del trópico centroamericano. Fruto de gran calibre, paredes gruesas "
-            "y excelente vida poscosecha. Próximamente información técnica detallada."
+            "Variedad de chile dulce de alto rendimiento con excelente adaptación al trópico "
+            "centroamericano. Fruto de gran calibre, paredes gruesas y destacada vida "
+            "poscosecha. Resistente a oídio interno (L1). "
+            "Semilla certificada BHN Seed, origen India."
         ),
-        "specs": [],
-        "resistencias": [],
+        "specs": [
+            ("Germinación",   "90%"),
+            ("Pureza",        "99%"),
+            ("Origen",        "India"),
+            ("Casa semillera","BHN Seed"),
+        ],
+        "resistencias": ["L1"],
         "bhn": False,
         "fotos": [
             foto("0153", "0153-campo-01.jpeg"),
