@@ -31,7 +31,9 @@ def hero(filename):
 
 def original(filename):
     return os.path.join(ORIG, filename)
-OUTPUT = "/Users/lucianacastillo/semillas webpage/Catalogo_Semillas_DGR.pdf"
+OUTPUT       = "/Users/lucianacastillo/semillas webpage/Catalogo_Semillas_DGR.pdf"
+OUTPUT_CHILE = "/Users/lucianacastillo/semillas webpage/Catalogo_Chile_Dulce.pdf"
+OUTPUT_TOM   = "/Users/lucianacastillo/semillas webpage/Catalogo_Tomate_Portainjerto.pdf"
 LOGO   = "/Users/lucianacastillo/semillas webpage/assets/galeria/general/logo-light.jpeg"
 LOGO_DARK = "/Users/lucianacastillo/semillas webpage/assets/galeria/general/logo-dark.jpeg"
 BHN    = "/Users/lucianacastillo/semillas webpage/assets/bhn-seed.png"
@@ -293,12 +295,18 @@ VARIEDADES = [
         "categoria": "Chile Dulce",
         "tipo_tag": "chile",
         "descripcion": (
-            "Variedad de chile dulce de alta productividad y excelente adaptación a las "
-            "condiciones del trópico centroamericano. Fruto de gran calibre, paredes gruesas "
-            "y excelente vida poscosecha. Próximamente información técnica detallada."
+            "Variedad de chile dulce de alto rendimiento con excelente adaptación al trópico "
+            "centroamericano. Fruto de gran calibre, paredes gruesas y destacada vida "
+            "poscosecha. Resistente a oídio interno (L1) y nemátodos (N). "
+            "Semilla certificada BHN Seed, origen China."
         ),
-        "specs": [],
-        "resistencias": [],
+        "specs": [
+            ("Germinación",   "90%"),
+            ("Pureza",        "99%"),
+            ("Origen",        "China"),
+            ("Casa semillera","BHN Seed"),
+        ],
+        "resistencias": ["L1", "N"],
         "bhn": False,
         "fotos": [
             foto("0152", "0152-campo-06.jpeg"),
@@ -355,6 +363,7 @@ RES_NOMBRES = {
     "FORL":     "Fusarium radicis-lycopersici",
     "V":        "Verticillium dahliae",
     "N":        "Meloidogyne spp. (Mi)",
+    "L1":       "Leveillula taurica (oídio interno)",
     "LSL":      "Long Shelf Life",
     "Phytophtora": "Phytophtora capsici (pudrición raíz)",
 }
@@ -381,6 +390,7 @@ GLOSARIO = [
     # col derecha
     ("NEMÁTODOS", colors.HexColor("#60a0c8"), [
         ("N",    "Meloidogyne spp. (Mi)",             "Nemátodos del nudo de raíz. Reducen absorción de nutrientes."),
+        ("L1",   "Leveillula taurica",                "Oídio interno del chile. Afecta hojas desde el envés."),
     ]),
     # col izquierda
     ("CARACTERÍSTICA", GRIS, [
@@ -937,6 +947,30 @@ def generar_individuales():
     print(f"\n✅ {len(VARIEDADES)} fichas individuales generadas en assets/fichas/")
 
 
+def generar_catalogo_categoria(tag, output_path, titulo):
+    """Genera un catálogo PDF filtrado por tipo_tag (e.g. 'chile', 'tomate')."""
+    vars_cat = [v for v in VARIEDADES if v.get("tipo_tag") == tag or
+                (tag == "tomate" and v.get("tipo_tag") in ("tomate", "portainjerto"))]
+    if not vars_cat:
+        return
+    c = canvas.Canvas(output_path, pagesize=A4)
+    c.setTitle(f"{titulo} — Semillas DGR S.A.")
+    c.setAuthor("Semillas DGR S.A.")
+    c.setSubject(titulo)
+    draw_cover_page(c)
+    c.showPage()
+    total = len(vars_cat) + 1
+    for i, var in enumerate(vars_cat, 1):
+        draw_page(c, var, i, total)
+        c.showPage()
+    draw_glossary_page(c, total, total)
+    c.showPage()
+    c.save()
+    print(f"  ✅ {output_path} ({len(vars_cat)} variedades)")
+
+
 if __name__ == "__main__":
     generar()
     generar_individuales()
+    generar_catalogo_categoria("chile", OUTPUT_CHILE, "Catálogo Chile Dulce — Semillas DGR S.A.")
+    generar_catalogo_categoria("tomate", OUTPUT_TOM, "Catálogo Tomate y Portainjerto — Semillas DGR S.A.")
