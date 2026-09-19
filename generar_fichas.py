@@ -868,10 +868,15 @@ def draw_cover_page(c, variedades=None, titulo="CATÁLOGO DE FICHAS TÉCNICAS"):
     gap_x = 4*mm
     gap_y = 4*mm
     grid_top = H - 128*mm
+    grid_avail = grid_top - 28*mm
     grid_w = W - 2*MARGIN
     cell_w = (grid_w - (cols - 1) * gap_x) / cols
-    cell_h = (grid_top - 28*mm - (rows - 1) * gap_y) / rows
+    MAX_CELL_H = 55*mm
+    cell_h = min(MAX_CELL_H, (grid_avail - (rows - 1) * gap_y) / rows)
     img_h = cell_h - 10*mm
+    # center grid vertically in available space
+    used_h = rows * cell_h + (rows - 1) * gap_y
+    grid_top = 28*mm + used_h + (grid_avail - used_h) / 2
 
     for idx, var in enumerate(variedades):
         col = idx % cols
