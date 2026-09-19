@@ -305,7 +305,7 @@ VARIEDADES = [
             foto("0152", "0152-campo-14.jpeg"),
             foto("0152", "0152-campo-13.jpeg"),
             foto("0152", "0152-campo-11.jpeg"),
-            foto("0152", "0152-campo-12.jpeg"),
+            foto("0152", "0152-campo-15.jpeg"),
         ],
     },
     {
@@ -320,7 +320,9 @@ VARIEDADES = [
         "specs": [],
         "resistencias": [],
         "bhn": False,
-        "fotos": [],
+        "fotos": [
+            foto("0153", "0153-campo-01.jpeg"),
+        ],
     },
     {
         "nombre": "BRS-0154",
@@ -335,6 +337,7 @@ VARIEDADES = [
         "resistencias": [],
         "bhn": False,
         "fotos": [
+            foto("0154", "0154-campo-03.jpeg"),
             foto("0154", "0154-campo-01.jpeg"),
             foto("0154", "0154-campo-02.jpeg"),
         ],
