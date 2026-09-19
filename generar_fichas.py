@@ -996,4 +996,4 @@ if __name__ == "__main__":
     generar()
     generar_individuales()
     generar_catalogo_categoria("chile", OUTPUT_CHILE, "Catálogo Variedades de Chile Dulce")
-    generar_catalogo_categoria("tomate", OUTPUT_TOM, "Catálogo Variedades de Tomate y Portainjerto")
+    generar_catalogo_categoria("tomate", OUTPUT_TOM, "Catálogo Variedades de Tomate")
