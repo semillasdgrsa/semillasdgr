@@ -55,6 +55,8 @@ VARIEDADES = [
         "specs": [
             ("Porte",          "Indeterminado"),
             ("Vida poscosecha","Larga"),
+            ("Racimos/planta", "8 – 10"),
+            ("Peso promedio",  "250 – 320 g"),
         ],
         "resistencias": ["TMV", "TSWV", "TYLCV", "F1", "F2", "F3", "V", "N"],
         "bhn": True,
@@ -106,7 +108,7 @@ VARIEDADES = [
             ("Frutos/racimo",  "3 – 5"),
             ("Peso promedio",  "230 – 310 g"),
         ],
-        "resistencias": ["TMV", "TSWV", "TYLCV", "F1", "F2", "F3", "FORL", "V", "N"],
+        "resistencias": ["TMV", "TSWV", "TYLCV", "F1", "F2", "F3", "FORL", "V", "N", "LSL"],
         "bhn": True,
         "fotos": [
             foto("IL 1909", "il1909-campo-05.jpeg"),
@@ -130,7 +132,7 @@ VARIEDADES = [
             ("Racimos/planta", "8 – 10"),
             ("Peso promedio",  "250 – 300 g"),
         ],
-        "resistencias": ["TMV", "F1", "F2", "F3", "V"],
+        "resistencias": ["TMV", "F1", "F2", "F3", "V", "LSL"],
         "bhn": True,
         "fotos": [
             original("JR SPECIAL.jpeg"),
@@ -155,7 +157,7 @@ VARIEDADES = [
             ("Frutos/racimo",  "3 – 7"),
             ("Peso promedio",  "250 – 300 g"),
         ],
-        "resistencias": ["TMV", "F1", "F2", "F3", "V"],
+        "resistencias": ["TMV", "F1", "F2", "F3", "V", "LSL"],
         "bhn": True,
         "fotos": [
             original("MILAN.jpeg"),
@@ -180,7 +182,7 @@ VARIEDADES = [
             ("Forma",      "Globosa"),
             ("Peso aprox.", "300 g"),
         ],
-        "resistencias": ["TMV", "TYLCV", "F1", "F2", "F3", "V", "N", "LSL"],
+        "resistencias": ["TMV", "TYLCV", "F1", "F2", "F3", "V", "LSL"],
         "bhn": False,
         "fotos": [
             original("SDGR 21.jpeg"),
@@ -206,7 +208,7 @@ VARIEDADES = [
             ("Peso promedio",  "250 – 350 g"),
             ("Forma",          "Tipo bola"),
         ],
-        "resistencias": ["TMV", "F1", "F2", "F3", "V", "N"],
+        "resistencias": ["TMV", "F1", "F2", "F3", "V", "N", "LSL"],
         "bhn": True,
         "fotos": [
             original("TITAN.jpeg"),
@@ -232,7 +234,7 @@ VARIEDADES = [
             ("Peso promedio",  "250 – 300 g"),
             ("Forma",          "Tipo bola"),
         ],
-        "resistencias": ["TMV", "TSWV", "TYLCV", "F1", "F2", "F3", "FORL", "V", "N"],
+        "resistencias": ["TMV", "TSWV", "TYLCV", "F1", "F2", "F3", "FORL", "V", "N", "LSL"],
         "bhn": True,
         "fotos": [
             original("VULCANO.jpeg"),
