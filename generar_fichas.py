@@ -797,8 +797,10 @@ def draw_glossary_page(c, page_num, total):
     c.restoreState()
 
 
-def draw_cover_page(c):
+def draw_cover_page(c, variedades=None, titulo="CATÁLOGO DE FICHAS TÉCNICAS"):
     """Portada + índice de variedades."""
+    if variedades is None:
+        variedades = VARIEDADES
     c.saveState()
 
     # ── FONDO ──
@@ -821,17 +823,27 @@ def draw_cover_page(c):
         except Exception:
             pass
 
-    # ── TÍTULO (centrado entre barra roja e índice) ──
-    # Espacio disponible: desde H-cover_bar hasta H-118mm (índice)
-    title_center_y = H - cover_bar - (118*mm - cover_bar) / 2  # centro del espacio
+    # ── TÍTULO ──
+    title_center_y = H - cover_bar - (118*mm - cover_bar) / 2
+    # Split titulo into two lines if it contains a newline, else auto-split at last space before center
+    titulo_upper = titulo.upper()
+    if "\n" in titulo_upper:
+        lines = titulo_upper.split("\n", 1)
+    else:
+        # Try to split roughly in half
+        words = titulo_upper.split()
+        mid = len(words) // 2
+        lines = [" ".join(words[:mid]), " ".join(words[mid:])]
+
     c.setFillColor(BLANCO)
-    c.setFont("Helvetica-Bold", 34)
-    title = "CATÁLOGO DE FICHAS TÉCNICAS"
-    c.drawCentredString(W / 2, title_center_y + 12*mm, title)
+    c.setFont("Helvetica-Bold", 26)
+    c.drawCentredString(W / 2, title_center_y + 16*mm, lines[0])
+    if len(lines) > 1:
+        c.drawCentredString(W / 2, title_center_y + 5*mm, lines[1])
 
     c.setFillColor(ROJO)
-    c.setFont("Helvetica-Bold", 46)
-    c.drawCentredString(W / 2, title_center_y - 10*mm, "2026")
+    c.setFont("Helvetica-Bold", 36)
+    c.drawCentredString(W / 2, title_center_y - 12*mm, "2026")
 
     # Línea decorativa
     c.setStrokeColor(ROJO)
@@ -850,24 +862,23 @@ def draw_cover_page(c):
     c.setLineWidth(0.5)
     c.line(MARGIN, H - 121*mm, W - MARGIN, H - 121*mm)
 
-    # Grid: 4 columnas x 3 filas = 12 variedades
-    cols = 4
-    rows = 4
+    n = len(variedades)
+    cols = min(4, n) if n > 0 else 4
+    rows = max(1, -(-n // cols))  # ceiling division
     gap_x = 4*mm
     gap_y = 4*mm
     grid_top = H - 128*mm
     grid_w = W - 2*MARGIN
     cell_w = (grid_w - (cols - 1) * gap_x) / cols
-    cell_h = (grid_top - 28*mm - (rows - 1) * gap_y) / rows  # 28mm for footer area
-    img_h = cell_h - 10*mm  # space for name below image
+    cell_h = (grid_top - 28*mm - (rows - 1) * gap_y) / rows
+    img_h = cell_h - 10*mm
 
-    for idx, var in enumerate(VARIEDADES):
+    for idx, var in enumerate(variedades):
         col = idx % cols
         row = idx // cols
         cx = MARGIN + col * (cell_w + gap_x)
         cy = grid_top - row * (cell_h + gap_y) - cell_h
 
-        # Foto principal
         foto_path = var["fotos"][0] if var["fotos"] else None
         c.setFillColor(SURFACE3)
         c.roundRect(cx, cy + 10*mm, cell_w, img_h, 2*mm, fill=1, stroke=0)
@@ -878,7 +889,6 @@ def draw_cover_page(c):
             except Exception:
                 pass
 
-        # Nombre
         AMARILLO = colors.HexColor("#b8860b")
         if var["tipo_tag"] == "tomate":
             tag_color = ROJO
@@ -890,7 +900,6 @@ def draw_cover_page(c):
         c.setFont("Helvetica-Bold", 7.5)
         c.drawCentredString(cx + cell_w / 2, cy + 3.5*mm, var["nombre"])
 
-        # Categoría
         c.setFillColor(GRIS)
         c.setFont("Helvetica", 6)
         c.drawCentredString(cx + cell_w / 2, cy + 0.5*mm, var["categoria"])
@@ -926,7 +935,7 @@ def generar():
     c.setSubject("Fichas Técnicas de Variedades de Tomate y Portainjertos")
 
     # Portada
-    draw_cover_page(c)
+    draw_cover_page(c, titulo="Catálogo de Fichas Técnicas")
     c.showPage()
 
     total = len(VARIEDADES) + 1  # +1 for glossary page (portada no cuenta)
@@ -971,7 +980,7 @@ def generar_catalogo_categoria(tag, output_path, titulo):
     c.setTitle(f"{titulo} — Semillas DGR S.A.")
     c.setAuthor("Semillas DGR S.A.")
     c.setSubject(titulo)
-    draw_cover_page(c)
+    draw_cover_page(c, variedades=vars_cat, titulo=titulo)
     c.showPage()
     total = len(vars_cat) + 1
     for i, var in enumerate(vars_cat, 1):
