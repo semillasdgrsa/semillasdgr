@@ -363,10 +363,11 @@ VARIEDADES = [
         "resistencias": ["L1"],
         "bhn": False,
         "fotos": [
-            foto("0154", "0154-campo-04.jpeg"),
-            foto("0154", "0154-campo-03.jpeg"),
-            foto("0154", "0154-campo-01.jpeg"),
-            foto("0154", "0154-campo-02.jpeg"),
+            foto("0154", "0154-campo-08.jpeg"),
+            foto("0154", "0154-campo-07.jpeg"),
+            foto("0154", "0154-campo-05.jpeg"),
+            foto("0154", "0154-campo-14.jpeg"),
+            foto("0154", "0154-campo-12.jpeg"),
         ],
     },
 ]
